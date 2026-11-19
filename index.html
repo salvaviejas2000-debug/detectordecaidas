@@ -466,7 +466,7 @@ footer nav a:hover{color:var(--orange)}
 #oferta .sim .tabs{border-color:var(--kraft)}#oferta .sim .tabs button{color:var(--kraft)}#oferta .sim .tabs button[aria-selected="true"]{background:var(--kraft);color:var(--ink)}
 #oferta .ubar{background:rgba(243,221,181,.15)}#oferta .u100{border-left-color:var(--kraft)}
 #oferta .sim-data div,#oferta .sim-action{background:rgba(243,221,181,.08)}#oferta .sim-data dt{color:var(--leaf)}
-#plan .explain{background:var(--ink)}
+#plan .explain{background:rgba(243,221,181,.08);border:1px solid rgba(243,221,181,.18)}
 .risk{display:grid;grid-template-columns:minmax(0,640px);gap:clamp(16px,2vw,24px);margin-top:12px}
 .rk{padding:26px;border-radius:22px;border:1px solid rgba(243,221,181,.2);display:grid;grid-template-columns:auto auto 1fr;gap:12px 16px;align-items:center;transition:transform .45s var(--ease),border-color .45s}
 .rk:hover{transform:translateY(-5px);border-color:var(--orange)}
@@ -478,7 +478,7 @@ footer nav a:hover{color:var(--orange)}
 .one{font-size:1.15rem}
 /* Plan */
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
-.month{border:2px solid var(--ink);border-radius:22px;padding:26px;background:#fff7e6;display:grid;gap:16px;align-content:start;transition:transform .45s var(--ease)}
+.month{color:var(--ink);border:2px solid var(--ink);border-radius:22px;padding:26px;background:#fff7e6;display:grid;gap:16px;align-content:start;transition:transform .45s var(--ease)}
 .js .month.rv.in:hover,.month:hover{transform:translateY(-6px)}
 .month h3{font-family:var(--f-title);font-weight:900;font-size:2.4rem}
 .util{height:150px;display:flex;align-items:flex-end;border-bottom:2px solid var(--ink);position:relative}
@@ -968,10 +968,10 @@ footer nav a:hover{color:var(--orange)}
   </div>
 </section>
 
-<section class="block orange sheet" id="plan">
+<section class="block ink sheet" id="plan">
   <div class="wrap">
     <div class="head rv">
-      <span class="tag">Plan de producción</span>
+      <span class="tag" style="color:var(--orange)">Plan de producción</span>
       <h2>Los próximos tres meses.</h2>
     </div>
     <div class="season grid3">
@@ -994,22 +994,6 @@ footer nav a:hover{color:var(--orange)}
     <div class="explain rv">
       <h3>Estacionalidad</h3>
       <p>Los vaivenes se repiten cada año. Por eso no producimos de más ni guardamos bolsas.</p>
-    </div>
-  </div>
-</section>
-
-<section class="block ink sheet" id="riesgo">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="tag" style="color:var(--orange)">El riesgo principal</span>
-      <h2 class="paper-text">El papel es un commodity.</h2>
-      <p class="lede">Su precio lo fija el mercado mundial.</p>
-    </div>
-    <div class="price rv">
-      <div class="price-bar"><i class="paper" style="--w:32%"><span>Papel US$ 0,032</span></i><i class="rest"><span>Resto del precio</span></i></div>
-    </div>
-    <div class="risk">
-      <div class="rk rv"><span class="rk-in">Papel +10%</span><span class="rk-arrow" aria-hidden="true">→</span><span class="rk-out">Bolsa ≈ +3%</span><p>Lo trasladamos en la lista de precios siguiente.</p></div>
     </div>
   </div>
 </section>
