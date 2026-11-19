@@ -369,7 +369,7 @@ footer nav a:hover{color:var(--orange)}
 .v3 h3{font-size:1.5rem}
 .v3 p{font-size:1.1rem;color:rgba(243,221,181,.9)}
 /* Números */
-.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
 .num{border-top:3px solid var(--orange);padding-top:20px;display:grid;gap:8px}
 .num b{font-family:var(--f-title);font-weight:900;font-size:clamp(2.8rem,2rem + 2.6vw,4.6rem);line-height:.9}
 .num p{font-size:1.12rem}
@@ -445,6 +445,36 @@ footer nav a:hover{color:var(--orange)}
 .rc h3{font-family:var(--f-title);font-weight:900;font-size:1.8rem;color:var(--orange)}
 .rc p{font-size:1.08rem;color:rgba(243,221,181,.92)}
 .rc b{color:var(--kraft)}
+/* Parte 3 nuevas */
+.dnums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.dn{border-top:3px solid var(--orange);padding-top:20px;display:grid;gap:8px}
+.dn b{font-family:var(--f-title);font-weight:900;font-size:clamp(3.2rem,2.2rem + 3.6vw,6rem);line-height:.85;color:var(--kraft)}
+.dn p{font-size:1.15rem;color:rgba(243,221,181,.9)}
+.motor{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,4vw,56px);align-items:start}
+.motor-t{font-family:var(--f-title);font-weight:900;font-size:clamp(3rem,2rem + 3vw,5rem);line-height:.9;color:var(--orange);margin:12px 0 14px}
+.motor .lede{color:var(--kraft)}
+.dark-facts{grid-template-columns:1fr}
+.dark-facts .fact{border-top-color:rgba(243,221,181,.3);grid-template-columns:200px 1fr;align-items:baseline;gap:20px}
+.dark-facts .fact b{font-size:clamp(2.4rem,1.8rem + 1.6vw,3.4rem)}
+.dark-facts .fact p{color:var(--kraft)}
+.explain b{color:var(--orange);font-weight:600}
+.react.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.light-rc{border:2px solid var(--ink);background:#fff7e6}
+.light-rc p{color:var(--ink)}.light-rc b{color:var(--ink)}
+#orden .light-dec{background:#fff7e6}
+#oferta .sim{background:var(--ink);color:var(--kraft)}
+#oferta .sim .tabs{border-color:var(--kraft)}#oferta .sim .tabs button{color:var(--kraft)}#oferta .sim .tabs button[aria-selected="true"]{background:var(--kraft);color:var(--ink)}
+#oferta .ubar{background:rgba(243,221,181,.15)}#oferta .u100{border-left-color:var(--kraft)}
+#oferta .sim-data div,#oferta .sim-action{background:rgba(243,221,181,.08)}#oferta .sim-data dt{color:var(--leaf)}
+#plan .explain{background:var(--ink)}
+.risk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin-top:12px}
+.rk{padding:26px;border-radius:22px;border:1px solid rgba(243,221,181,.2);display:grid;grid-template-columns:auto auto 1fr;gap:12px 16px;align-items:center;transition:transform .45s var(--ease),border-color .45s}
+.rk:hover{transform:translateY(-5px);border-color:var(--orange)}
+.rk-in,.rk-out{font-family:var(--f-title);font-weight:900;font-size:clamp(1.6rem,1.2rem + 1vw,2.2rem);line-height:1}
+.rk-in{color:var(--kraft)}.rk-out{color:var(--orange)}
+.rk-arrow{font-size:1.8rem;color:var(--kraft)}
+.rk p{grid-column:1/-1;font-size:1.12rem;color:rgba(243,221,181,.9)}
+@media (max-width:860px){.dnums,.motor,.react.two,.risk{grid-template-columns:1fr}.dark-facts .fact{grid-template-columns:1fr;gap:6px}}
 /* Plan */
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
 .month{border:2px solid var(--ink);border-radius:22px;padding:26px;background:#fff7e6;display:grid;gap:16px;align-content:start;transition:transform .45s var(--ease)}
@@ -564,27 +594,14 @@ footer nav a:hover{color:var(--orange)}
 <section class="block light sheet" id="mercado">
   <div class="wrap">
     <div class="head rv">
-      <span class="tag" style="color:var(--moss)">Por qué hay mercado</span>
-      <h2>El mercado se está moviendo hacia el papel.</h2>
-      <p class="lede">Cada comercio que deja el plástico necesita una alternativa. Esa alternativa puede ser el papel.</p>
+      <span class="tag" style="color:var(--moss)">Contra quién competimos</span>
+      <h2>No competimos con escala: competimos con flexibilidad y servicio.</h2>
     </div>
-    <div class="facts">
-      <div class="fact rv"><b>2017</b><p>Los supermercados de la Ciudad de Buenos Aires dejan de entregar bolsas plásticas.</p></div>
-      <div class="fact rv" style="--i:1"><b>Ley 13.868</b><p>La Provincia prohíbe las bolsas de polietileno convencionales en sus comercios.</p></div>
-      <div class="fact rv" style="--i:2"><b>−24%</b><p>Cayó el empleo en fabricantes de bolsas plásticas en todo el país.</p></div>
-    </div>
-    <div class="explain rv">
-      <h3>Sustitución</h3>
-      <p>Cuando una norma prohíbe un producto, la gente no deja de necesitar bolsas: las reemplaza por otras. La demanda que pierde el plástico es la que el papel puede capturar.</p>
-    </div>
-    <div class="compete">
-      <div class="rv"><h3>Contra quién competimos</h3><p class="lede">KraftPack no compite con escala: compite con flexibilidad y servicio.</p></div>
-      <div class="comp-grid">
-        <div class="comp rv"><h4>Líder nacional</h4><p><b>Fuerte en</b> escala, precio y presencia regional.</p><p><b>Débil en</b> lotes muy chicos.</p></div>
-        <div class="comp rv" style="--i:1"><h4>Unos 6 fabricantes chicos</h4><p><b>Fuertes en</b> precio y cercanía.</p><p><b>Débiles en</b> capacidad y certificación.</p></div>
-        <div class="comp rv" style="--i:2"><h4>Importados de Brasil, España y China</h4><p><b>Fuertes en</b> precio unitario.</p><p><b>Débiles en</b> plazos largos y pedidos mínimos grandes.</p></div>
-        <div class="comp us rv" style="--i:3"><h4>KraftPack</h4><p>Ocupa el lugar que los demás dejan libre: <b>lotes chicos, con la marca del cliente y entrega en 5 días.</b></p></div>
-      </div>
+    <div class="comp-grid">
+      <div class="comp rv"><h4>Líder nacional</h4><p><b>Fuerte en</b> escala, precio y presencia regional.</p><p><b>Débil en</b> lotes muy chicos.</p></div>
+      <div class="comp rv" style="--i:1"><h4>Unos 6 fabricantes chicos</h4><p><b>Fuertes en</b> precio y cercanía.</p><p><b>Débiles en</b> capacidad y certificación.</p></div>
+      <div class="comp rv" style="--i:2"><h4>Importados de Brasil, España y China</h4><p><b>Fuertes en</b> precio unitario.</p><p><b>Débiles en</b> plazos largos y pedidos mínimos grandes.</p></div>
+      <div class="comp us rv" style="--i:3"><h4>KraftPack</h4><p>Ocupa el lugar que los demás dejan libre: <b>lotes chicos, con la marca del cliente y entrega en 5 días.</b></p></div>
     </div>
   </div>
 </section>
@@ -652,7 +669,6 @@ footer nav a:hover{color:var(--orange)}
     </div>
     <div class="nums">
       <div class="num rv"><b><span data-count="37">37</span> M</b><p>bolsas por año de capacidad</p></div>
-      <div class="num rv" style="--i:1"><b><span data-count="2.4" data-dec="1">2,4</span> M</b><p>bolsas por mes de demanda normal</p></div>
       <div class="num rv" style="--i:2"><b>1 + 3</b><p>impresora flexográfica de 4 colores y formadoras de 75 bolsas por minuto</p></div>
       <div class="num rv" style="--i:3"><b>2 turnos</b><p>con <span data-count="72">72</span> personas, de lunes a viernes</p></div>
     </div>
@@ -804,24 +820,89 @@ footer nav a:hover{color:var(--orange)}
   </div>
 </section>
 
-<section class="block light sheet" id="orden">
+<section class="block ink sheet" id="demanda">
   <div class="wrap">
     <div class="head rv">
-      <span class="tag" style="color:var(--moss)">Primero, el orden</span>
-      <h2>5S y mantenimiento a cargo de los operarios.</h2>
+      <span class="tag" style="color:var(--orange)">La demanda hoy</span>
+      <h2 class="paper-text">Hoy vendemos 2,4 millones de bolsas por mes.</h2>
+    </div>
+    <div class="dnums">
+      <div class="dn rv"><b><span data-count="2.4" data-dec="1">2,4</span> M</b><p>bolsas por mes</p></div>
+      <div class="dn rv" style="--i:1"><b><span data-count="85">85</span>%</b><p>de uso de las formadoras</p></div>
+      <div class="dn rv" style="--i:2"><b>US$ <span data-count="2.9" data-dec="1">2,9</span> M</b><p>al año, a diez centavos de dólar de referencia</p></div>
+    </div>
+
+    <div class="motor">
+      <div class="rv"><span class="tag" style="color:var(--orange)">El motor de la demanda</span><h3 class="motor-t">Sustitución</h3><p class="lede">La demanda que perdió el plástico la puede capturar el papel.</p></div>
+      <div class="facts dark-facts">
+        <div class="fact rv"><b>2017</b><p>La Ciudad no permite bolsas plásticas en supermercados.</p></div>
+        <div class="fact rv" style="--i:1"><b>Ley 13.868</b><p>La Provincia prohibió las bolsas de polietileno convencionales.</p></div>
+        <div class="fact rv" style="--i:2"><b>−24%</b><p>Cayó el empleo en fábricas de bolsas plásticas.</p></div>
+      </div>
+    </div>
+
+    <div class="explain dark rv">
+      <h3>Techo de precio</h3>
+      <p>Los importados ponen un techo: si cobramos mucho más, el cliente les compra a ellos. Por eso no competimos con la bolsa estándar sino con la personalizada: <b>lotes chicos, diseño propio y entrega en cinco días.</b></p>
+    </div>
+  </div>
+</section>
+
+<section class="block light sheet" id="oferta">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" style="color:var(--moss)">Oferta y demanda aplicada</span>
+      <h2>Primero ofrecemos más cantidad, no subimos el precio.</h2>
+      <p class="lede">Si un cliente grande nos suma 25% más, la utilización llega al 106%: el horario normal no alcanza, y lo cubrimos con tres sábados, sin comprar máquinas.</p>
+    </div>
+    <div class="sim rv" id="sim">
+      <div class="sim-head">
+        <h3>Simulá un cambio de demanda</h3>
+        <div class="tabs" role="tablist" aria-label="Escenario de demanda">
+          <button role="tab" data-sc="normal" aria-selected="true" aria-controls="sim-out">Hoy</button>
+          <button role="tab" data-sc="sube" aria-selected="false" aria-controls="sim-out">Sube 25%</button>
+          <button role="tab" data-sc="cae" aria-selected="false" aria-controls="sim-out">Cae al 20%</button>
+        </div>
+      </div>
+      <div class="sim-body" id="sim-out" role="tabpanel" aria-live="polite">
+        <div class="gauge-wrap">
+          <div class="ubar"><i id="sim-fill"></i><span class="u100">100%</span></div>
+          <div class="sim-big"><b id="sim-u">85%</b><span>uso de las formadoras</span></div>
+        </div>
+        <dl class="sim-data">
+          <div><dt>Demanda mensual</dt><dd id="sim-d">2,4 millones</dd></div>
+          <div><dt>Configuración</dt><dd id="sim-c">3 formadoras, 2 turnos</dd></div>
+          <div><dt>Consumo de bobinas</dt><dd id="sim-b">5 por día</dd></div>
+          <div><dt>Punto de pedido</dt><dd id="sim-p">70 bobinas</dd></div>
+        </dl>
+        <p class="sim-action" id="sim-a">La planta trabaja en horario normal, con margen para crecer.</p>
+      </div>
+    </div>
+    <div class="react two">
+      <div class="rc light-rc rv"><h3>Si la demanda sube</h3><p><b>Cantidad:</b> sábados con un turno; tercer turno solo si el aumento dura más de 2 meses.</p><p><b>Precio:</b> los 5 productos principales mantienen su precio; solo los pedidos urgentes o muy personalizados suben hasta 4%.</p></div>
+      <div class="rc light-rc rv" style="--i:1"><h3>Si la demanda baja</h3><p><b>Cantidad:</b> menos horas extra y un turno, sin despidos.</p><p><b>Precio:</b> descuentos por volumen en los productos principales, sin bajar la lista.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block orange sheet" id="orden">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag">Para sostener ese ritmo</span>
+      <h2>Cuidamos el orden y las máquinas.</h2>
     </div>
     <div class="order2">
       <article class="dec light-dec rv">
         <span class="dec-tag">5S</span>
-        <h3>Cada herramienta, en su lugar.</h3>
-        <dl><dt>Qué decidimos</dt><dd>Empezar por el sector de formado y el taller de mantenimiento, con tableros de sombras, limpieza de 10 minutos al final de cada turno y auditoría cruzada cada 15 días.</dd>
+        <h3>Cada herramienta tiene su lugar.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Empezar por el sector de formado y el taller de mantenimiento, con tableros de sombras, limpieza de 10 minutos por turno y auditoría cruzada cada 15 días.</dd>
         <dt>Por qué</dt><dd>Son los lugares donde más tiempo se pierde buscando herramientas y limpiando derrames de adhesivo. Meta: 80 puntos sobre 100 a los 3 meses.</dd></dl>
         <div class="fives"><span>Clasificar</span><span>Ordenar</span><span>Limpiar</span><span>Estandarizar</span><span>Disciplina</span></div>
       </article>
       <article class="dec light-dec rv" style="--i:1">
         <span class="dec-tag">TPM</span>
         <h3>Más eficiencia de las mismas máquinas.</h3>
-        <dl><dt>Qué decidimos</dt><dd>Los operarios limpian, revisan y lubrican su máquina al inicio del turno; el equipo técnico se ocupa de lo más complejo.</dd>
+        <dl><dt>Qué decidimos</dt><dd>Los propios operarios hacen el mantenimiento básico de su máquina: la limpian, la revisan y la lubrican al inicio del turno. El equipo técnico se ocupa de lo más complejo.</dd>
         <dt>Por qué</dt><dd>Una parada en la impresora o en una formadora frena todo el flujo.</dd></dl>
         <div class="compare"><s>65%</s><b>75% OEE</b></div>
         <p class="small">en 6 meses</p>
@@ -835,7 +916,7 @@ footer nav a:hover{color:var(--orange)}
     <div class="head rv">
       <span class="tag" style="color:var(--orange)">Control de calidad</span>
       <h2 class="paper-text">Probada antes de salir.</h2>
-      <p class="lede">Controlamos la calidad dentro del proceso, en cuatro puntos, para frenar el defecto donde se produce y no en el despacho.</p>
+      <p class="lede">Controlamos la calidad en cuatro puntos, con revisión final bolsa por bolsa y metas claras. Lo que se puede arreglar se reprocesa; lo que no, vuelve al proveedor para reciclarse.</p>
     </div>
     <ol class="checks">
       <li class="check rv">
@@ -902,90 +983,56 @@ footer nav a:hover{color:var(--orange)}
   </div>
 </section>
 
-<section class="block ink sheet" id="demanda">
+<section class="block orange sheet" id="plan">
   <div class="wrap">
     <div class="head rv">
-      <span class="tag" style="color:var(--orange)">Oferta y demanda</span>
-      <h2 class="paper-text">Cuidamos el precio y movemos la cantidad.</h2>
-      <p class="lede">Ajustamos cantidades primero y precios después: la capacidad flexible absorbe los cambios de demanda.</p>
+      <span class="tag">Plan de producción</span>
+      <h2>Los próximos tres meses.</h2>
     </div>
-
-    <div class="price rv">
-      <div class="price-bar"><i class="paper" style="--w:32%"><span>Papel US$ 0,032</span></i><i class="rest"><span>Resto del precio</span></i></div>
-      <div class="price-text">
-        <h3>Precio de referencia: US$ 0,10 por bolsa</h3>
-        <p>El papel es un commodity de unos US$ 700 por tonelada: cerca de un tercio del precio. No bajamos el precio para mover stock, porque el sistema pull no nos deja acumularlo.</p>
-      </div>
+    <div class="season grid3">
+      <article class="month rv">
+        <h3>Diciembre</h3>
+        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i class="over" style="--h:80"></i></div>
+        <dl><dt>Producción</dt><dd>3,1 millones</dd><dt>Uso de capacidad</dt><dd>109%</dd><dt>Sábados extra</dt><dd>4</dd></dl>
+        <p>El mes más fuerte, por las fiestas.</p>
+      </article>
+      <article class="month rv" style="--i:1">
+        <h3>Enero</h3>
+        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i style="--h:55"></i></div>
+        <dl><dt>Producción</dt><dd>2,1 millones</dd><dt>Uso de capacidad</dt><dd>75%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
+        <p>Lo usamos para mantenimiento y capacitación.</p>
+      </article>
+      <article class="month rv" style="--i:2">
+        <h3>Febrero</h3>
+        <div class="util" aria-hidden="true"><span class="cap" style="--c:66"><span>capacidad normal</span></span><i style="--h:63"></i></div>
+        <dl><dt>Producción</dt><dd>2,4 millones</dd><dt>Uso de capacidad</dt><dd>95%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
+        <p>Con 18 días hábiles por Carnaval.</p>
+      </article>
     </div>
-
-    <div class="explain dark rv">
-      <h3>Techo de precio</h3>
-      <p>Los importados fijan hasta cuánto puede cobrar cualquiera. Por eso no competimos en la bolsa estándar, donde gana el más barato, sino en la personalizada, donde el cliente paga por el diseño, la tirada chica y el plazo.</p>
-    </div>
-
-    <div class="sim rv" id="sim">
-      <div class="sim-head">
-        <h3>Simulá un cambio de demanda</h3>
-        <div class="tabs dark-tabs" role="tablist" aria-label="Escenario de demanda">
-          <button role="tab" data-sc="normal" aria-selected="true" aria-controls="sim-out">Normal</button>
-          <button role="tab" data-sc="sube" aria-selected="false" aria-controls="sim-out">Sube 25%</button>
-          <button role="tab" data-sc="cae" aria-selected="false" aria-controls="sim-out">Cae al 20%</button>
-        </div>
-      </div>
-      <div class="sim-body" id="sim-out" role="tabpanel" aria-live="polite">
-        <div class="gauge-wrap">
-          <div class="ubar"><i id="sim-fill"></i><span class="u100">100%</span></div>
-          <div class="sim-big"><b id="sim-u">85%</b><span>uso de las formadoras</span></div>
-        </div>
-        <dl class="sim-data">
-          <div><dt>Demanda mensual</dt><dd id="sim-d">2,4 millones</dd></div>
-          <div><dt>Configuración</dt><dd id="sim-c">3 formadoras, 2 turnos</dd></div>
-          <div><dt>Consumo de bobinas</dt><dd id="sim-b">5 por día</dd></div>
-          <div><dt>Punto de pedido</dt><dd id="sim-p">70 bobinas</dd></div>
-        </dl>
-        <p class="sim-action" id="sim-a">La planta trabaja en horario normal, con margen para crecer.</p>
-      </div>
-    </div>
-
-    <div class="react">
-      <div class="rc rv"><h3>Si la demanda sube</h3><p><b>Producción:</b> sábados con un turno; tercer turno solo si dura más de 2 meses.</p><p><b>Precio:</b> hasta +4% en pedidos urgentes o muy personalizados; los 5 productos A mantienen precio.</p></div>
-      <div class="rc rv" style="--i:1"><h3>Si la demanda baja</h3><p><b>Producción:</b> menos horas extra y un turno, sin despidos.</p><p><b>Precio:</b> descuentos por volumen en productos A, sin bajar la lista.</p></div>
-      <div class="rc rv" style="--i:2"><h3>Si sube el papel</h3><p><b>Costo:</b> si el papel sube 10%, la bolsa sube cerca de 3,2%.</p><p><b>Precio:</b> se traslada en la lista siguiente.</p></div>
+    <div class="explain rv">
+      <h3>Estacionalidad</h3>
+      <p>Esos vaivenes se repiten todos los años: diciembre vende 25% más que el promedio, enero 15% menos y febrero 5% menos. Por eso no producimos de más ni guardamos bolsas.</p>
     </div>
   </div>
 </section>
 
-<section class="block light sheet" id="plan">
+<section class="block ink sheet" id="riesgo">
   <div class="wrap">
     <div class="head rv">
-      <span class="tag" style="color:var(--moss)">Plan de producción</span>
-      <h2>Los próximos tres meses.</h2>
-      <p class="lede">Unos 7,6 millones de bolsas. Sábados extra solo en el pico, y enero para mantenimiento.</p>
+      <span class="tag" style="color:var(--orange)">El riesgo principal</span>
+      <h2 class="paper-text">El papel es un commodity.</h2>
+      <p class="lede">Su precio lo fija el mercado mundial, no el fabricante: ronda los US$ 700 por tonelada.</p>
     </div>
-    <div class="season grid3">
-      <article class="month rv">
-        <h3>Dic 2026</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i class="over" style="--h:80"></i></div>
-        <dl><dt>Producción</dt><dd>3.100.000</dd><dt>Uso de capacidad</dt><dd>109%</dd><dt>Sábados extra</dt><dd>4</dd></dl>
-        <p>El mes más fuerte, por las fiestas. Incluye 40.000 bolsas de colchón, menos de medio día de venta.</p>
-      </article>
-      <article class="month rv" style="--i:1">
-        <h3>Ene 2027</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i style="--h:55"></i></div>
-        <dl><dt>Producción</dt><dd>2.120.000</dd><dt>Uso de capacidad</dt><dd>75%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
-        <p>Con un cuarto de capacidad libre: mantenimiento preventivo, capacitación TPM y auditorías 5S.</p>
-      </article>
-      <article class="month rv" style="--i:2">
-        <h3>Feb 2027</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:66"><span>capacidad normal</span></span><i style="--h:63"></i></div>
-        <dl><dt>Producción</dt><dd>2.420.000</dd><dt>Uso de capacidad</dt><dd>95%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
-        <p>Con 18 días hábiles por Carnaval.</p>
-      </article>
+    <div class="price rv">
+      <div class="price-bar"><i class="paper" style="--w:32%"><span>Papel US$ 0,032</span></i><i class="rest"><span>Resto del precio</span></i></div>
+      <div class="price-text">
+        <h3>US$ 0,10 por bolsa</h3>
+        <p>El papel es cerca de un tercio del precio de referencia.</p>
+      </div>
     </div>
-    <div class="ideas">
-      <div class="idea rv"><h3>Crecimiento estructural</h3><p>El que queda: estimamos 2% por mes por el reemplazo del plástico y los clientes nuevos.</p></div>
-      <div class="idea rv" style="--i:1"><h3>Estacionalidad</h3><p>Lo que se repite cada año: diciembre vende 25% más que el promedio, enero 15% menos y febrero 5% menos.</p></div>
-      <div class="idea rv" style="--i:2"><h3>Riesgos conocidos</h3><p>Si el proveedor de papel se atrasa, el stock de seguridad de 20 a 25 bobinas cubre de 3 a 4 días.</p></div>
+    <div class="risk">
+      <div class="rk rv"><span class="rk-in">Papel +10%</span><span class="rk-arrow" aria-hidden="true">→</span><span class="rk-out">Bolsa ≈ +3%</span><p>Lo trasladamos en la lista de precios siguiente.</p></div>
+      <div class="rk rv" style="--i:1"><span class="rk-in">Proveedor atrasado</span><span class="rk-arrow" aria-hidden="true">→</span><span class="rk-out">3 a 4 días cubiertos</span><p>Con un stock de seguridad de 20 a 25 bobinas.</p></div>
     </div>
   </div>
 </section>
