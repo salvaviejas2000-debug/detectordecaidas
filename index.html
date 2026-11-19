@@ -476,6 +476,47 @@ footer nav a:hover{color:var(--orange)}
 .rk p{grid-column:1/-1;font-size:1.12rem;color:rgba(243,221,181,.9)}
 @media (max-width:860px){.dnums,.motor,.react.two,.risk{grid-template-columns:1fr}.dark-facts .fact{grid-template-columns:1fr;gap:6px}}
 .one{font-size:1.15rem}
+/* Plan: deslizador de meses */
+.mslider{border-radius:28px;background:rgba(243,221,181,.05);border:1px solid rgba(243,221,181,.16);padding:clamp(18px,3vw,36px);display:grid;gap:clamp(20px,3vw,32px);overflow:hidden}
+.mtop{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.mtabs{position:relative;display:inline-grid;grid-template-columns:repeat(3,1fr);border:2px solid rgba(243,221,181,.3);border-radius:999px;padding:5px}
+.mtabs button{position:relative;z-index:1;min-height:48px;padding:0 clamp(14px,2vw,26px);border:0;background:none;color:var(--kraft);font-family:var(--f-sub);font-size:1.08rem;cursor:pointer;transition:color .4s}
+.mtabs button[aria-selected="true"]{color:var(--ink)}
+.mtabs-pill{position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/3);border-radius:999px;background:var(--orange);transform:translateX(calc(var(--m,0) * 100%));transition:transform .6s var(--ease)}
+.marrows{display:flex;gap:10px}
+.marrow{width:52px;height:52px;border-radius:50%;border:2px solid rgba(243,221,181,.35);background:none;color:var(--kraft);display:grid;place-items:center;cursor:pointer;transition:background .3s,color .3s,transform .3s var(--ease),opacity .3s}
+.marrow svg{width:22px;height:22px}
+.marrow:hover{background:var(--kraft);color:var(--ink);transform:translateY(-2px)}
+.marrow:disabled{opacity:.3;pointer-events:none}
+.mview{overflow:hidden;touch-action:pan-y}
+.mtrack{display:flex;transform:translateX(calc(var(--m,0) * -100%));transition:transform .8s var(--ease)}
+.mtrack.drag{transition:none}
+.mslide{flex:0 0 100%;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding:6px 2px;opacity:.25;transform:scale(.96);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.mslide.on{opacity:1;transform:none}
+.ms-left{display:grid;gap:12px;justify-items:start;min-width:0}
+.ms-year{font-family:var(--f-sub);font-size:1.05rem;letter-spacing:.2em;color:var(--orange)}
+.ms-name{font-family:var(--f-title);font-weight:900;font-size:clamp(3.6rem,2rem + 6vw,8rem);line-height:.85}
+.ms-note{font-family:var(--f-sub);font-size:var(--t-lede);color:var(--kraft)}
+.ms-chip{font-family:var(--f-sub);font-size:1.02rem;padding:7px 16px;border-radius:999px;background:var(--leaf);color:var(--ink)}
+.ms-chip.hot{background:var(--orange)}
+.ms-right{display:grid;gap:28px;min-width:0}
+.ms-big b{font-family:var(--f-title);font-weight:900;font-size:clamp(5rem,3rem + 7vw,10rem);line-height:.8;color:var(--kraft);display:block}
+.ms-big span{display:block;margin-top:14px;font-family:var(--f-sub);font-size:1.25rem;color:rgba(243,221,181,.85)}
+.ms-use{display:grid;gap:10px}
+.ms-use-head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-sub);font-size:1.1rem}
+.ms-use-head b{font-family:var(--f-title);font-weight:900;font-size:2rem;color:var(--kraft)}
+.ms-bar{position:relative;height:22px;border-radius:999px;background:rgba(243,221,181,.12)}
+.ms-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--leaf);width:calc(var(--u) / 120 * 100%);transform-origin:left;transform:scaleX(0);transition:transform 1.2s var(--ease) .2s}
+.ms-bar i.over{background:var(--orange)}
+.mslide.on .ms-bar i{transform:scaleX(1)}
+.ms-bar em{position:absolute;left:83.33%;top:-8px;bottom:-8px;border-left:2px dashed var(--kraft)}
+.mtimeline{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,22px);align-items:end;height:120px;border-top:1px solid rgba(243,221,181,.16);padding-top:16px}
+.mtimeline button{height:100%;display:grid;grid-template-rows:1fr auto;gap:8px;background:none;border:0;cursor:pointer;color:rgba(243,221,181,.6);font-family:var(--f-sub);font-size:1rem;padding:0}
+.mtimeline i{align-self:end;height:calc(var(--h) * 1%);border-radius:10px 10px 4px 4px;background:rgba(243,221,181,.16);transition:background .5s,transform .5s var(--ease)}
+.mtimeline button.on{color:var(--kraft)}
+.mtimeline button.on i{background:var(--orange)}
+.mtimeline button:hover i{transform:scaleY(1.04)}
+@media (max-width:760px){.mslide{grid-template-columns:1fr;gap:22px}.mtabs button{padding:0 12px;font-size:1rem}.marrows{display:none}}
 /* Plan */
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
 .month{color:var(--ink);border:2px solid var(--ink);border-radius:22px;padding:26px;background:#fff7e6;display:grid;gap:16px;align-content:start;transition:transform .45s var(--ease)}
@@ -974,22 +1015,64 @@ footer nav a:hover{color:var(--orange)}
       <span class="tag" style="color:var(--orange)">Plan de producción</span>
       <h2>Los próximos tres meses.</h2>
     </div>
-    <div class="season grid3">
-      <article class="month rv">
-        <h3>Diciembre</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i class="over" style="--h:80"></i></div>
-        <dl><dt>Producción</dt><dd>3,1 millones</dd><dt>Uso de capacidad</dt><dd>109%</dd><dt>Sábados extra</dt><dd>4</dd></dl>
-      </article>
-      <article class="month rv" style="--i:1">
-        <h3>Enero</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i style="--h:55"></i></div>
-        <dl><dt>Producción</dt><dd>2,1 millones</dd><dt>Uso de capacidad</dt><dd>75%</dd><dt>Se aprovecha para</dt><dd>Mantenimiento</dd></dl>
-      </article>
-      <article class="month rv" style="--i:2">
-        <h3>Febrero</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:66"><span>capacidad normal</span></span><i style="--h:63"></i></div>
-        <dl><dt>Producción</dt><dd>2,4 millones</dd><dt>Uso de capacidad</dt><dd>95%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
-      </article>
+    <div class="mslider rv" id="mslider">
+      <div class="mtop">
+        <div class="mtabs" role="tablist" aria-label="Mes del plan">
+          <button role="tab" aria-selected="true" data-m="0">Diciembre</button>
+          <button role="tab" aria-selected="false" data-m="1">Enero</button>
+          <button role="tab" aria-selected="false" data-m="2">Febrero</button>
+          <span class="mtabs-pill" aria-hidden="true"></span>
+        </div>
+        <div class="marrows">
+          <button class="marrow" data-dir="-1" aria-label="Mes anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button class="marrow" data-dir="1" aria-label="Mes siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="mview">
+        <div class="mtrack" id="mtrack">
+          <article class="mslide" aria-label="Diciembre 2026">
+            <div class="ms-left">
+              <span class="ms-year">2026</span>
+              <h3 class="ms-name paper-text">Diciembre</h3>
+              <p class="ms-note">El mes más fuerte, por las fiestas.</p>
+              <span class="ms-chip hot">4 sábados extra</span>
+            </div>
+            <div class="ms-right">
+              <div class="ms-big"><b>3,1</b><span>millones de bolsas</span></div>
+              <div class="ms-use"><div class="ms-use-head"><span>Uso de capacidad</span><b>109%</b></div><div class="ms-bar"><i class="over" style="--u:109"></i><em aria-hidden="true"></em></div></div>
+            </div>
+          </article>
+          <article class="mslide" aria-label="Enero 2027">
+            <div class="ms-left">
+              <span class="ms-year">2027</span>
+              <h3 class="ms-name paper-text">Enero</h3>
+              <p class="ms-note">Un cuarto de la planta libre.</p>
+              <span class="ms-chip">Mantenimiento y capacitación</span>
+            </div>
+            <div class="ms-right">
+              <div class="ms-big"><b>2,1</b><span>millones de bolsas</span></div>
+              <div class="ms-use"><div class="ms-use-head"><span>Uso de capacidad</span><b>75%</b></div><div class="ms-bar"><i style="--u:75"></i><em aria-hidden="true"></em></div></div>
+            </div>
+          </article>
+          <article class="mslide" aria-label="Febrero 2027">
+            <div class="ms-left">
+              <span class="ms-year">2027</span>
+              <h3 class="ms-name paper-text">Febrero</h3>
+              <p class="ms-note">18 días hábiles, por Carnaval.</p>
+              <span class="ms-chip">Horario normal</span>
+            </div>
+            <div class="ms-right">
+              <div class="ms-big"><b>2,4</b><span>millones de bolsas</span></div>
+              <div class="ms-use"><div class="ms-use-head"><span>Uso de capacidad</span><b>95%</b></div><div class="ms-bar"><i style="--u:95"></i><em aria-hidden="true"></em></div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="mtimeline" aria-hidden="true">
+        <button tabindex="-1" data-m="0"><i style="--h:100"></i><span>Dic</span></button>
+        <button tabindex="-1" data-m="1"><i style="--h:68"></i><span>Ene</span></button>
+        <button tabindex="-1" data-m="2"><i style="--h:78"></i><span>Feb</span></button>
+      </div>
     </div>
     <div class="explain rv">
       <h3>Estacionalidad</h3>
@@ -1159,6 +1242,22 @@ function calc(){var q=+qty.value,r=best(q,1)||best(q,0);out.textContent=fmt(q,0,
   document.getElementById('c-bags').textContent=fmt(r.t,0,1);
   var diff=(r.t-q)/q*100;document.getElementById('c-diff').textContent=diff===0?'0%':'+'+fmt(diff,diff<1?1:0)+'%';}
 qty.addEventListener('input',calc);calc();
+
+/* ---------- Plan: deslizador ---------- */
+(function(){var box=document.getElementById('mslider');if(!box)return;var track=document.getElementById('mtrack'),slides=track.children,tabs=[].slice.call(box.querySelectorAll('.mtabs [data-m]')),bars=[].slice.call(box.querySelectorAll('.mtimeline [data-m]')),arrows=box.querySelectorAll('.marrow'),cur=0;
+  function go(i){cur=Math.max(0,Math.min(2,i));box.style.setProperty('--m',cur);track.style.setProperty('--m',cur);box.querySelector('.mtabs').style.setProperty('--m',cur);
+    [].forEach.call(slides,function(s,k){s.classList.toggle('on',k===cur);s.setAttribute('aria-hidden',k!==cur)});
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===cur);t.tabIndex=k===cur?0:-1});bars.forEach(function(b,k){b.classList.toggle('on',k===cur)});
+    arrows[0].disabled=cur===0;arrows[1].disabled=cur===2;}
+  tabs.forEach(function(t){t.addEventListener('click',function(){go(+t.dataset.m)});t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){go(cur+1);tabs[cur].focus()}if(e.key==='ArrowLeft'){go(cur-1);tabs[cur].focus()}})});
+  bars.forEach(function(b){b.addEventListener('click',function(){go(+b.dataset.m)})});
+  [].forEach.call(arrows,function(a){a.addEventListener('click',function(){go(cur+ +a.dataset.dir)})});
+  var view=box.querySelector('.mview'),x0=null,dx=0;
+  view.addEventListener('pointerdown',function(e){x0=e.clientX;dx=0;track.classList.add('drag')});
+  view.addEventListener('pointermove',function(e){if(x0===null)return;dx=e.clientX-x0;track.style.transform='translateX(calc('+(-cur*100)+'% + '+dx+'px))'});
+  function end(){if(x0===null)return;track.classList.remove('drag');track.style.transform='';if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));x0=null}
+  view.addEventListener('pointerup',end);view.addEventListener('pointerleave',end);view.addEventListener('pointercancel',end);
+  go(0);})();
 
 /* ---------- Nav activa ---------- */
 var links=[].slice.call(document.querySelectorAll('.nav ul a'));
