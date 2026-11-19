@@ -6,1075 +6,675 @@
 <!--ART-START-->
 <title>KraftPack Bolsas Kraft</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="KraftPack fabrica bolsas de papel kraft con manija, certificadas FSC e impresas con tintas al agua, en Pilar, Buenos Aires. Lotes chicos personalizados y entrega en 5 días hábiles.">
+<meta name="description" content="KraftPack fabrica bolsas de papel kraft con manija, certificadas FSC e impresas con tintas al agua. Lotes desde 12.000 bolsas con tu diseño y entrega en 5 días hábiles.">
 <meta name="theme-color" content="#001011">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;900&family=Young+Serif&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&family=Young+Serif&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
 <style>
 /*
   Tipografías pedidas: "Paper Kuto" / "Origami" (títulos) y "Clubs Serif" (texto y subtítulos).
-  No están en Google Fonts: si las instalás o dejás los archivos en /fonts, se usan solas.
-  Mientras tanto se ven los reemplazos: Londrina Solid (papel recortado) y Young Serif + Newsreader.
+  Si están instaladas o en /fonts se usan solas; si no, se ven Londrina Solid, Young Serif y Newsreader.
 */
 @font-face{font-family:"Paper Kuto";src:local("Paper Kuto"),local("PaperKuto"),url("fonts/PaperKuto.woff2") format("woff2"),url("fonts/PaperKuto.ttf") format("truetype");font-display:swap}
 @font-face{font-family:"Origami";src:local("Origami"),url("fonts/Origami.woff2") format("woff2"),url("fonts/Origami.ttf") format("truetype");font-display:swap}
 @font-face{font-family:"Clubs Serif";src:local("Clubs Serif"),local("ClubsSerif"),url("fonts/ClubsSerif.woff2") format("woff2"),url("fonts/ClubsSerif.ttf") format("truetype");font-display:swap}
 
-/* Layout: pliegos de papel apilados — cada sección es una hoja con borde rasgado sobre la anterior */
+/* Layout: bandas alternadas tinta / naranja / papel arrugado, cada una con borde rasgado sobre la anterior */
 :root{
-  --kraft:#F3DDB5;      /* papel claro, fondo base */
-  --kraft-deep:#C9995F; /* papel kraft real, derivado para las hojas texturadas */
-  --leaf:#659B5E;       /* verde FSC */
-  --moss:#556F44;       /* verde oscuro, textos de apoyo y bandas */
-  --ink:#001011;        /* tinta */
-  --stamp:#F15946;      /* sello / acción */
-  --paper-line:rgba(0,16,17,.14);
-  --ink-soft:rgba(0,16,17,.72);
+  --kraft:#F3DDB5;
+  --leaf:#659B5E;
+  --moss:#556F44;
+  --ink:#001011;
+  --orange:#F15946;
+  --kraft-photo:url("assets/kraft.jpg");
   --f-title:"Paper Kuto","Origami","Londrina Solid",Impact,system-ui,sans-serif;
-  --f-sub:"Clubs Serif","Young Serif",Georgia,"Times New Roman",serif;
-  --f-body:"Clubs Serif","Newsreader",Georgia,"Times New Roman",serif;
+  --f-sub:"Clubs Serif","Young Serif",Georgia,serif;
+  --f-body:"Clubs Serif","Newsreader",Georgia,serif;
   --ease:cubic-bezier(.22,1,.36,1);
   --ease-fold:cubic-bezier(.65,0,.35,1);
-  --gutter:max(16px,env(safe-area-inset-left,0px));
-  --gutter-r:max(16px,env(safe-area-inset-right,0px));
-  --wrap:1200px;
-  --step--1:clamp(.88rem,.84rem + .2vw,.98rem);
-  --step-0:clamp(1.03rem,.98rem + .25vw,1.16rem);
-  --step-1:clamp(1.25rem,1.1rem + .6vw,1.6rem);
-  --step-2:clamp(1.6rem,1.3rem + 1.3vw,2.4rem);
-  --step-3:clamp(2.3rem,1.6rem + 3vw,4.2rem);
-  --step-4:clamp(3rem,1.8rem + 5.6vw,7.4rem);
+  --g-l:max(20px,env(safe-area-inset-left,0px));
+  --g-r:max(20px,env(safe-area-inset-right,0px));
+  --t-body:clamp(1.12rem,1.05rem + .3vw,1.28rem);
+  --t-lede:clamp(1.3rem,1.12rem + .7vw,1.75rem);
+  --t-h3:clamp(1.45rem,1.25rem + .8vw,2rem);
+  --t-h2:clamp(2.7rem,1.8rem + 3.6vw,5.4rem);
+  --t-h1:clamp(3.4rem,1.6rem + 5.6vw,7.6rem);
   color-scheme:light;
-  --kraft-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .55' numOctaves='2' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .18 0 0 0 0 .05 0 0 0 1.1 -.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.5'/%3E%3C/svg%3E");
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--kraft);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.6;overflow-x:hidden;font-optical-sizing:auto}
+body{margin:0;background:var(--kraft);color:var(--ink);font-family:var(--f-body);font-size:var(--t-body);line-height:1.6;overflow-x:hidden}
 img,svg{max-width:100%}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--stamp);outline-offset:3px;border-radius:4px}
-[hidden]{display:none!important}
-.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--kraft);padding:10px 16px;z-index:100;border-radius:6px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--orange);color:var(--ink);padding:10px 16px;z-index:100;border-radius:8px}
 .skip:focus{left:16px}
+.wrap{max-width:1240px;margin-inline:auto;padding-left:var(--g-l);padding-right:var(--g-r)}
 
-.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
-.kraft{background-color:var(--kraft-deep);background-image:var(--kraft-tex);background-size:420px}
-.paper{background-color:var(--kraft);background-image:var(--kraft-tex);background-size:420px;background-blend-mode:multiply}
-.paper.light{background-image:none}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1,h2{font-family:var(--f-title);font-weight:900;line-height:.92;letter-spacing:.005em}
+h2{font-size:var(--t-h2)}
+h3{font-family:var(--f-sub);font-weight:400;font-size:var(--t-h3);line-height:1.15}
+p{margin:0;max-width:60ch;text-wrap:pretty}
+.lede{font-family:var(--f-sub);font-size:var(--t-lede);line-height:1.35}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-sub);font-size:1rem;letter-spacing:.14em;text-transform:uppercase}
+.tag::before{content:"";width:10px;height:10px;background:currentColor;transform:rotate(45deg)}
 
-h1,h2,h3{font-family:var(--f-title);font-weight:900;line-height:.95;letter-spacing:.005em;margin:0;text-wrap:balance}
-h2{font-size:var(--step-3)}
-h3{font-size:var(--step-1);font-family:var(--f-sub);font-weight:400;line-height:1.2;letter-spacing:0}
-p{margin:0;max-width:62ch;text-wrap:pretty}
-.eyebrow{font-family:var(--f-sub);font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--moss);display:inline-flex;align-items:center;gap:.6em}
-.eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
-.lede{font-family:var(--f-sub);font-size:var(--step-1);line-height:1.35;color:var(--ink-soft)}
-.num{font-family:var(--f-title);font-variant-numeric:tabular-nums}
+/* Superficies */
+.ink{background:var(--ink);color:var(--kraft)}
+.orange{background:var(--orange);color:var(--ink)}
+.light{background:var(--kraft);color:var(--ink)}
+.photo{background:var(--kraft-photo) center/cover var(--kraft);color:var(--ink);position:relative}
+.photo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(243,221,181,.28),rgba(243,221,181,.12));pointer-events:none}
+.photo>.wrap{position:relative}
+/* Título con textura de papel kraft real */
+.paper-text{background:var(--kraft-photo) center/cover,#d7a86a;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:paperdrift 22s ease-in-out infinite alternate}
+@keyframes paperdrift{from{background-position:0% 40%}to{background-position:100% 60%}}
 
-/* Botones: recortes de papel que se levantan y se aprietan */
-.btn{--bg:var(--stamp);--fg:var(--kraft);display:inline-flex;align-items:center;gap:.6em;min-height:48px;padding:.75em 1.4em;font-family:var(--f-sub);font-size:var(--step-0);text-decoration:none;color:var(--fg);background:var(--bg);border:2px solid var(--ink);border-radius:4px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
-.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink);transition-duration:.08s}
-.btn.ghost{--bg:transparent;--fg:var(--ink)}
-.btn.ghost:hover{--bg:var(--kraft)}
-.btn svg{width:1.1em;height:1.1em;transition:transform .3s var(--ease)}
-.btn:hover svg{transform:translateX(4px)}
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:54px;padding:.7em 1.5em;border-radius:999px;font-family:var(--f-sub);font-size:1.1rem;text-decoration:none;border:2px solid currentColor;cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s,box-shadow .3s var(--ease)}
+.btn svg{width:1.1em;height:1.1em;transition:transform .35s var(--ease)}
+.btn:hover{transform:translateY(-3px)}
+.btn:hover svg{transform:translateX(5px)}
+.btn:active{transform:translateY(1px) scale(.98);transition-duration:.08s}
+.btn-main{background:var(--orange);color:var(--ink);border-color:var(--orange);box-shadow:0 10px 24px -12px rgba(241,89,70,.9)}
+.btn-main:hover{box-shadow:0 18px 30px -12px rgba(241,89,70,.9)}
+.btn-line{background:transparent}
+.ink .btn-line{color:var(--kraft)}
+.ink .btn-line:hover{background:var(--kraft);color:var(--ink)}
+.orange .btn-line:hover{background:var(--ink);color:var(--kraft)}
+.btn-dark{background:var(--ink);color:var(--kraft);border-color:var(--ink)}
+.btn-dark:hover{box-shadow:0 16px 28px -14px rgba(0,16,17,.9)}
 
 /* Navegación */
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--ink);color:var(--kraft)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
-.logo{display:inline-flex;align-items:center;gap:.5em;font-family:var(--f-title);font-size:1.6rem;font-weight:900;text-decoration:none;letter-spacing:.02em}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(0,16,17,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--kraft);border-bottom:1px solid rgba(243,221,181,.12)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px}
+.logo{display:inline-flex;align-items:center;gap:.5em;font-family:var(--f-title);font-size:1.75rem;font-weight:900;text-decoration:none}
 .logo svg{width:30px;height:34px}
-.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
-.nav ul a{display:block;padding:10px 12px;font-family:var(--f-sub);font-size:.95rem;text-decoration:none;position:relative}
-.nav ul a::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:var(--stamp);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.nav ul a{display:block;padding:12px 14px;font-family:var(--f-sub);font-size:1.05rem;text-decoration:none;position:relative}
+.nav ul a::after{content:"";position:absolute;left:14px;right:14px;bottom:7px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
 .nav ul a:hover::after,.nav ul a[aria-current="true"]::after{transform:scaleX(1)}
-.nav .btn{min-height:44px;padding:.5em 1em;font-size:.95rem;box-shadow:3px 3px 0 var(--leaf);border-color:var(--kraft)}
-.nav .btn:hover{box-shadow:5px 5px 0 var(--leaf)}
-.menu-btn{display:none;background:none;border:2px solid var(--kraft);color:var(--kraft);border-radius:4px;min-height:44px;min-width:44px;font-family:var(--f-sub);cursor:pointer}
-@media (max-width:960px){
-  .nav ul{position:fixed;inset:64px 0 0;flex-direction:column;background:var(--ink);padding:24px var(--gutter-r) 24px var(--gutter);gap:0;transform:translateY(-110%);transition:transform .45s var(--ease-fold);height:calc(100dvh - 64px)}
-  .nav ul.open{transform:none}
-  .nav ul a{font-family:var(--f-title);font-size:2rem;padding:12px 0;border-bottom:1px solid rgba(243,221,181,.15)}
+.nav .btn{min-height:46px;padding:.4em 1.2em;font-size:1rem}
+.menu-btn{display:none;background:none;border:2px solid var(--kraft);color:var(--kraft);border-radius:999px;min-height:46px;padding:0 18px;font-family:var(--f-sub);font-size:1rem;cursor:pointer}
+@media (max-width:940px){
+  .nav ul{position:fixed;inset:70px 0 0;flex-direction:column;background:var(--ink);padding:24px var(--g-r) 24px var(--g-l);transform:translateY(-110%);visibility:hidden;transition:transform .45s var(--ease-fold),visibility 0s .45s;height:calc(100dvh - 70px)}
+  .nav ul.open{transform:none;visibility:visible;transition:transform .45s var(--ease-fold)}
+  .nav ul a{font-family:var(--f-title);font-size:2.4rem;padding:14px 0;border-bottom:1px solid rgba(243,221,181,.15)}
   .nav ul a::after{display:none}
-  .menu-btn{display:inline-flex;align-items:center;justify-content:center;padding:0 12px}
+  .menu-btn{display:inline-flex;align-items:center}
   .nav .cta-nav{display:none}
 }
 
-/* Rasgado entre hojas */
+/* Rasgado */
 .sheet{position:relative}
-.tear{position:absolute;left:0;width:100%;height:34px;top:-33px;display:block;pointer-events:none;filter:drop-shadow(0 -3px 2px rgba(0,16,17,.12))}
-section{scroll-margin-top:72px}
+.tear{position:absolute;left:0;width:100%;height:30px;top:-29px;display:block;pointer-events:none;z-index:2}
+section{scroll-margin-top:76px}
+.block{padding-block:clamp(88px,11vw,150px)}
+.head{display:grid;gap:22px;margin-bottom:clamp(44px,6vw,80px);max-width:900px}
+
+/* Bolsa realista (SVG generado) */
+.rbag{display:block;width:100%;height:auto;overflow:visible}
+.rbag .hd{transform-box:fill-box;transform-origin:50% 100%}
 
 /* HERO */
-.hero{padding-block:clamp(40px,6vw,88px) clamp(72px,8vw,120px);overflow:hidden;position:relative}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,64px);align-items:center}
-.hero h1{font-size:var(--step-4);letter-spacing:.01em}
-.hero h1 .line{display:block;overflow:hidden;padding-bottom:.04em}
-.hero h1 .line>span{display:inline-block}
-.hero h1 em{font-style:normal;color:var(--stamp);position:relative;display:inline-block}
-.hero h1 em::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.06em;height:.12em;background:var(--leaf);transform-origin:left;transform:scaleX(var(--u,1));z-index:-1;border-radius:2px}
-.hero-copy{display:grid;gap:24px;min-width:0}
-.hero-facts{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
-.hero-facts li{font-family:var(--f-sub);font-size:var(--step--1);padding:6px 12px;border:1.5px solid var(--ink);border-radius:999px;background:rgba(243,221,181,.55)}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.hero-art{position:relative;aspect-ratio:1/1.05;max-width:100%;min-width:0}
-.hero-art svg.bag{width:100%;height:100%;overflow:visible}
-.stamp{position:absolute;right:2%;top:6%;width:min(32%,150px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--stamp);border:3px dashed var(--stamp);font-family:var(--f-title);font-size:clamp(.9rem,1.5vw,1.25rem);line-height:1;transform:rotate(-14deg);background:rgba(243,221,181,.8)}
-.stamp b{display:block;font-size:2.2em}
-.scrap{position:absolute;pointer-events:none;will-change:transform}
+.hero{position:relative;overflow:hidden;padding-block:clamp(48px,7vw,100px) clamp(90px,10vw,140px)}
+.hero::after{content:"";position:absolute;right:-12%;top:-20%;width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(241,89,70,.28),transparent 62%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:1}
+.hero-copy{display:grid;gap:28px;min-width:0}
+.hero h1{font-size:var(--t-h1)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 .accent{color:var(--orange)}
+.hero .lede{color:var(--kraft);max-width:30ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.hero-nums{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,48px);margin:8px 0 0;padding:22px 0 0;list-style:none;border-top:1px solid rgba(243,221,181,.2)}
+.hero-nums li{display:grid;gap:2px}
+.hero-nums b{font-family:var(--f-title);font-size:clamp(2.2rem,1.6rem + 2vw,3.2rem);line-height:1;color:var(--kraft)}
+.hero-nums li>span{font-family:var(--f-sub);font-size:1rem;color:rgba(243,221,181,.85)}
+.stage{position:relative;aspect-ratio:1/1;min-width:0;perspective:1000px}
+.stage .leaves{position:absolute;inset:4% 2% 10%;width:96%;height:auto}
+.stage .b{position:absolute;filter:drop-shadow(0 30px 30px rgba(0,0,0,.45))}
+.stage .b1{width:50%;left:-4%;top:20%;--r:-8deg}
+.stage .b2{width:50%;right:-6%;top:12%;--r:7deg}
+.stage .b3{width:66%;left:16%;top:18%;--r:0deg;z-index:2}
+.stage .b>div{animation:float 7s ease-in-out infinite;animation-delay:var(--fd,0s)}
+.stage .b1>div{--fd:-2s}.stage .b2>div{--fd:-4.5s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-14px) rotate(calc(var(--r) + 1.5deg))}}
 
-/* Entrada del hero */
-.js .enter{opacity:0;transform:translateY(24px)}
-.js.loaded .enter{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0) * 1ms)}
-.js .hero h1 .line>span{transform:translateY(105%)}
-.js.loaded .hero h1 .line>span{transform:none;transition:transform 1.1s var(--ease);transition-delay:calc(var(--d,0) * 1ms)}
-.js .hero h1 em{--u:0}
-.js.loaded .hero h1 em{--u:1;transition:--u 1s}
-.js.loaded .hero h1 em::after{transition:transform .8s var(--ease) 1.1s}
-.js .hero h1 em::after{transform:scaleX(0)}
-.js.loaded .hero h1 em::after{transform:scaleX(1)}
-.bag .panel{transform-box:fill-box;transition:transform 1.3s var(--ease-fold),opacity .6s}
-.js .bag .p-left{transform:perspective(600px) rotateY(80deg);transform-origin:right center;opacity:0}
-.js .bag .p-right{transform:perspective(600px) rotateY(-80deg);transform-origin:left center;opacity:0}
-.js .bag .p-front{transform:scaleY(.05);transform-origin:center bottom;opacity:0}
-.js .bag .p-flap{transform:scaleY(0);transform-origin:center bottom}
-.js.loaded .bag .panel{transform:none;opacity:1}
-.js.loaded .bag .p-front{transition-delay:.2s}
-.js.loaded .bag .p-left,.js.loaded .bag .p-right{transition-delay:.55s}
-.js.loaded .bag .p-flap{transition-delay:.95s}
-.bag .handle{stroke-dasharray:420;stroke-dashoffset:0}
-.js .bag .handle{stroke-dashoffset:420}
-.js.loaded .bag .handle{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s var(--ease) 1.3s}
-.js .bag .print{opacity:0;transform:scale(1.25);transform-box:fill-box;transform-origin:center}
-.js.loaded .bag .print{opacity:1;transform:none;transition:opacity .4s 2s,transform .5s cubic-bezier(.3,1.6,.5,1) 2s}
-.js .stamp{opacity:0;transform:rotate(-40deg) scale(1.6)}
-.js.loaded .stamp{opacity:1;transform:rotate(-14deg) scale(1);transition:opacity .3s 2.4s,transform .6s cubic-bezier(.3,1.5,.5,1) 2.4s}
+/* Entrada */
+.js .enter{opacity:0;transform:translateY(28px)}
+.js.loaded .enter{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--d,0) * 1ms)}
+.js .hero h1 .ln>span{transform:translateY(108%)}
+.js.loaded .hero h1 .ln>span{transform:none;transition:transform 1.15s var(--ease);transition-delay:calc(var(--d,0) * 1ms)}
+.js .stage .b{opacity:0;translate:0 120px;scale:.9}
+.js.loaded .stage .b{opacity:1;translate:0 0;scale:1;transition:opacity .8s var(--ease),translate 1.3s var(--ease),scale 1.3s var(--ease)}
+.js.loaded .stage .b3{transition-delay:.35s}.js.loaded .stage .b1{transition-delay:.6s}.js.loaded .stage .b2{transition-delay:.8s}
+.js .stage .leaves path{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600)}
+.js.loaded .stage .leaves path{stroke-dashoffset:0;transition:stroke-dashoffset 2s var(--ease) .9s}
+.js .stage .leaves .lf{scale:0}
+.js.loaded .stage .leaves .lf{scale:1;transition:scale .9s cubic-bezier(.3,1.5,.5,1);transition-delay:calc(1.2s + var(--i,0) * 70ms)}
+.lf{transform-box:fill-box;transform-origin:0% 50%}
 
-/* Cinta de datos */
-.ticker{background:var(--ink);color:var(--kraft);overflow:hidden;border-block:2px solid var(--ink)}
-.ticker-track{display:flex;width:max-content;animation:tick 38s linear infinite}
+/* Cinta */
+.ticker{overflow:hidden;border-block:2px solid var(--ink);position:relative;z-index:3}
+.ticker-track{display:flex;width:max-content;animation:tick 34s linear infinite}
 .ticker:hover .ticker-track{animation-play-state:paused}
-.ticker span{font-family:var(--f-title);font-size:clamp(1.2rem,2vw,1.6rem);padding:14px 28px;white-space:nowrap;display:inline-flex;align-items:center;gap:28px}
-.ticker span::after{content:"";width:10px;height:10px;background:var(--stamp);transform:rotate(45deg)}
+.ticker span{font-family:var(--f-title);font-weight:900;font-size:clamp(1.5rem,1.2rem + 1.2vw,2.3rem);padding:16px 30px;white-space:nowrap;display:inline-flex;align-items:center;gap:30px}
+.ticker span::after{content:"";width:12px;height:12px;background:var(--ink);transform:rotate(45deg)}
 @keyframes tick{to{transform:translateX(-50%)}}
 
-/* Secciones generales */
-.block{padding-block:clamp(80px,10vw,140px)}
-.head{display:grid;gap:18px;margin-bottom:clamp(36px,5vw,64px);max-width:820px}
+/* Revelado */
+.js .rv{opacity:.2;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--i,0) * 100ms)}
+.js .rv.in{opacity:1;transform:none}
 
-/* Revelado al hacer scroll: el contenido arranca visible y se "despliega" */
-.js .rv{transform:translateY(22px) rotateX(8deg);opacity:.25;transform-origin:top center;transition:transform 1s var(--ease),opacity 1s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
-.js .rv.in{transform:none;opacity:1}
+/* Diseños (galería de bolsas) */
+.styles-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,32px)}
+.style{position:relative;display:grid;gap:14px;align-content:start;padding:clamp(18px,2.4vw,30px) clamp(18px,2.4vw,30px) 26px;border-radius:22px;background:rgba(243,221,181,.66);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(0,16,17,.12);transition:transform .45s var(--ease),background .45s,box-shadow .45s var(--ease);min-width:0}
+.js .style.rv.in:hover,.style:hover{transform:translateY(-6px);background:rgba(243,221,181,.88);box-shadow:0 30px 50px -30px rgba(0,16,17,.55)}
+.style .bagbox{padding:6% 10% 0;transition:transform .6s var(--ease)}
+.style:hover .bagbox{transform:translateY(-6px) scale(1.03)}
+.style:hover .rbag .hd{animation:swing 1.6s var(--ease)}
+@keyframes swing{0%{transform:rotate(0)}25%{transform:rotate(-7deg)}55%{transform:rotate(5deg)}80%{transform:rotate(-2deg)}100%{transform:rotate(0)}}
+.style h3{font-size:1.55rem}
+.style p{font-size:1.1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-family:var(--f-sub);font-size:.95rem;padding:5px 12px;border-radius:999px;background:var(--ink);color:var(--kraft)}
 
-/* Números */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--ink);border-left:2px solid var(--ink)}
-.stat{padding:clamp(20px,3vw,36px);border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);display:grid;gap:6px;align-content:start;min-width:0;transition:background .3s}
-.stat:hover{background:rgba(243,221,181,.6)}
-.stat .num{font-size:clamp(2.6rem,1.6rem + 3vw,4.6rem);line-height:.9}
-.stat .num small{font-size:.42em;margin-left:.1em}
-.stat p{font-family:var(--f-sub);font-size:var(--step--1);color:var(--ink-soft)}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:start;margin-bottom:clamp(40px,5vw,72px)}
-.about dl{margin:0;display:grid;gap:18px}
-.about dt{font-family:var(--f-sub);color:var(--moss);font-size:var(--step--1);letter-spacing:.12em;text-transform:uppercase}
-.about dd{margin:4px 0 0;font-size:var(--step-0)}
+/* Por qué */
+.reasons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2vw,28px)}
+.reason{display:grid;gap:14px;align-content:start;padding:30px 26px;border-radius:22px;background:rgba(243,221,181,.06);border:1px solid rgba(243,221,181,.16);transition:transform .45s var(--ease),background .45s,border-color .45s;min-width:0}
+.js .reason.rv.in:hover,.reason:hover{transform:translateY(-6px);background:rgba(241,89,70,.12);border-color:var(--orange)}
+.reason b{font-family:var(--f-title);font-weight:900;font-size:clamp(3rem,2.2rem + 2.4vw,4.6rem);line-height:.9;color:var(--orange)}
+.reason h3{font-size:1.5rem;color:var(--kraft)}
+.reason p{color:rgba(243,221,181,.9);font-size:1.1rem}
 
 /* Producto */
-.product .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
-.spec-art{position:relative;min-width:0}
-.spec-art svg{width:100%;height:auto;display:block}
-.dim{stroke-dasharray:6 6}
-.dim-line{stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.4s var(--ease)}
-.in .dim-line,.no-js .dim-line{stroke-dashoffset:0}
-.spec-list{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1.5px solid var(--ink)}
-.spec-list li{padding:14px 12px 14px 0;border-bottom:1.5px solid var(--paper-line);display:grid;gap:2px;min-width:0}
-.spec-list b{font-family:var(--f-title);font-size:1.5rem;font-weight:900;line-height:1}
-.spec-list span{font-family:var(--f-sub);font-size:var(--step--1);color:var(--ink-soft)}
-.tabs{display:inline-flex;border:2px solid var(--ink);border-radius:999px;padding:4px;gap:4px;margin-top:24px;background:var(--kraft)}
-.tabs button{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:transparent;font-family:var(--f-sub);font-size:.98rem;cursor:pointer;color:var(--ink);transition:background .3s,color .3s}
+.product .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,90px);align-items:center}
+.spec-stage{position:relative;max-width:500px;width:100%;margin-inline:auto;min-width:0;padding:0 30px 30px}
+.spec-stage .inner{position:relative}
+.spec-stage .bagwrap{transition:opacity .35s var(--ease),transform .5s var(--ease)}
+.spec-stage .bagwrap.swap{opacity:0;transform:translateY(16px) scale(.97)}
+.dims{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.dims path{stroke:var(--ink);stroke-width:2;fill:none}
+.dims .dl{stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.4s var(--ease) .3s}
+.in .dims .dl{stroke-dashoffset:0}
+.dims text{font-family:"Young Serif",Georgia,serif;font-size:20px;fill:var(--ink)}
+.tabs{display:inline-flex;border:2px solid var(--ink);border-radius:999px;padding:5px;gap:4px;margin-top:30px}
+.tabs button{min-height:48px;padding:0 22px;border:0;border-radius:999px;background:transparent;font-family:var(--f-sub);font-size:1.08rem;cursor:pointer;color:var(--ink);transition:background .3s,color .3s}
 .tabs button[aria-selected="true"]{background:var(--ink);color:var(--kraft)}
-.bag2 .h2handle{transition:opacity .5s var(--ease),transform .6s var(--ease)}
-.bag2.sos .h2handle{opacity:0;transform:translateY(-20px)}
-.bag2 .sostop{opacity:0;transition:opacity .5s}
-.bag2.sos .sostop{opacity:1}
-
-/* Propuesta de valor */
-.values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.card{position:relative;background:var(--kraft);border:2px solid var(--ink);border-radius:6px;padding:26px 22px 24px;display:grid;gap:12px;align-content:start;box-shadow:5px 5px 0 var(--ink);transition:transform .35s var(--ease),box-shadow .35s var(--ease);min-width:0}
-.card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
-.card::after{content:"";position:absolute;right:-2px;top:-2px;width:26px;height:26px;background:linear-gradient(225deg,var(--kraft-deep) 50%,rgba(0,16,17,.25) 50%);border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);border-radius:0 4px 0 4px;transition:width .35s var(--ease),height .35s var(--ease)}
-.card:hover::after{width:38px;height:38px}
-.card .ico{width:54px;height:54px}
-.card h3{font-size:1.35rem}
-.card p{font-size:var(--step--1);color:var(--ink-soft)}
-.card .big{font-family:var(--f-title);font-size:2.6rem;line-height:1;color:var(--stamp)}
+.specs{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.specs li{padding:18px 0;border-top:2px solid var(--ink);display:grid;gap:4px;min-width:0}
+.specs b{font-family:var(--f-title);font-weight:900;font-size:clamp(1.7rem,1.4rem + 1vw,2.3rem);line-height:1}
+.specs span{font-size:1.1rem}
 
 /* Proceso */
-.process{background:var(--ink);color:var(--kraft)}
-.process .eyebrow{color:var(--leaf)}
-.process .lede{color:rgba(243,221,181,.78)}
-.rail{position:relative;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:12px;padding-top:70px}
-.rail-line{position:absolute;left:0;right:0;top:30px;height:6px;background:rgba(243,221,181,.15);border-radius:3px;overflow:hidden}
-.rail-line i{position:absolute;inset:0;background:repeating-linear-gradient(90deg,var(--stamp) 0 18px,var(--kraft-deep) 18px 24px);transform-origin:left;transform:scaleX(var(--p,0));transition:transform .2s linear}
-.roll{position:absolute;top:8px;left:0;width:50px;height:50px;transform:translateX(calc(var(--p,0) * (100% - 0px)));transition:transform .2s linear}
-.roll-inner{width:50px;height:50px;border-radius:50%;background:radial-gradient(circle,var(--ink) 0 18%,var(--kraft-deep) 19% 60%,#a87a45 61% 64%,var(--kraft-deep) 65%);border:2px solid var(--kraft);transform:rotate(calc(var(--p,0) * 1440deg))}
-.step{display:grid;gap:8px;align-content:start;min-width:0}
-.step .n{font-family:var(--f-title);font-size:2.2rem;line-height:1;color:var(--stamp)}
-.step h3{font-size:1.05rem;line-height:1.2}
-.step p{font-size:.88rem;color:rgba(243,221,181,.72)}
-.step .t{font-family:var(--f-sub);font-size:.82rem;color:var(--leaf);border-top:1px solid rgba(243,221,181,.2);padding-top:6px}
-.process-foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:56px}
-.pf{border:1.5px solid rgba(243,221,181,.25);border-radius:6px;padding:22px;display:grid;gap:8px}
-.pf .num{font-size:2.8rem;color:var(--kraft)}
-.pf p{font-size:var(--step--1);color:rgba(243,221,181,.75)}
-@media (max-width:1060px){
-  .rail{grid-template-columns:1fr;padding-top:0;padding-left:70px;gap:26px}
-  .rail-line{left:22px;right:auto;top:0;bottom:0;width:6px;height:auto}
-  .rail-line i{transform-origin:top;transform:scaleY(var(--p,0));background:repeating-linear-gradient(180deg,var(--stamp) 0 18px,var(--kraft-deep) 18px 24px)}
+.rail{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(16px,2vw,28px);padding-top:92px}
+.rail-line{position:absolute;left:0;right:0;top:38px;height:8px;border-radius:4px;background:rgba(0,16,17,.18);overflow:hidden}
+.rail-line i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(var(--p,0))}
+.roll{position:absolute;top:10px;left:0;width:64px;height:64px;transform:translateX(calc(var(--p,0) * var(--rail-w,800px)))}
+.roll-inner{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,var(--ink) 0 15%,var(--kraft) 16% 19%,transparent 20%),repeating-radial-gradient(circle,#c99a62 0 3px,#b8864f 3px 5px);border:3px solid var(--ink);transform:rotate(calc(var(--p,0) * 1080deg));box-shadow:0 8px 16px -6px rgba(0,16,17,.6)}
+.step{display:grid;gap:10px;align-content:start;min-width:0}
+.step .n{font-family:var(--f-title);font-weight:900;font-size:3.4rem;line-height:.9;color:var(--kraft);-webkit-text-stroke:2px var(--ink)}
+.step h3{font-size:1.5rem}
+.step p{font-size:1.12rem}
+@media (max-width:1000px){
+  .rail{grid-template-columns:1fr;padding-top:0;padding-left:92px;gap:36px}
+  .rail-line{left:28px;right:auto;top:0;bottom:0;width:8px;height:auto}
+  .rail-line i{transform-origin:top;transform:scaleY(var(--p,0))}
   .roll{left:0;top:0;transform:translateY(calc(var(--p,0) * var(--rail-h,600px)))}
-  .step{grid-template-columns:auto 1fr;column-gap:16px}
-  .step .n{grid-row:span 3}
 }
 
-/* Planta */
-.plant-wrap{border:2px solid var(--ink);border-radius:6px;background:var(--kraft);padding:clamp(12px,2vw,24px);box-shadow:6px 6px 0 var(--ink);overflow-x:auto}
-.plant{width:100%;min-width:680px;height:auto;display:block}
-.plant .z{stroke:var(--ink);stroke-width:2;transition:filter .3s,opacity .3s}
-.plant .zone{cursor:pointer}
-.plant .zone:hover .z,.plant .zone:focus .z{filter:brightness(1.08) saturate(1.2)}
-.plant text{font-family:"Young Serif",Georgia,serif;fill:var(--ink)}
-.plant .flow{stroke:var(--stamp);stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:14 12;animation:flow 1.4s linear infinite}
-@keyframes flow{to{stroke-dashoffset:-26}}
-.plant .dot{fill:var(--stamp)}
-.plant-info{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin-top:28px;align-items:start}
-.zone-detail{border-left:4px solid var(--stamp);padding:6px 0 6px 18px;min-height:96px}
-.zone-detail h3{font-family:var(--f-title);font-weight:900;font-size:1.8rem}
-.legend{display:flex;flex-wrap:wrap;gap:10px 18px;list-style:none;padding:0;margin:0;font-family:var(--f-sub);font-size:.9rem}
-.legend i{display:inline-block;width:14px;height:14px;border:1.5px solid var(--ink);margin-right:8px;vertical-align:-2px;border-radius:2px}
-
-/* Kanban */
-.pull .wrap>.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:start}
-.cards-k{display:grid;gap:16px}
-.kcard{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:#fff8ea;border:2px solid var(--ink);border-radius:4px;padding:18px;position:relative;box-shadow:4px 4px 0 var(--ink);transition:transform .35s var(--ease)}
-.kcard:hover{transform:translate(-2px,-2px) rotate(-.4deg)}
-.kcard::before{content:"";position:absolute;left:50%;top:-9px;width:60px;height:16px;transform:translateX(-50%) rotate(-2deg);background:rgba(101,155,94,.55);border:1px solid rgba(0,16,17,.2)}
-.ktag{font-family:var(--f-title);font-size:1.6rem;width:64px;height:64px;display:grid;place-items:center;border-radius:4px;color:var(--kraft)}
-.kcard h3{font-size:1.2rem}
-.kcard p{font-size:var(--step--1);color:var(--ink-soft)}
-.board{background:var(--ink);color:var(--kraft);border-radius:6px;padding:24px;display:grid;gap:18px;box-shadow:6px 6px 0 var(--leaf)}
-.board h3{font-family:var(--f-title);font-weight:900;font-size:1.8rem}
-.board p{color:rgba(243,221,181,.8);font-size:var(--step--1)}
-.shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;min-height:120px;align-items:end;padding:14px;border:1.5px dashed rgba(243,221,181,.35);border-radius:4px}
-.pallet{height:100px;border-radius:3px;background:var(--kraft-deep);background-image:var(--kraft-tex),repeating-linear-gradient(0deg,transparent 0 22px,rgba(0,16,17,.35) 22px 24px);background-size:420px,auto;border:2px solid var(--kraft);position:relative;transition:transform .6s var(--ease),opacity .6s var(--ease)}
-.pallet::after{content:"";position:absolute;left:-2px;right:-2px;bottom:-12px;height:10px;background:repeating-linear-gradient(90deg,#8a6a3e 0 14px,transparent 14px 22px);border-top:2px solid #8a6a3e}
-.pallet.gone{transform:translateX(120%) rotate(8deg);opacity:0}
-.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.zones div{border-radius:4px;padding:10px;text-align:center;font-family:var(--f-sub);font-size:.85rem;opacity:.35;transition:opacity .4s,transform .4s var(--ease);border:2px solid transparent;color:var(--ink)}
-.zones div.on{opacity:1;transform:translateY(-3px);border-color:var(--kraft)}
-.z-g{background:var(--leaf)}.z-y{background:#E8C547}.z-r{background:var(--stamp)}
-.board-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.board .btn{box-shadow:4px 4px 0 var(--kraft);border-color:var(--kraft)}
-.board .btn.ghost{--fg:var(--kraft)}
-.board .btn.ghost:hover{--bg:rgba(243,221,181,.1)}
-.board-msg{font-family:var(--f-sub);min-height:3.2em;color:var(--kraft)}
-
-/* Lead time */
-.lead{margin-top:clamp(48px,6vw,80px);display:grid;gap:16px}
-.lead-row{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:center}
-.lead-row>span{font-family:var(--f-sub);font-size:var(--step--1)}
-.bars{display:grid;gap:5px}
-.bar{height:16px;border-radius:2px;width:calc(var(--w) * 1%);transform-origin:left;transform:scaleX(0);transition:transform 1.2s var(--ease);position:relative;min-width:4px}
-.bar.a{background:rgba(0,16,17,.35)}
-.bar.b{background:var(--leaf)}
-.in .bar,.no-js .bar{transform:scaleX(1)}
-.bar em{position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);font-style:normal;font-family:var(--f-sub);font-size:.8rem;white-space:nowrap}
-.lead-total{display:flex;flex-wrap:wrap;gap:28px;align-items:baseline;border-top:2px solid var(--ink);padding-top:18px;margin-top:6px}
-.lead-total .num{font-size:var(--step-3);line-height:1}
-.lead-total s{opacity:.45}
-.lead-legend{display:flex;gap:20px;font-family:var(--f-sub);font-size:.88rem}
-.lead-legend i{display:inline-block;width:14px;height:14px;border-radius:2px;margin-right:6px;vertical-align:-2px}
+/* Sustentable */
+.eco .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,90px);align-items:center}
+.eco-art{position:relative;max-width:560px;width:100%;margin-inline:auto;min-width:0}
+.eco-art .blob{width:100%;height:auto;display:block}
+.eco-art .ebag{position:absolute;left:21%;top:14%;width:58%;filter:drop-shadow(0 26px 22px rgba(0,16,17,.3))}
+.eco-art .branch{position:absolute;inset:0;width:100%;height:100%}
+.eco-art .branch .lf{transition:scale .9s cubic-bezier(.3,1.5,.5,1);transition-delay:calc(var(--i,0) * 60ms)}
+.js .eco-art:not(.in) .branch .lf{scale:0}
+.eco-art .branch g.lf>path{animation:sway 5s ease-in-out infinite;animation-delay:calc(var(--i,0) * -.4s);transform-box:fill-box;transform-origin:0% 50%}
+@keyframes sway{0%,100%{rotate:0deg}50%{rotate:6deg}}
+.eco-list{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:20px}
+.eco-list li{display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:start}
+.eco-list svg{width:52px;height:52px}
+.eco-list b{font-family:var(--f-sub);font-weight:400;font-size:1.35rem;display:block;line-height:1.25}
 
 /* Calculadora */
-.calc{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,64px);align-items:center}
-.calc-box{background:var(--kraft);border:2px solid var(--ink);border-radius:6px;padding:clamp(20px,3vw,36px);box-shadow:8px 8px 0 var(--ink);display:grid;gap:20px;min-width:0}
-.calc-box label{font-family:var(--f-sub);font-size:var(--step-0)}
-.calc-input{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.calc-input input[type=range]{flex:1 1 220px;accent-color:var(--stamp);min-height:44px}
-.calc-input output{font-family:var(--f-title);font-size:2.6rem;min-width:6ch;font-variant-numeric:tabular-nums}
-.rolls{display:flex;flex-wrap:wrap;gap:14px;min-height:96px;align-items:flex-end}
-.r{display:grid;justify-items:center;gap:6px;font-family:var(--f-sub);font-size:.8rem;animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
-.r i{display:block;border-radius:50%;background:radial-gradient(circle,var(--ink) 0 14%,var(--kraft) 15% 18%,var(--kraft-deep) 19% 70%,#a87a45 71% 73%,var(--kraft-deep) 74%);border:2px solid var(--ink)}
-.r.s i{width:52px;height:52px}.r.m i{width:66px;height:66px}.r.l i{width:80px;height:80px}
-@keyframes pop{from{transform:scale(.3) rotate(-90deg);opacity:0}}
-.calc-out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:1.5px solid var(--paper-line);padding-top:16px}
-.calc-out div{display:grid;gap:2px}
-.calc-out b{font-family:var(--f-title);font-size:1.7rem;line-height:1}
-.calc-out span{font-family:var(--f-sub);font-size:.82rem;color:var(--ink-soft)}
-.roll-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:var(--step--1)}
-.roll-table th,.roll-table td{text-align:left;padding:10px 8px;border-bottom:1.5px solid var(--paper-line)}
-.roll-table th{font-family:var(--f-sub);font-weight:400;color:var(--moss);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
-.roll-table td:first-child{font-family:var(--f-title);font-size:1.3rem}
+.calc{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.calc-box{background:var(--ink);color:var(--kraft);border-radius:26px;padding:clamp(24px,3.4vw,44px);display:grid;gap:24px;box-shadow:0 40px 60px -36px rgba(0,16,17,.8);min-width:0}
+.calc-box label{font-family:var(--f-sub);font-size:1.35rem}
+.calc-input{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.calc-input input[type=range]{flex:1 1 220px;accent-color:var(--orange);min-height:48px}
+.calc-input output{font-family:var(--f-title);font-weight:900;font-size:clamp(2.6rem,2rem + 2vw,3.6rem);min-width:6ch;font-variant-numeric:tabular-nums;color:var(--orange)}
+.rolls{display:flex;flex-wrap:wrap;gap:16px;min-height:120px;align-items:flex-end}
+.r{display:grid;justify-items:center;gap:8px;font-family:var(--f-sub);font-size:1rem;animation:pop .55s cubic-bezier(.3,1.6,.5,1) both}
+.r i{display:block;border-radius:50%;background:radial-gradient(circle,var(--ink) 0 13%,var(--kraft) 14% 17%,transparent 18%),repeating-radial-gradient(circle,#c99a62 0 3px,#b8864f 3px 5px);border:3px solid var(--kraft)}
+.r.s i{width:58px;height:58px}.r.m i{width:74px;height:74px}.r.l i{width:92px;height:92px}
+@keyframes pop{from{transform:scale(.3) rotate(-120deg);opacity:0}}
+.calc-out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;border-top:1px solid rgba(243,221,181,.2);padding-top:20px}
+.calc-out div{display:grid;gap:4px;min-width:0}
+.calc-out b{font-family:var(--f-title);font-weight:900;font-size:clamp(1.7rem,1.4rem + 1vw,2.3rem);line-height:1}
+.calc-out span{font-family:var(--f-sub);font-size:1rem;color:rgba(243,221,181,.85)}
+.roll-sizes{display:grid;gap:12px;margin:30px 0 0;list-style:none;padding:0;max-width:460px}
+.roll-sizes li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 20px;border-radius:14px;background:rgba(243,221,181,.72);font-size:1.15rem}
+.roll-sizes b{font-family:var(--f-title);font-weight:900;font-size:1.6rem}
 
-/* Calidad y mejora */
-.quality .grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:2px solid var(--ink);border-radius:6px;overflow:hidden;background:var(--kraft)}
-.qp{padding:24px 20px;border-right:2px solid var(--ink);display:grid;gap:10px;align-content:start;position:relative;min-width:0;transition:background .3s}
-.qp:last-child{border-right:0}
-.qp:hover{background:#fff4dc}
-.qp .n{font-family:var(--f-title);font-size:3rem;line-height:.9;color:var(--leaf)}
-.qp h3{font-size:1.2rem}
-.qp p{font-size:.92rem;color:var(--ink-soft)}
-.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px}
-.metric{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;padding:20px;border-radius:6px;background:var(--ink);color:var(--kraft)}
-.gauge{width:88px;height:88px}
-.gauge circle{fill:none;stroke-width:9}
-.gauge .bg{stroke:rgba(243,221,181,.15)}
-.gauge .fg{stroke:var(--leaf);stroke-linecap:round;stroke-dasharray:226;stroke-dashoffset:226;transition:stroke-dashoffset 1.6s var(--ease);transform:rotate(-90deg);transform-origin:center}
-.metric b{font-family:var(--f-title);font-size:2rem;line-height:1;display:block}
-.metric span{font-family:var(--f-sub);font-size:.88rem;color:rgba(243,221,181,.78)}
-.lean{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:56px}
-.lean .card h3{font-family:var(--f-title);font-weight:900;font-size:2rem}
-.compare{display:flex;align-items:baseline;gap:10px;font-family:var(--f-title)}
-.compare s{font-size:1.6rem;opacity:.4}
-.compare b{font-size:2.6rem;color:var(--stamp);line-height:1}
-.fives{display:flex;gap:6px;flex-wrap:wrap}
-.fives span{font-family:var(--f-sub);font-size:.8rem;padding:4px 10px;border:1.5px solid var(--ink);border-radius:999px;transition:background .3s,color .3s}
-.fives span:hover{background:var(--ink);color:var(--kraft)}
-
-/* Equipo */
-.team .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,80px);align-items:center}
-.hbars{display:grid;gap:12px}
-.hb{display:grid;grid-template-columns:170px 1fr 36px;gap:14px;align-items:center}
-.hb span{font-family:var(--f-sub);font-size:var(--step--1)}
-.hb i{display:block;height:28px;border-radius:2px;background:var(--moss);width:calc(var(--v) / 29 * 100%);transform-origin:left;transform:scaleX(0);transition:transform 1.1s var(--ease);transition-delay:calc(var(--i,0) * 80ms)}
-.hb:first-child i{background:var(--stamp)}
-.in .hb i,.no-js .hb i{transform:scaleX(1)}
-.hb b{font-family:var(--f-title);font-size:1.5rem;text-align:right;font-variant-numeric:tabular-nums}
-.big72{font-family:var(--f-title);font-size:clamp(6rem,4rem + 10vw,13rem);line-height:.8;color:var(--ink)}
-
-/* Mercado */
-.market{background:var(--moss);color:var(--kraft)}
-.market .eyebrow{color:var(--kraft)}
-.market .lede{color:rgba(243,221,181,.85)}
-.versus{width:100%;border-collapse:collapse;font-size:var(--step--1)}
-.vs-wrap{overflow-x:auto;border:2px solid var(--kraft);border-radius:6px}
-.versus th,.versus td{padding:16px 18px;text-align:left;border-bottom:1.5px solid rgba(243,221,181,.25);vertical-align:top}
-.versus thead th{font-family:var(--f-sub);font-weight:400;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem;color:rgba(243,221,181,.75)}
-.versus tbody th{font-family:var(--f-title);font-size:1.3rem;font-weight:900}
-.versus tr.us{background:var(--kraft);color:var(--ink)}
-.versus tr.us th{color:var(--stamp)}
-.versus tbody tr{transition:background .3s}
-.versus tbody tr:not(.us):hover{background:rgba(0,16,17,.15)}
-.laws{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
-.law{border-top:3px solid var(--kraft);padding-top:16px;display:grid;gap:8px}
-.law .num{font-size:2.6rem;line-height:1}
-.law p{font-size:var(--step--1);color:rgba(243,221,181,.85)}
-
-/* Temporada */
-.season .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.month{border:2px solid var(--ink);border-radius:6px;padding:24px;background:var(--kraft);display:grid;gap:16px;box-shadow:5px 5px 0 var(--ink);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.month:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
-.month h3{font-family:var(--f-title);font-weight:900;font-size:2.2rem}
-.util{height:150px;display:flex;align-items:flex-end;gap:14px;border-bottom:2px solid var(--ink);position:relative}
-.util .cap{position:absolute;left:0;right:0;border-top:2px dashed var(--stamp);bottom:calc(var(--c) * 1%)}
-.util .cap span{position:absolute;right:0;top:-20px;font-family:var(--f-sub);font-size:.75rem;color:var(--stamp)}
-.util i{flex:0 0 46%;background:var(--leaf);height:calc(var(--h) * 1%);transform-origin:bottom;transform:scaleY(0);transition:transform 1.2s var(--ease);border-radius:2px 2px 0 0}
-.util i.over{background:var(--moss)}
-.in .util i,.no-js .util i{transform:scaleY(1)}
-.month dl{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin:0;font-size:.92rem}
-.month dt{font-family:var(--f-sub);color:var(--ink-soft)}
-.month dd{margin:0;font-family:var(--f-title);font-size:1.15rem;text-align:right;font-variant-numeric:tabular-nums}
-.month p{font-size:.9rem;color:var(--ink-soft)}
+/* Calidad */
+.quality-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2vw,28px)}
+.qn{border-top:3px solid var(--orange);padding-top:22px;display:grid;gap:10px}
+.qn b{font-family:var(--f-title);font-weight:900;font-size:clamp(3.6rem,2.4rem + 4vw,6.4rem);line-height:.85}
+.qn p{font-size:1.18rem;color:rgba(243,221,181,.92)}
 
 /* Cierre */
-.close{padding-block:clamp(96px,12vw,170px);text-align:left;position:relative;overflow-x:clip}
-.close h2{font-size:var(--step-4);max-width:12ch}
-.close .wrap{display:grid;gap:28px;position:relative;z-index:1}
-.contact{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-.mail{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-sub);font-size:var(--step-1);padding:10px 16px;background:var(--kraft);border:2px dashed var(--ink);border-radius:4px;user-select:all}
-.copy-msg{font-family:var(--f-sub);font-size:.95rem;min-height:1.4em}
-.close-bag{position:absolute;right:-4%;bottom:-8%;width:min(46vw,520px);opacity:.95;pointer-events:none}
+.close{padding-block:clamp(100px,12vw,180px);position:relative;overflow-x:clip}
+.close .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.close h2{font-size:clamp(3.2rem,2rem + 6vw,8.4rem)}
+.close .lede{margin-top:24px;max-width:32ch}
+.close .hero-actions{margin-top:36px}
+.close .cbag{max-width:340px;width:100%;margin-inline:auto;animation:float 7s ease-in-out infinite;--r:5deg;filter:drop-shadow(0 30px 26px rgba(0,16,17,.35))}
 
-footer{position:relative;z-index:1;background:var(--ink);color:var(--kraft);padding-block:40px calc(40px + env(safe-area-inset-bottom,0px))}
-footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;font-family:var(--f-sub);font-size:.92rem}
-footer a{text-decoration:none}
-footer nav{display:flex;flex-wrap:wrap;gap:6px 18px}
-footer nav a{padding:10px 0;display:inline-block}
+footer{position:relative;z-index:1;padding-block:44px calc(44px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;font-family:var(--f-sub);font-size:1.05rem}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 22px}
+footer nav a{padding:10px 0;text-decoration:none;display:inline-block}
+footer nav a:hover{color:var(--orange)}
 
 /* Responsive */
-@media (max-width:1060px){
-  .values{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .quality .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .qp:nth-child(2){border-right:0}
-  .qp:nth-child(-n+2){border-bottom:2px solid var(--ink)}
+@media (max-width:1080px){
+  .reasons{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .styles-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:860px){
-  .hero .wrap,.about,.product .wrap,.pull .wrap>.grid,.calc,.team .wrap,.plant-info{grid-template-columns:1fr}
-  .hero-art{max-width:440px;margin-inline:auto;width:100%}
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .process-foot,.metrics,.lean,.laws,.season .grid{grid-template-columns:1fr}
-  .lead-row{grid-template-columns:1fr;gap:6px}
-  .close-bag{opacity:.18}
+  .hero .wrap,.product .wrap,.eco .wrap,.calc,.close .wrap{grid-template-columns:1fr}
+  .stage{max-width:520px;width:100%;margin-inline:auto}
+  .quality-nums{grid-template-columns:1fr}
+  .close .cbag{max-width:240px}
 }
-@media (max-width:560px){
-  .values,.quality .grid4{grid-template-columns:1fr}
-  .qp{border-right:0!important;border-bottom:2px solid var(--ink)}
-  .qp:last-child{border-bottom:0}
-  .spec-list{grid-template-columns:1fr}
-  .hb{grid-template-columns:110px 1fr 30px;gap:10px}
-  .hero-actions .btn{width:100%;justify-content:center}
+@media (max-width:600px){
+  .styles-grid,.reasons{grid-template-columns:1fr}
+  .specs{grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
   .calc-out{grid-template-columns:1fr 1fr}
-  .stat .num{font-size:2.4rem}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
+  *,*::before,*::after{animation:none!important;transition-duration:.001ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
   .js .rv,.js .enter{opacity:1;transform:none}
-  .ticker-track{animation:none}
+  .js .stage .b{opacity:1;translate:none;scale:1}
 }
 </style>
 </head>
-<body class="no-js">
+<body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#inicio" aria-label="KraftPack, inicio">
-      <svg viewBox="0 0 30 34" aria-hidden="true"><path d="M3 10h24l-2 22H5z" fill="#C9995F" stroke="#F3DDB5" stroke-width="2"/><path d="M10 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="#F15946" stroke-width="2.4" stroke-linecap="round"/><path d="M3 10l4 5 4-5 4 5 4-5 4 5 4-5" fill="none" stroke="#F3DDB5" stroke-width="1.4"/></svg>
+      <svg viewBox="0 0 30 34" aria-hidden="true"><path d="M3 10h24l-2 22H5z" fill="#C9995F" stroke="#F3DDB5" stroke-width="2"/><path d="M10 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="#F15946" stroke-width="2.6" stroke-linecap="round"/></svg>
       KraftPack
     </a>
     <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
     <ul id="menu">
-      <li><a href="#empresa">Empresa</a></li>
+      <li><a href="#estilos">Diseños</a></li>
       <li><a href="#producto">Producto</a></li>
       <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#planta">Planta</a></li>
-      <li><a href="#pull">Sistema pull</a></li>
-      <li><a href="#calidad">Calidad</a></li>
-      <li><a href="#mercado">Mercado</a></li>
+      <li><a href="#sustentable">Sustentable</a></li>
+      <li><a href="#lote">Tu lote</a></li>
     </ul>
-    <a class="btn cta-nav" href="#contacto">Pedir cotización</a>
+    <a class="btn btn-main cta-nav" href="#lote">Calcular mi lote</a>
   </div>
 </header>
 
 <main id="contenido">
 
-<!-- HERO -->
-<section class="hero paper" id="inicio">
+<section class="hero ink" id="inicio">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="eyebrow enter" style="--d:0">Fábrica de bolsas · Pilar, Buenos Aires</span>
+      <span class="tag enter" style="--d:0;color:var(--orange)">Fábrica de bolsas de papel</span>
       <h1>
-        <span class="line"><span style="--d:80">Bolsas kraft</span></span>
-        <span class="line"><span style="--d:200">con tu marca,</span></span>
-        <span class="line"><span style="--d:320">en <em>5 días</em></span></span>
-        <span class="line"><span style="--d:440">hábiles.</span></span>
+        <span class="ln"><span class="paper-text" style="--d:80">Bolsas kraft</span></span>
+        <span class="ln"><span class="paper-text" style="--d:200">con tu marca,</span></span>
+        <span class="ln"><span class="accent" style="--d:320">en 5 días.</span></span>
       </h1>
-      <p class="lede enter" style="--d:600">Fabricamos bolsas de papel con manija para comercios y gastronomía. Papel certificado FSC, tintas al agua y lotes chicos con el diseño que armás con nuestro equipo.</p>
-      <ul class="hero-facts enter" style="--d:720" aria-label="Datos clave">
-        <li>3,1 millones de bolsas por mes</li>
-        <li>Desde 12.000 unidades</li>
-        <li>100% reciclable</li>
-      </ul>
-      <div class="hero-actions enter" style="--d:840">
-        <a class="btn" href="#contacto">Pedir cotización <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn ghost" href="#proceso">Ver cómo fabricamos</a>
+      <p class="lede enter" style="--d:560">Bolsas con manija para comercios y gastronomía. Papel FSC, tintas al agua y tu diseño impreso en hasta 4 colores.</p>
+      <div class="hero-actions enter" style="--d:700">
+        <a class="btn btn-main" href="#lote">Calcular mi lote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-line" href="#estilos">Ver diseños</a>
       </div>
+      <ul class="hero-nums enter" style="--d:840">
+        <li><b><span data-count="3.1" data-dec="1">3,1</span> M</b><span>bolsas por mes</span></li>
+        <li><b><span data-count="12000" data-sep="1">12.000</span></b><span>unidades mínimas</span></li>
+        <li><b>100%</b><span>reciclable</span></li>
+      </ul>
     </div>
-
-    <div class="hero-art" aria-hidden="true">
-      <svg class="bag" viewBox="0 0 400 420">
-        <defs>
-          <pattern id="tex" width="420" height="420" patternUnits="userSpaceOnUse">
-            <rect width="420" height="420" fill="#C9995F"/>
-            <rect width="420" height="420" filter="url(#grain)" opacity=".6"/>
-          </pattern>
-          <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3"/><feColorMatrix values="0 0 0 0 .3 0 0 0 0 .18 0 0 0 0 .06 0 0 0 .5 0"/></filter>
-          <filter id="fiber"><feTurbulence type="fractalNoise" baseFrequency=".01 .5" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .25 0 0 0 0 .15 0 0 0 0 .05 0 0 0 1 -.5"/></filter>
-        </defs>
-        <ellipse cx="200" cy="398" rx="150" ry="12" fill="#001011" opacity=".18"/>
-        <!-- costado izquierdo -->
-        <g class="panel p-left"><path d="M70 150 L110 130 L110 392 L70 380 Z" fill="#a87a45"/><path d="M70 150 L90 265 L70 380" fill="none" stroke="#001011" stroke-width="1.5" opacity=".35"/><path d="M70 150 L110 130 L110 392 L70 380 Z" fill="none" stroke="#001011" stroke-width="2.5"/></g>
-        <!-- frente -->
-        <g class="panel p-front">
-          <rect x="110" y="130" width="230" height="262" fill="url(#tex)"/>
-          <rect x="110" y="130" width="230" height="262" filter="url(#fiber)" opacity=".35"/>
-          <rect x="110" y="130" width="230" height="262" fill="none" stroke="#001011" stroke-width="2.5"/>
-          <path d="M110 150 H340" stroke="#001011" stroke-width="1.2" opacity=".3"/>
-        </g>
-        <!-- costado derecho en fuelle -->
-        <g class="panel p-right"><path d="M340 130 L370 150 L370 380 L340 392 Z" fill="#b5864f"/><path d="M340 130 L356 265 L340 392" fill="none" stroke="#001011" stroke-width="1.5" opacity=".4"/><path d="M340 130 L370 150 L370 380 L340 392 Z" fill="none" stroke="#001011" stroke-width="2.5"/></g>
-        <!-- borde superior plegado -->
-        <g class="panel p-flap"><path d="M110 130 L340 130 L370 150 L370 160 L340 142 L110 142 L70 160 L70 150 Z" fill="#dcb47f" stroke="#001011" stroke-width="2"/></g>
-        <!-- manija de papel torcido -->
-        <path class="handle" d="M165 142 C160 40, 290 40, 285 142" fill="none" stroke="#001011" stroke-width="13" stroke-linecap="round"/>
-        <path class="handle" d="M165 142 C160 40, 290 40, 285 142" fill="none" stroke="#C9995F" stroke-width="7" stroke-linecap="round" stroke-dasharray="6 5"/>
-        <!-- impresión a 4 colores -->
-        <g class="print">
-          <circle cx="225" cy="250" r="56" fill="none" stroke="#F15946" stroke-width="5"/>
-          <path d="M195 268 C205 220, 245 220, 255 236 C240 238, 228 252, 225 270 C214 262, 204 264, 195 268Z" fill="#659B5E"/>
-          <path d="M225 270 C226 255, 236 244, 255 236" fill="none" stroke="#556F44" stroke-width="3"/>
-          <text x="225" y="335" text-anchor="middle" font-family="Londrina Solid, Impact, sans-serif" font-weight="900" font-size="30" fill="#001011">TU MARCA</text>
-        </g>
-      </svg>
-      <div class="stamp"><span><b>FSC</b>papel<br>certificado</span></div>
-      <svg class="scrap" data-depth="18" style="left:-2%;top:62%;width:16%" viewBox="0 0 60 60"><path d="M5 10 L50 4 L56 48 L12 55 Z" fill="#659B5E" stroke="#001011" stroke-width="2"/></svg>
-      <svg class="scrap" data-depth="-24" style="left:6%;top:6%;width:13%" viewBox="0 0 60 60"><path d="M30 2 L58 30 L30 58 L2 30 Z" fill="#F15946" stroke="#001011" stroke-width="2"/><path d="M30 2 L30 58 M2 30 L58 30" stroke="#001011" stroke-width="1.2" opacity=".4"/></svg>
-      <svg class="scrap" data-depth="30" style="right:0;bottom:4%;width:12%" viewBox="0 0 60 60"><path d="M4 50 L30 6 L56 50 Z" fill="#556F44" stroke="#001011" stroke-width="2"/><path d="M30 6 L30 50" stroke="#001011" stroke-width="1.2" opacity=".4"/></svg>
+    <div class="stage" aria-hidden="true">
+      <svg class="leaves" viewBox="0 0 500 500" fill="none" id="hero-leaves"></svg>
+      <div class="b b1"><div data-bag="rivera"></div></div>
+      <div class="b b2"><div data-bag="bestia"></div></div>
+      <div class="b b3"><div data-bag="kraftpack"></div></div>
     </div>
   </div>
 </section>
 
-<div class="ticker" aria-hidden="true">
+<div class="ticker orange" aria-hidden="true">
   <div class="ticker-track">
-    <span>Papel 100 g/m²</span><span>Tintas al agua</span><span>Certificación FSC</span><span>Hasta 4 colores</span><span>Manija de papel torcido</span><span>Fondo plano</span><span>Entrega en 5 días hábiles</span><span>Desde 2012</span>
-    <span>Papel 100 g/m²</span><span>Tintas al agua</span><span>Certificación FSC</span><span>Hasta 4 colores</span><span>Manija de papel torcido</span><span>Fondo plano</span><span>Entrega en 5 días hábiles</span><span>Desde 2012</span>
+    <span>Papel 100 g/m²</span><span>Tintas al agua</span><span>Certificación FSC</span><span>Hasta 4 colores</span><span>Manija de papel torcido</span><span>Entrega en 5 días hábiles</span>
+    <span>Papel 100 g/m²</span><span>Tintas al agua</span><span>Certificación FSC</span><span>Hasta 4 colores</span><span>Manija de papel torcido</span><span>Entrega en 5 días hábiles</span>
   </div>
 </div>
 
-<!-- EMPRESA -->
-<section class="block kraft sheet" id="empresa">
+<section class="block photo sheet" id="estilos">
   <div class="wrap">
-    <div class="about">
-      <div class="head rv" style="margin-bottom:0">
-        <span class="eyebrow" style="color:var(--ink)">La empresa</span>
-        <h2>Una fábrica familiar que piensa en tu mostrador.</h2>
-        <p class="lede" style="color:var(--ink)">KraftPack nació en 2012 para que comercios y cadenas gastronómicas del AMBA dejen la bolsa plástica sin resignar resistencia ni marca.</p>
-      </div>
-      <dl class="rv" style="--i:1">
-        <div><dt>Misión</dt><dd>Producir bolsas de papel resistentes, certificadas y personalizadas, con entrega confiable y sin sobreproducir.</dd></div>
-        <div><dt>Visión</dt><dd>Ser el proveedor de referencia de bolsas de papel para pymes y cadenas gastronómicas del AMBA en cinco años.</dd></div>
-        <div><dt>Dónde estamos</dt><dd>Parque Industrial de Pilar, provincia de Buenos Aires.</dd></div>
-      </dl>
+    <div class="head rv">
+      <span class="tag">Diseños</span>
+      <h2>Tu marca, impresa en papel.</h2>
+      <p class="lede">Papel natural, negro o de color. Logo, patrón o ilustración: armás el diseño con nuestro equipo y lo imprimimos en tu lote.</p>
     </div>
-    <div class="stats">
-      <div class="stat rv"><span class="num"><span data-count="3.1" data-dec="1">3,1</span><small>M</small></span><p>bolsas de capacidad por mes</p></div>
-      <div class="stat rv" style="--i:1"><span class="num"><span data-count="37">37</span><small>M</small></span><p>bolsas por año</p></div>
-      <div class="stat rv" style="--i:2"><span class="num"><span data-count="6000" data-sep="1">6.000</span><small>m²</small></span><p>de planta en Pilar</p></div>
-      <div class="stat rv" style="--i:3"><span class="num"><span data-count="72">72</span></span><p>personas en dos turnos</p></div>
-      <div class="stat rv"><span class="num"><span data-count="3">3</span></span><p>líneas de formado de 75 bolsas por minuto</p></div>
-      <div class="stat rv" style="--i:1"><span class="num"><span data-count="5">5</span><small>días</small></span><p>hábiles de plazo de entrega</p></div>
-      <div class="stat rv" style="--i:2"><span class="num"><span data-count="4">4</span></span><p>colores de impresión flexográfica</p></div>
-      <div class="stat rv" style="--i:3"><span class="num"><span data-count="2012">2012</span></span><p>año de fundación</p></div>
+    <div class="styles-grid">
+      <article class="style rv"><div class="bagbox" data-bag="rivera"></div><h3>Logo clásico</h3><p>Papel negro con tu marca en un color claro.</p><div class="chips"><span>Papel negro</span><span>1 color</span></div></article>
+      <article class="style rv" style="--i:1"><div class="bagbox" data-bag="bestia"></div><h3>Patrón ilustrado</h3><p>Fondo de color con dibujos en toda la bolsa.</p><div class="chips"><span>Fondo pleno</span><span>2 colores</span></div></article>
+      <article class="style rv" style="--i:2"><div class="bagbox" data-bag="tostado"></div><h3>Tipográfico</h3><p>Tus productos escritos en grande sobre kraft natural.</p><div class="chips"><span>Kraft natural</span><span>1 color</span></div></article>
+      <article class="style rv"><div class="bagbox" data-bag="pancho"></div><h3>Sello redondo</h3><p>Un logo circular que se lee de lejos.</p><div class="chips"><span>Kraft natural</span><span>1 color</span></div></article>
+      <article class="style rv" style="--i:1"><div class="bagbox" data-bag="mercado"></div><h3>Dibujo a mano</h3><p>Ilustraciones de línea que cuentan qué cocinás.</p><div class="chips"><span>Kraft natural</span><span>1 color</span></div></article>
+      <article class="style rv" style="--i:2"><div class="bagbox" data-bag="eco"></div><h3>Mensaje verde</h3><p>Dos verdes que dicen que tu bolsa vuelve a ser papel.</p><div class="chips"><span>Kraft natural</span><span>2 colores</span></div></article>
     </div>
   </div>
 </section>
 
-<!-- PRODUCTO -->
-<section class="block paper sheet product" id="producto">
+<section class="block ink sheet" id="por-que">
   <div class="wrap">
-    <div class="spec-art rv">
-      <svg class="bag2" id="bag2" viewBox="0 0 420 440" role="img" aria-label="Bolsa KraftPack con medidas: 32 centímetros de ancho, 28 de alto y 12 de fuelle">
-        <rect x="100" y="110" width="200" height="270" fill="#C9995F" stroke="#001011" stroke-width="2.5"/>
-        <rect x="100" y="110" width="200" height="270" filter="url(#fiber)" opacity=".35"/>
-        <path d="M300 110 L345 132 L345 360 L300 380 Z" fill="#a87a45" stroke="#001011" stroke-width="2.5"/>
-        <path d="M300 110 L322 245 L300 380" fill="none" stroke="#001011" stroke-width="1.4" opacity=".4"/>
-        <path d="M100 110 L300 110 L345 132" fill="none" stroke="#001011" stroke-width="2.5"/>
-        <g class="h2handle">
-          <path d="M150 112 C145 30, 255 30, 250 112" fill="none" stroke="#001011" stroke-width="12" stroke-linecap="round"/>
-          <path d="M150 112 C145 30, 255 30, 250 112" fill="none" stroke="#C9995F" stroke-width="6" stroke-linecap="round" stroke-dasharray="5 5"/>
-        </g>
-        <g class="sostop"><path d="M100 110 l12 -10 l12 10 l12 -10 l12 10 l12 -10 l12 10 l12 -10 l12 10 l12 -10 l12 10 l12 -10 l12 10 l12 -10 l12 10 l12 -10 l12 10 l8 -6 l0 6" fill="#dcb47f" stroke="#001011" stroke-width="2"/></g>
-        <circle cx="200" cy="235" r="38" fill="none" stroke="#F15946" stroke-width="4"/>
-        <text x="200" y="245" text-anchor="middle" font-family="Londrina Solid, Impact, sans-serif" font-weight="900" font-size="26" fill="#001011">KP</text>
-        <!-- cotas -->
-        <g stroke="#001011" stroke-width="1.5" fill="none">
-          <path class="dim-line" d="M100 410 H300"/><path d="M100 402 v16 M300 402 v16"/>
-          <path class="dim-line" d="M70 110 V380"/><path d="M62 110 h16 M62 380 h16"/>
-          <path class="dim-line" d="M310 398 L355 378"/>
-        </g>
-        <g font-family="Young Serif, Georgia, serif" font-size="18" fill="#001011">
-          <text x="200" y="434" text-anchor="middle">32 cm</text>
-          <text x="52" y="250" text-anchor="middle" transform="rotate(-90 52 250)">28 cm</text>
-          <text x="372" y="404">12 cm</text>
-        </g>
-      </svg>
+    <div class="head rv">
+      <span class="tag" style="color:var(--orange)">Por qué KraftPack</span>
+      <h2 class="paper-text">Cuatro razones para cambiar de proveedor.</h2>
+    </div>
+    <div class="reasons">
+      <article class="reason rv"><b>FSC</b><h3>Papel certificado</h3><p>Revisamos el certificado de cada bobina antes de usarla.</p></article>
+      <article class="reason rv" style="--i:1"><b>0</b><h3>Solventes</h3><p>Tintas y adhesivo al agua, también para bolsas de comida.</p></article>
+      <article class="reason rv" style="--i:2"><b>12.000</b><h3>Bolsas mínimas</h3><p>Lotes chicos con tu propio diseño, sin pagar de más.</p></article>
+      <article class="reason rv" style="--i:3"><b>5 días</b><h3>Hábiles de entrega</h3><p>Tu pedido entra a producción apenas lo confirmás.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block light sheet product" id="producto">
+  <div class="wrap">
+    <div class="spec-stage rv">
+      <div class="inner">
+        <div class="bagwrap" id="spec-bag" data-bag="spec"></div>
+        <svg class="dims" viewBox="0 0 300 390" aria-hidden="true">
+          <path class="dl" d="M40 378 H222"/><path d="M40 370 v16 M222 370 v16"/>
+          <path class="dl" d="M18 92 V352"/><path d="M10 92 h16 M10 352 h16"/>
+          <path class="dl" d="M232 368 L272 352"/>
+          <text x="131" y="406" text-anchor="middle">32 cm</text>
+          <text x="-4" y="230" text-anchor="middle" transform="rotate(-90 -4 230)">28 cm</text>
+          <text x="262" y="384">12 cm</text>
+        </svg>
+      </div>
     </div>
     <div class="rv" style="--i:1">
       <div class="head" style="margin-bottom:0">
-        <span class="eyebrow">El producto</span>
+        <span class="tag" style="color:var(--moss)">El producto</span>
         <h2>La bolsa que aguanta el pedido entero.</h2>
-        <p class="lede">Papel kraft de 100 g/m², fondo plano y manija de papel torcido. Cada lote se prueba con 5 kg de carga durante 30 segundos.</p>
+        <p class="lede">Probamos cada lote con 5 kg de carga durante 30 segundos.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Modelo de bolsa">
         <button role="tab" id="tab-manija" aria-selected="true" aria-controls="specs">Con manija</button>
-        <button role="tab" id="tab-sos" aria-selected="false" aria-controls="specs">Tipo SOS</button>
+        <button role="tab" id="tab-sos" aria-selected="false" aria-controls="specs">Sin manija</button>
       </div>
-      <ul class="spec-list" id="specs" role="tabpanel" aria-live="polite">
-        <li><b>100 g/m²</b><span>papel kraft con certificación FSC</span></li>
-        <li><b id="sp-handle">Papel torcido</b><span id="sp-handle-l">manija</span></li>
-        <li><b>32 x 28 x 12</b><span>medida base en centímetros</span></li>
-        <li><b>4 colores</b><span>impresión flexográfica con tintas al agua</span></li>
-        <li><b>Cajas de 500</b><span>en paquetes de 50 unidades</span></li>
-        <li><b id="sp-use">Comercios</b><span id="sp-use-l">retail y gastronomía</span></li>
+      <ul class="specs" id="specs" role="tabpanel" aria-live="polite">
+        <li><b>100 g/m²</b><span>Papel kraft FSC</span></li>
+        <li><b id="sp-a">Papel torcido</b><span id="sp-a2">Manija resistente</span></li>
+        <li><b>4 colores</b><span>Impresión con tintas al agua</span></li>
+        <li><b id="sp-b">Comercios</b><span id="sp-b2">Retail y gastronomía</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- PROPUESTA -->
-<section class="block kraft sheet" id="propuesta">
+<section class="block orange sheet" id="proceso">
   <div class="wrap">
     <div class="head rv">
-      <span class="eyebrow" style="color:var(--ink)">Por qué KraftPack</span>
-      <h2>Cuatro razones para cambiar de proveedor.</h2>
-    </div>
-    <div class="values">
-      <article class="card rv">
-        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><path d="M27 4 C40 14, 44 30, 27 50 C10 30, 14 14, 27 4Z" fill="#659B5E" stroke="#001011" stroke-width="2"/><path d="M27 12 V48 M27 24 l8 -6 M27 32 l-9 -7" stroke="#001011" stroke-width="2" fill="none"/></svg>
-        <span class="big">FSC</span>
-        <h3>Papel certificado</h3>
-        <p>Controlamos el certificado FSC de cada bobina en la recepción, junto con gramaje, humedad y ancho.</p>
-      </article>
-      <article class="card rv" style="--i:1">
-        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><path d="M27 6 C27 6, 12 24, 12 34 a15 15 0 0 0 30 0 C42 24, 27 6, 27 6Z" fill="#F15946" stroke="#001011" stroke-width="2"/><path d="M20 34 a7 7 0 0 0 7 7" stroke="#F3DDB5" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-        <span class="big">0%</span>
-        <h3>Tintas y adhesivo al agua</h3>
-        <p>Imprimimos hasta 4 colores sin solventes. La bolsa es 100% reciclable y biodegradable.</p>
-      </article>
-      <article class="card rv" style="--i:2">
-        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><rect x="6" y="10" width="42" height="34" rx="3" fill="#F3DDB5" stroke="#001011" stroke-width="2"/><path d="M14 36 L22 24 L28 31 L33 26 L41 36Z" fill="#556F44" stroke="#001011" stroke-width="1.5"/><circle cx="36" cy="19" r="4" fill="#F15946" stroke="#001011" stroke-width="1.5"/></svg>
-        <span class="big">12.000</span>
-        <h3>Lotes chicos con diseño propio</h3>
-        <p>En nuestro sector de diseño armás la bolsa con tu marca. El lote mínimo es una bobina de 500 kg.</p>
-      </article>
-      <article class="card rv" style="--i:3">
-        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="29" r="20" fill="#F3DDB5" stroke="#001011" stroke-width="2"/><path d="M27 15 V29 L36 35" stroke="#001011" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="21" y="3" width="12" height="6" rx="1" fill="#F15946" stroke="#001011" stroke-width="1.5"/></svg>
-        <span class="big">5 días</span>
-        <h3>Entrega en días hábiles</h3>
-        <p>Producimos por tarjeta kanban: tu pedido entra a planificación al confirmarse y sale en 5 días hábiles.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESO -->
-<section class="block process sheet" id="proceso">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">Proceso de producción</span>
-      <h2>De la bobina al pallet, en nueve etapas.</h2>
-      <p class="lede">Una bobina de 1.000 kg son 12.500 metros de papel y rinde unas 24.000 bolsas. Así la recorremos.</p>
+      <span class="tag">Cómo la fabricamos</span>
+      <h2>De la bobina a tu mostrador.</h2>
+      <p class="lede">Una bobina de papel rinde hasta 24.000 bolsas. Siempre la usamos completa, así no quedan restos.</p>
     </div>
     <div class="rail" id="rail">
       <div class="rail-line"><i></i></div>
       <div class="roll" aria-hidden="true"><div class="roll-inner"></div></div>
-      <div class="step"><span class="n">01</span><h3>Recepción</h3><p>Gramaje, humedad, ancho y certificado FSC.</p><span class="t">15 min por camión</span></div>
-      <div class="step"><span class="n">02</span><h3>Depósito de bobinas</h3><p>Supermercado de bobinas con lugar fijo.</p><span class="t">Stock de 6 días</span></div>
-      <div class="step"><span class="n">03</span><h3>Flexografía</h3><p>Impresión del diseño en hasta 4 colores.</p><span class="t">83 min · 150 m/min</span></div>
-      <div class="step"><span class="n">04</span><h3>Secado</h3><p>La bobina impresa reposa antes de formar.</p><span class="t">6 h de espera</span></div>
-      <div class="step"><span class="n">05</span><h3>Formado</h3><p>Tubo, fondo, manija y corte.</p><span class="t">320 min · 75 bolsas/min</span></div>
-      <div class="step"><span class="n">06</span><h3>Control en línea</h3><p>Muestreo cada 30 min y revisión manual.</p><span class="t">Dentro del proceso</span></div>
-      <div class="step"><span class="n">07</span><h3>Conteo y embalaje</h3><p>Paquetes de 50 y cajas de 500.</p><span class="t">Junto al formado</span></div>
-      <div class="step"><span class="n">08</span><h3>Paletizado</h3><p>Pallets de 18.000 bolsas con film.</p><span class="t">20 min</span></div>
-      <div class="step"><span class="n">09</span><h3>Despacho</h3><p>Pull por kanban y picking por pedido.</p><span class="t">Embalaje según distancia</span></div>
-    </div>
-    <div class="process-foot">
-      <div class="pf rv"><span class="num">7,3 h</span><p>de trabajo con valor agregado por bobina.</p></div>
-      <div class="pf rv" style="--i:1"><span class="num">0</span><p>sobrantes de bobina: siempre se produce la bobina completa, sin restos en la máquina.</p></div>
-      <div class="pf rv" style="--i:2"><span class="num">100%</span><p>del desecho vuelve al proveedor de papel para fabricar bobinas nuevas.</p></div>
+      <div class="step"><span class="n">01</span><h3>Control del papel</h3><p>Medimos gramaje y humedad de cada bobina.</p></div>
+      <div class="step"><span class="n">02</span><h3>Impresión</h3><p>Tu diseño en hasta 4 colores con tintas al agua.</p></div>
+      <div class="step"><span class="n">03</span><h3>Formado</h3><p>Tubo, fondo plano y manija, a 75 bolsas por minuto.</p></div>
+      <div class="step"><span class="n">04</span><h3>Revisión</h3><p>Miramos y contamos cada bolsa a mano.</p></div>
+      <div class="step"><span class="n">05</span><h3>Entrega</h3><p>Cajas de 500 bolsas, listas para tu local.</p></div>
     </div>
   </div>
 </section>
 
-<!-- PLANTA -->
-<section class="block paper sheet" id="planta">
+<section class="block light sheet eco" id="sustentable">
   <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">Plano de planta</span>
-      <h2>6.000 m² ordenados para que el papel no vuelva atrás.</h2>
-      <p class="lede">El material avanza en una sola dirección, de la recepción al muelle de despacho. Tocá un sector para conocerlo.</p>
+    <div class="eco-art rv" aria-hidden="true">
+      <svg class="blob" viewBox="0 0 500 500"><path d="M248 40 C340 30 430 80 455 170 C480 260 450 350 380 410 C310 470 200 480 125 430 C50 380 25 290 45 205 C65 120 156 50 248 40Z" fill="#659B5E" opacity=".22"/></svg>
+      <svg class="branch" viewBox="0 0 500 500" fill="none" id="eco-branch"></svg>
+      <div class="ebag" data-bag="eco"></div>
     </div>
-    <div class="plant-wrap rv">
-      <svg class="plant" viewBox="0 0 1000 600" role="group" aria-label="Plano de la planta KraftPack de 100 por 60 metros">
-        <g class="zone" tabindex="0" role="button" data-z="Recepción y control|224 m²|Cada camión se controla en 15 minutos: gramaje, humedad, ancho y certificado FSC."><rect class="z" x="0" y="0" width="160" height="140" fill="#e9d3a8"/><text x="12" y="28" font-size="18">Recepción</text></g>
-        <g class="zone" tabindex="0" role="button" data-z="Depósito de bobinas|588 m²|Supermercado de bobinas de 500, 750 y 1.000 kg, con zonas marcadas y lugar fijo para cada una."><rect class="z" x="160" y="0" width="420" height="140" fill="#e9d3a8"/><text x="172" y="28" font-size="18">Depósito de bobinas</text><g id="coils"></g></g>
-        <g class="zone" tabindex="0" role="button" data-z="Taller de mantenimiento|196 m²|Repuestos críticos, herramientas y el equipo de TPM: 1 jefe, 3 mecánicos, 1 electricista y 1 ayudante."><rect class="z" x="580" y="0" width="140" height="140" fill="#e2e0d0"/><text x="592" y="28" font-size="16">Mantenimiento</text></g>
-        <g class="zone" tabindex="0" role="button" data-z="Laboratorio de calidad|168 m²|Balanza, medidor de humedad, calibre y equipo de ensayo de carga."><rect class="z" x="720" y="0" width="120" height="140" fill="#f0d6cf"/><text x="732" y="28" font-size="16">Laboratorio</text></g>
-        <g class="zone" tabindex="0" role="button" data-z="Oficinas y diseño|224 m²|Comercial, preprensa y el sector donde cada cliente arma el diseño de su bolsa."><rect class="z" x="840" y="0" width="160" height="140" fill="#e2e0d0"/><text x="852" y="28" font-size="16">Oficinas y diseño</text></g>
-        <rect x="0" y="140" width="1000" height="40" fill="#f4e27a" stroke="#001011" stroke-width="2"/><text x="500" y="166" font-size="15" text-anchor="middle">Pasillo amarillo · peatones y autoelevadores</text>
-        <g class="zone" tabindex="0" role="button" data-z="Flexografía|440 m²|Impresora de 4 colores, 1.000 mm de ancho, 150 m/min, tintas al agua."><rect class="z" x="0" y="180" width="200" height="220" fill="#cfe0c6"/><text x="12" y="208" font-size="18">Flexografía</text><rect x="40" y="250" width="120" height="70" fill="#F3DDB5" stroke="#001011" stroke-width="2"/></g>
-        <g class="zone" tabindex="0" role="button" data-z="Formadoras 1, 2 y 3|1.452 m²|Tres líneas de 75 bolsas por minuto con adhesivo base agua y tablero de sombras en cada una."><rect class="z" x="200" y="180" width="660" height="220" fill="#cfe0c6"/><text x="212" y="208" font-size="18">Formadoras 1 · 2 · 3</text><rect x="240" y="250" width="160" height="70" fill="#F3DDB5" stroke="#001011" stroke-width="2"/><rect x="450" y="250" width="160" height="70" fill="#F3DDB5" stroke="#001011" stroke-width="2"/><rect x="660" y="250" width="160" height="70" fill="#F3DDB5" stroke="#001011" stroke-width="2"/></g>
-        <g class="zone" tabindex="0" role="button" data-z="Vestuarios y comedor|420 m²|Vestuarios, sanitarios y el comedor, donde se publica el ranking de auditorías 5S."><rect class="z" x="860" y="180" width="140" height="300" fill="#e2e0d0"/><text x="872" y="208" font-size="16">Comedor</text></g>
-        <g class="zone" tabindex="0" role="button" data-z="Estación final|432 m²|Revisión manual y conteo. Lo reparable vuelve al flujo; el desecho va a la zona roja."><rect class="z" x="200" y="400" width="550" height="80" fill="#d9e4cf"/><text x="212" y="428" font-size="16">Estación final: revisión y conteo</text></g>
-        <g class="zone" tabindex="0" role="button" data-z="Zona azul|160 m²|Tablero 5S y herramientas, con siluetas para ver al instante si falta algo."><rect class="z" x="0" y="400" width="200" height="80" fill="#c9daea"/><text x="12" y="428" font-size="16">Zona azul</text></g>
-        <g class="zone" tabindex="0" role="button" data-z="Zona roja|96 m²|Reproceso y desecho, separados y pesados todos los días."><rect class="z" x="750" y="400" width="110" height="80" fill="#f6b8ab"/><text x="760" y="428" font-size="16">Zona roja</text></g>
-        <g class="zone" tabindex="0" role="button" data-z="Embalaje|432 m²|Conteo, cajas, pallet y film. Los envíos lejanos llevan film; los cercanos salen sin film."><rect class="z" x="0" y="480" width="360" height="120" fill="#d9e4cf"/><text x="12" y="508" font-size="18">Embalaje</text></g>
-        <g class="zone" tabindex="0" role="button" data-z="Supermercado de terminados|504 m²|Pallets de los 5 formatos más vendidos, repuestos con tarjetas kanban."><rect class="z" x="360" y="480" width="420" height="120" fill="#e9d3a8"/><text x="372" y="508" font-size="18">Supermercado de terminados</text><g id="pallets"></g></g>
-        <g class="zone" tabindex="0" role="button" data-z="Expedición|264 m²|Muelle de despacho y preparación de pedidos por destino."><rect class="z" x="780" y="480" width="220" height="120" fill="#e9d3a8"/><text x="792" y="508" font-size="18">Expedición</text></g>
-        <path class="flow" d="M80 90 H370 V160 H100 V340 H320 H530 H740 V440 H475 H180 V540 H570 H890"/>
-        <circle class="dot" r="9"><animateMotion dur="9s" repeatCount="indefinite" path="M80 90 H370 V160 H100 V340 H320 H530 H740 V440 H475 H180 V540 H570 H890"/></circle>
-      </svg>
-    </div>
-    <div class="plant-info">
-      <div class="zone-detail" id="zone-detail" aria-live="polite">
-        <h3>Formadoras 1, 2 y 3</h3>
-        <p>Tres líneas de 75 bolsas por minuto con adhesivo base agua y tablero de sombras en cada una. <b>1.452 m²</b></p>
+    <div class="rv" style="--i:1">
+      <div class="head" style="margin-bottom:0">
+        <span class="tag" style="color:var(--moss)">Sustentable</span>
+        <h2>Vuelve a ser papel.</h2>
+        <p class="lede">Una bolsa 100% reciclable y biodegradable, en lugar de una de plástico.</p>
       </div>
-      <ul class="legend">
-        <li><i style="background:#e9d3a8"></i>Almacenaje</li>
-        <li><i style="background:#cfe0c6"></i>Producción</li>
-        <li><i style="background:#d9e4cf"></i>Revisión y embalaje</li>
-        <li><i style="background:#f0d6cf"></i>Calidad</li>
-        <li><i style="background:#e2e0d0"></i>Apoyo</li>
-        <li><i style="background:#F15946"></i>Flujo del material</li>
+      <ul class="eco-list">
+        <li><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25" fill="#659B5E"/><path d="M26 12c8 6 10 15 0 28-10-13-8-22 0-28z" fill="#F3DDB5"/><path d="M26 18v22" stroke="#556F44" stroke-width="2"/></svg><div><b>Papel de bosques certificados</b>Cada bobina llega con certificación FSC.</div></li>
+        <li><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25" fill="#F15946"/><path d="M26 13s-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17z" fill="#F3DDB5"/></svg><div><b>Tintas y adhesivo al agua</b>Sin solventes en la impresión ni en el pegado.</div></li>
+        <li><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25" fill="#556F44"/><path d="M17 30a10 10 0 0 1 16-11M35 22a10 10 0 0 1-16 11" stroke="#F3DDB5" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M32 14l2 6-6 1M20 38l-2-6 6-1" stroke="#F3DDB5" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>El descarte vuelve al papelero</b>Las bolsas fallidas se reciclan en bobinas nuevas.</div></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- SISTEMA PULL -->
-<section class="block kraft sheet pull" id="pull">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow" style="color:var(--ink)">Sistema pull con kanban</span>
-      <h2>Fabricamos lo que se vende, no lo que se pronostica.</h2>
-      <p class="lede" style="color:var(--ink)">Sin tarjeta no se produce ni se mueve material. Por eso no acumulamos stock y no tenemos que bajar precios para liquidarlo.</p>
-    </div>
-    <div class="grid">
-      <div class="cards-k">
-        <div class="kcard rv"><span class="ktag" style="background:var(--leaf)">TP</span><div><h3>Tarjeta de producción</h3><p>Repone un pallet de los 5 formatos más vendidos (grupo A, 62% del volumen) cuando sale del supermercado.</p></div></div>
-        <div class="kcard rv" style="--i:1"><span class="ktag" style="background:var(--stamp)">TC</span><div><h3>Tarjeta de pedido</h3><p>Atención al cliente la libera al confirmar tu pedido. Formatos B y diseños propios se fabrican por lote en 5 días hábiles.</p></div></div>
-        <div class="kcard rv" style="--i:2"><span class="ktag" style="background:var(--moss)">TB</span><div><h3>Tarjeta de bobina</h3><p>Cuando el stock baja de 70 bobinas, compras pide un camión de 20. El papel se repone solo.</p></div></div>
-      </div>
-      <div class="board rv" style="--i:1">
-        <h3>Tablero de nivelación</h3>
-        <p>Cada producto A tiene 3 tarjetas: un máximo de 3 pallets y 3,6 días de cobertura. Probá despachar.</p>
-        <div class="shelf" id="shelf"><div class="pallet"></div><div class="pallet"></div><div class="pallet"></div></div>
-        <div class="zones" aria-hidden="true"><div class="z-g on" id="zg">Verde · no producir</div><div class="z-y" id="zy">Amarillo · programar</div><div class="z-r" id="zr">Rojo · producir ya</div></div>
-        <p class="board-msg" id="board-msg" aria-live="polite">3 pallets en el supermercado. Zona verde: no se produce.</p>
-        <div class="board-actions">
-          <button class="btn" id="dispatch">Despachar un pallet</button>
-          <button class="btn ghost" id="refill">Reponer con kanban</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="lead rv" id="lead">
-      <h3 style="font-family:var(--f-title);font-weight:900;font-size:var(--step-2)">Plazo de recepción a despacho</h3>
-      <div class="lead-legend"><span><i style="background:rgba(0,16,17,.35)"></i>Antes</span><span><i style="background:var(--leaf)"></i>Con Lean</span></div>
-      <div class="lead-row"><span>Bobinas antes de imprimir</span><div class="bars"><i class="bar a" style="--w:80"><em>12 días</em></i><i class="bar b" style="--w:40"><em>6 días</em></i></div></div>
-      <div class="lead-row"><span>Cola frente a la impresora</span><div class="bars"><i class="bar a" style="--w:6.7"><em>1 día</em></i><i class="bar b" style="--w:3.3"><em>0,5 día</em></i></div></div>
-      <div class="lead-row"><span>Secado de la bobina impresa</span><div class="bars"><i class="bar a" style="--w:1.7"><em>0,25 día</em></i><i class="bar b" style="--w:1.7"><em>0,25 día</em></i></div></div>
-      <div class="lead-row"><span>Cola frente a la formadora</span><div class="bars"><i class="bar a" style="--w:6.7"><em>1 día</em></i><i class="bar b" style="--w:3.3"><em>0,5 día</em></i></div></div>
-      <div class="lead-row"><span>Terminados en depósito</span><div class="bars"><i class="bar a" style="--w:33"><em>5 días</em></i><i class="bar b" style="--w:20"><em>3 días</em></i></div></div>
-      <div class="lead-total"><span class="num"><s>19,3</s> → 10,3 días</span><span style="font-family:var(--f-sub)">La eficiencia de flujo sube de 1,6% a 3%.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- CALCULADORA DE LOTE -->
-<section class="block paper sheet" id="lote">
+<section class="block photo sheet" id="lote">
   <div class="wrap calc">
     <div class="rv">
       <div class="head" style="margin-bottom:0">
-        <span class="eyebrow">Armá tu lote</span>
-        <h2>Bobinas completas, sin restos.</h2>
-        <p class="lede">Compramos bobinas de 500, 750 y 1.000 kg y elegimos la combinación que más se acerca a tu pedido. La diferencia nunca pasa de +5%.</p>
+        <span class="tag">Armá tu lote</span>
+        <h2>¿Cuántas bolsas necesitás?</h2>
+        <p class="lede">Elegimos las bobinas que más se acercan a tu pedido. Nunca te entregamos más de un 5% extra.</p>
       </div>
-      <table class="roll-table">
-        <thead><tr><th scope="col">Bobina</th><th scope="col">Rinde</th><th scope="col">Se usa para</th></tr></thead>
-        <tbody>
-          <tr><td>500 kg</td><td>12.000 bolsas</td><td>Diseños propios y lotes chicos</td></tr>
-          <tr><td>750 kg</td><td>18.000 bolsas</td><td>Formatos A: 1 bobina, 1 pallet</td></tr>
-          <tr><td>1.000 kg</td><td>24.000 bolsas</td><td>Lotes grandes</td></tr>
-        </tbody>
-      </table>
+      <ul class="roll-sizes">
+        <li><b>500 kg</b><span>12.000 bolsas</span></li>
+        <li><b>750 kg</b><span>18.000 bolsas</span></li>
+        <li><b>1.000 kg</b><span>24.000 bolsas</span></li>
+      </ul>
     </div>
     <div class="calc-box rv" style="--i:1">
-      <label for="qty">¿Cuántas bolsas necesitás?</label>
+      <label for="qty">Mové la barra hasta tu cantidad</label>
       <div class="calc-input">
-        <input type="range" id="qty" min="12000" max="120000" step="1000" value="40000" aria-describedby="qty-out">
+        <input type="range" id="qty" min="12000" max="120000" step="1000" value="40000">
         <output id="qty-out" for="qty">40.000</output>
       </div>
       <div class="rolls" id="rolls" aria-hidden="true"></div>
       <div class="calc-out" aria-live="polite">
         <div><b id="c-rolls">2 bobinas</b><span id="c-mix">1.000 + 750 kg</span></div>
-        <div><b id="c-bags">42.000</b><span>bolsas producidas</span></div>
-        <div><b id="c-diff">+5%</b><span>diferencia con tu pedido</span></div>
+        <div><b id="c-bags">42.000</b><span>bolsas que recibís</span></div>
+        <div><b id="c-diff">+5%</b><span>sobre tu pedido</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CALIDAD -->
-<section class="block kraft sheet quality" id="calidad">
+<section class="block ink sheet" id="calidad">
   <div class="wrap">
     <div class="head rv">
-      <span class="eyebrow" style="color:var(--ink)">Control de calidad</span>
-      <h2>Detectamos el defecto donde nace, no en tu local.</h2>
-      <p class="lede" style="color:var(--ink)">Controlamos en cuatro puntos del proceso. Cualquier operario puede detener la línea si ve un problema.</p>
+      <span class="tag" style="color:var(--orange)">Calidad</span>
+      <h2 class="paper-text">Probada antes de salir.</h2>
     </div>
-    <div class="grid4 rv">
-      <div class="qp"><span class="n">1</span><h3>Recepción</h3><p>Cada bobina: gramaje de 100 g/m² ± 5%, humedad entre 6 y 9%, ancho y certificado FSC.</p></div>
-      <div class="qp"><span class="n">2</span><h3>Impresión</h3><p>Primera pieza y cada 30 minutos: registro de colores, tono y manchas contra la muestra firmada.</p></div>
-      <div class="qp"><span class="n">3</span><h3>Formado</h3><p>Medidas ± 2 mm, pegado de fondo y manija, y ensayo de carga de 5 kg durante 30 segundos.</p></div>
-      <div class="qp"><span class="n">4</span><h3>Embalaje</h3><p>Cantidad por caja y etiqueta en cada pallet, antes de cerrarlo.</p></div>
-    </div>
-    <div class="metrics" id="metrics">
-      <div class="metric rv"><svg class="gauge" viewBox="0 0 88 88" aria-hidden="true"><circle class="bg" cx="44" cy="44" r="36"/><circle class="fg" cx="44" cy="44" r="36" data-v=".85"/></svg><div><b>≤ 1,5%</b><span>defectos en proceso</span></div></div>
-      <div class="metric rv" style="--i:1"><svg class="gauge" viewBox="0 0 88 88" aria-hidden="true"><circle class="bg" cx="44" cy="44" r="36"/><circle class="fg" cx="44" cy="44" r="36" data-v=".7"/></svg><div><b>≤ 4%</b><span>desperdicio de papel</span></div></div>
-      <div class="metric rv" style="--i:2"><svg class="gauge" viewBox="0 0 88 88" aria-hidden="true"><circle class="bg" cx="44" cy="44" r="36"/><circle class="fg" cx="44" cy="44" r="36" data-v=".92"/></svg><div><b>≤ 2.000 ppm</b><span>devoluciones de clientes</span></div></div>
-    </div>
-    <p style="margin-top:20px;font-family:var(--f-sub);font-size:var(--step--1)">Liberamos cada lote con muestreo por atributos ISO 2859-1, nivel II: AQL 1,0 para defectos mayores y 2,5 para menores.</p>
-
-    <div class="lean">
-      <article class="card rv">
-        <span class="eyebrow">Trabajo estandarizado</span>
-        <h3>SMED</h3>
-        <div class="compare"><s>60</s><b>39 min</b></div>
-        <p>El cambio de bobina y medida en la formadora baja de 60 a 39 minutos con la máquina parada. Diez pasos medidos con cronómetro.</p>
-      </article>
-      <article class="card rv" style="--i:1">
-        <span class="eyebrow">Orden en planta</span>
-        <h3>5S</h3>
-        <div class="fives"><span>Clasificar</span><span>Ordenar</span><span>Limpiar</span><span>Estandarizar</span><span>Disciplina</span></div>
-        <p>Cada herramienta se encuentra en menos de 30 segundos. Auditoría quincenal con meta de 80 sobre 100.</p>
-      </article>
-      <article class="card rv" style="--i:2">
-        <span class="eyebrow">Mantenimiento productivo</span>
-        <h3>TPM</h3>
-        <div class="compare"><s>65%</s><b>75% OEE</b></div>
-        <p>Los operarios limpian, lubrican e inspeccionan su máquina cada turno. Cada máquina tiene al menos 3 personas certificadas.</p>
-      </article>
+    <div class="quality-nums">
+      <div class="qn rv"><b><span data-count="5">5</span> kg</b><p>de carga durante 30 segundos, en cada lote.</p></div>
+      <div class="qn rv" style="--i:1"><b><span data-count="4">4</span></b><p>controles durante la fabricación, del papel al embalaje.</p></div>
+      <div class="qn rv" style="--i:2"><b>1,5%</b><p>de defectos como máximo. Las que fallan, no salen.</p></div>
     </div>
   </div>
 </section>
 
-<!-- EQUIPO -->
-<section class="block paper sheet team" id="equipo">
+<section class="close orange sheet" id="cotizar">
   <div class="wrap">
     <div class="rv">
-      <span class="eyebrow">El equipo</span>
-      <div class="big72"><span data-count="72">72</span></div>
-      <h2 style="font-size:var(--step-2);margin-top:12px">personas, dos turnos, de lunes a viernes.</h2>
-      <p class="lede" style="margin-top:16px">Un equipo chico donde cada área conoce tu pedido por nombre.</p>
+      <h2>Tu marca, en papel, en 5 días.</h2>
+      <p class="lede">Elegí un diseño, calculá tu lote y dejá la bolsa plástica atrás.</p>
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="#lote">Calcular mi lote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-line" href="#estilos">Ver diseños</a>
+      </div>
     </div>
-    <div class="hbars rv" style="--i:1" role="list" aria-label="Personas por área">
-      <div class="hb" role="listitem" style="--i:0"><span>Producción</span><i style="--v:29"></i><b>29</b></div>
-      <div class="hb" role="listitem" style="--i:1"><span>Logística</span><i style="--v:12"></i><b>12</b></div>
-      <div class="hb" role="listitem" style="--i:2"><span>Comercial y diseño</span><i style="--v:8"></i><b>8</b></div>
-      <div class="hb" role="listitem" style="--i:3"><span>Administración</span><i style="--v:7"></i><b>7</b></div>
-      <div class="hb" role="listitem" style="--i:4"><span>Calidad</span><i style="--v:6"></i><b>6</b></div>
-      <div class="hb" role="listitem" style="--i:5"><span>Mantenimiento</span><i style="--v:6"></i><b>6</b></div>
-      <div class="hb" role="listitem" style="--i:6"><span>Planificación y compras</span><i style="--v:4"></i><b>4</b></div>
-    </div>
+    <div class="cbag" data-bag="kraftpack" aria-hidden="true"></div>
   </div>
-</section>
-
-<!-- MERCADO -->
-<section class="block market sheet" id="mercado">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">El mercado</span>
-      <h2>El plástico se va. El papel ocupa su lugar.</h2>
-      <p class="lede">Desde 2017 los supermercados de la Ciudad de Buenos Aires no entregan bolsas plásticas, y la ley bonaerense 13.868 prohíbe las de polietileno en los comercios de la provincia.</p>
-    </div>
-    <div class="vs-wrap rv">
-      <table class="versus">
-        <thead><tr><th scope="col">Proveedor</th><th scope="col">Fortaleza</th><th scope="col">Debilidad</th></tr></thead>
-        <tbody>
-          <tr class="us"><th scope="row">KraftPack</th><td>Lotes desde 12.000 bolsas con diseño propio, FSC y entrega en 5 días hábiles.</td><td>Escala regional menor que el líder.</td></tr>
-          <tr><th scope="row">Líder nacional</th><td>Escala, precio, certificación FSC y presencia regional.</td><td>Menos flexibilidad para lotes muy chicos.</td></tr>
-          <tr><th scope="row">Fabricantes chicos</th><td>Precio y cercanía con el cliente.</td><td>Menor capacidad y poca certificación.</td></tr>
-          <tr><th scope="row">Importadores</th><td>Precio unitario bajo.</td><td>Plazos largos, mínimos grandes y dependencia de divisas.</td></tr>
-          <tr><th scope="row">Bolsas plásticas</th><td>Costo bajo.</td><td>Perdieron mercado por las prohibiciones.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="laws">
-      <div class="law rv"><span class="num">US$ 0,10</span><p>precio base de referencia por bolsa. No lo bajamos para mover stock, porque no acumulamos stock.</p></div>
-      <div class="law rv" style="--i:1"><span class="num">−24%</span><p>cayó el empleo en fabricantes de bolsas plásticas en el país. Ese es el mercado que capturan las de papel.</p></div>
-      <div class="law rv" style="--i:2"><span class="num">+2% mensual</span><p>de crecimiento estructural esperado por reemplazo del plástico y clientes nuevos.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- TEMPORADA -->
-<section class="block paper sheet season" id="temporada">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">Planificación de temporada</span>
-      <h2>Diciembre no nos toma por sorpresa.</h2>
-      <p class="lede">Para las fiestas sumamos sábados con un turno en lugar de fabricar stock en noviembre. Tu pedido sale igual en plazo.</p>
-    </div>
-    <div class="grid">
-      <article class="month rv">
-        <h3>Dic 2026</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i class="over" style="--h:80"></i></div>
-        <dl><dt>Demanda</dt><dd>3.060.000</dd><dt>Producción</dt><dd>3.100.000</dd><dt>Uso de capacidad</dt><dd>109%</dd><dt>Sábados extra</dt><dd>4</dd></dl>
-      </article>
-      <article class="month rv" style="--i:1">
-        <h3>Ene 2027</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i style="--h:55"></i></div>
-        <dl><dt>Demanda</dt><dd>2.120.000</dd><dt>Producción</dt><dd>2.120.000</dd><dt>Uso de capacidad</dt><dd>75%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
-        <p>La capacidad libre se usa para mantenimiento preventivo y capacitación.</p>
-      </article>
-      <article class="month rv" style="--i:2">
-        <h3>Feb 2027</h3>
-        <div class="util" aria-hidden="true"><span class="cap" style="--c:66"><span>capacidad normal</span></span><i style="--h:63"></i></div>
-        <dl><dt>Demanda</dt><dd>2.420.000</dd><dt>Producción</dt><dd>2.420.000</dd><dt>Uso de capacidad</dt><dd>95%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- CIERRE -->
-<section class="close kraft sheet" id="contacto">
-  <div class="wrap">
-    <span class="eyebrow rv" style="color:var(--ink)">Pedí tu cotización</span>
-    <h2 class="rv">Tu marca, en papel, en 5 días.</h2>
-    <p class="lede rv" style="color:var(--ink)">Contanos cuántas bolsas necesitás y qué querés imprimir. Te respondemos con el lote, la bobina y el plazo.</p>
-    <div class="contact rv">
-      <span class="mail" id="mail">ventas@kraftpack.example</span>
-      <button class="btn" id="copy">Copiar correo</button>
-    </div>
-    <p class="copy-msg" id="copy-msg" aria-live="polite"></p>
-    <p class="rv" style="font-family:var(--f-sub)">Parque Industrial de Pilar, provincia de Buenos Aires · Lunes a viernes, dos turnos.</p>
-  </div>
-  <svg class="close-bag" viewBox="0 0 400 420" aria-hidden="true">
-    <path d="M70 150 L110 130 L110 392 L70 380 Z" fill="#a87a45" stroke="#001011" stroke-width="2.5"/>
-    <rect x="110" y="130" width="230" height="262" fill="#F3DDB5" stroke="#001011" stroke-width="2.5"/>
-    <path d="M340 130 L370 150 L370 380 L340 392 Z" fill="#dcb47f" stroke="#001011" stroke-width="2.5"/>
-    <path d="M165 132 C160 40, 290 40, 285 132" fill="none" stroke="#001011" stroke-width="12" stroke-linecap="round"/>
-    <circle cx="225" cy="255" r="56" fill="#F15946" stroke="#001011" stroke-width="2.5"/>
-    <text x="225" y="268" text-anchor="middle" font-family="Londrina Solid, Impact, sans-serif" font-weight="900" font-size="40" fill="#F3DDB5">KP</text>
-  </svg>
 </section>
 
 </main>
 
-<footer>
+<footer class="ink">
   <div class="wrap">
-    <span class="logo" style="font-size:1.3rem">KraftPack</span>
-    <nav aria-label="Pie de página">
-      <a href="#producto">Producto</a><a href="#proceso">Proceso</a><a href="#calidad">Calidad</a><a href="#contacto">Contacto</a>
-    </nav>
-    <span>Bolsas de papel kraft desde 2012 · Pilar, Buenos Aires</span>
+    <span class="logo" style="font-size:1.4rem">KraftPack</span>
+    <nav aria-label="Pie de página"><a href="#estilos">Diseños</a><a href="#producto">Producto</a><a href="#proceso">Proceso</a><a href="#lote">Tu lote</a></nav>
+    <span>Bolsas de papel kraft desde 2012</span>
   </div>
 </footer>
 
 <script>
 (function(){
-  var root=document.documentElement, body=document.body;
-  body.classList.remove('no-js'); root.classList.add('js');
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.add('loaded')})});
+var root=document.documentElement;root.classList.add('js');
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var IMG='assets/kraft.jpg',uid=0;
 
-  /* Bordes rasgados entre hojas */
-  function rnd(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}}
-  document.querySelectorAll('.sheet').forEach(function(s,idx){
-    var bg=getComputedStyle(s).backgroundColor;
-    var r=rnd(idx*97+13), d='M0 34 L0 '+(14+r()*10);
-    for(var x=0;x<=1200;x+=14+r()*22){d+=' L'+x.toFixed(0)+' '+(4+r()*22).toFixed(1)}
-    d+=' L1200 '+(10+r()*12)+' L1200 34 Z';
-    var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-    svg.setAttribute('class','tear');svg.setAttribute('viewBox','0 0 1200 34');svg.setAttribute('preserveAspectRatio','none');svg.setAttribute('aria-hidden','true');
-    var p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);
-    var fill=bg;
-    if(s.classList.contains('kraft'))fill='#C9995F';
-    p.setAttribute('fill',fill);svg.appendChild(p);s.insertBefore(svg,s.firstChild);
-  });
-
-  /* Menú */
-  var mb=document.querySelector('.menu-btn'), menu=document.getElementById('menu');
-  mb.addEventListener('click',function(){var o=menu.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Cerrar':'Menú'});
-  menu.addEventListener('click',function(e){if(e.target.tagName==='A'){menu.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.textContent='Menú'}});
-
-  /* Contadores */
-  function fmt(v,dec,sep){var s=dec?v.toFixed(dec).replace('.',','):Math.round(v).toString();if(sep)s=s.replace(/\B(?=(\d{3})+(?!\d))/g,'.');return s}
-  function count(el){
-    var to=parseFloat(el.dataset.count),dec=+el.dataset.dec||0,sep=el.dataset.sep,t0=null,dur=1600;
-    if(reduce)return;
-    var from=to>1000&&!sep?to-40:0;
-    function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/dur);k=1-Math.pow(1-k,4);el.textContent=fmt(from+(to-from)*k,dec,sep);if(k<1)requestAnimationFrame(f)}
-    requestAnimationFrame(f);
+/* ---------- Bolsas realistas ---------- */
+function burger(x,y,s,r){return '<g transform="translate('+x+' '+y+') rotate('+r+') scale('+s+')"><path d="M-30 0C-30-26 30-26 30 0Z"/><path d="M-32 6q8 6 16 0t16 0t16 0t16 0"/><rect x="-31" y="11" width="62" height="10" rx="5"/><path d="M-30 25H30C30 35-30 35-30 25Z"/><path d="M-12-13l3 2M4-16l3 1M14-9l2 2M-20-6l2 2"/></g>'}
+var PRINTS={
+ rivera:{tone:'black',handle:'#24211e',ink:'normal',art:'<g fill="#F3DDB5" text-anchor="middle" font-family="Young Serif,Georgia,serif"><text x="131" y="196" font-size="13" letter-spacing="4">ALMACÉN · BAR</text><path d="M82 206H180" stroke="#F3DDB5" stroke-width="1.4"/><text x="131" y="240" font-size="34" letter-spacing="1">RIVERA</text><path d="M96 252c14 8 26 8 35 0 9 8 21 8 35 0" stroke="#F3DDB5" stroke-width="1.6" fill="none"/><text x="131" y="280" font-size="10" letter-spacing="3">DESDE 1987</text></g>'},
+ bestia:{tone:'orange',handle:'#b98a55',ink:'normal',art:'<g fill="none" stroke="#F3DDB5" stroke-width="2.2" opacity=".55" stroke-linecap="round">'+burger(70,130,.8,-12)+burger(190,120,.7,10)+burger(110,318,.75,8)+burger(205,306,.8,-8)+burger(55,235,.6,15)+burger(212,215,.55,-15)+'</g><g fill="#001011" font-family="Young Serif,Georgia,serif" text-anchor="middle"><text x="131" y="214" font-size="38">Bestia</text><text x="131" y="252" font-size="38">Burger</text><text x="131" y="280" font-size="12" letter-spacing="1">a la parrilla, para llevar</text></g>'},
+ tostado:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<g fill="#001011" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" opacity=".9"><text x="44" y="124" font-size="24">TOSTADOS</text><text x="166" y="124" font-size="24">PAPAS</text><text x="44" y="150" font-size="16" font-weight="400">CHEESE · BURGER</text><text x="170" y="152" font-size="20">FRITAS</text><text x="44" y="304" font-size="28">CLASSIC</text><text x="152" y="304" font-size="28">BEER</text><text x="44" y="338" font-size="22" font-weight="400">PAPAS FRITAS</text><text x="172" y="338" font-size="22">BEST</text><text transform="translate(216 272) rotate(-90)" font-size="22">BURGER</text><text transform="translate(62 266) rotate(-90)" font-size="17" font-weight="400">CHEESE</text></g><circle cx="131" cy="222" r="50" fill="#001011" opacity=".92"/><circle cx="131" cy="222" r="43" fill="none" stroke="#c99a62" stroke-width="1.5"/><g text-anchor="middle"><text x="131" y="226" font-family="Young Serif,Georgia,serif" font-size="22" fill="#d9b57f">Tostado</text><text x="131" y="246" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="13" letter-spacing="2" fill="#d9b57f">STORE</text></g>'},
+ pancho:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:function(id){return '<defs><path id="'+id+'ring" d="M131 222m-56 0a56 56 0 1 1 112 0a56 56 0 1 1 -112 0"/></defs><circle cx="131" cy="222" r="62" fill="none" stroke="#F15946" stroke-width="22"/><text font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="15" letter-spacing="1.5" fill="#efd9b0" dy="5"><textPath href="#'+id+'ring">PANADERÍA · DON PANCHO · HORNO DE BARRIO ·</textPath></text><circle cx="131" cy="222" r="45" fill="none" stroke="#F15946" stroke-width="2"/><ellipse cx="131" cy="226" rx="30" ry="17" fill="#F15946"/><path d="M116 220l6 10M128 216l6 12M140 216l6 12" stroke="#efd9b0" stroke-width="3" stroke-linecap="round"/><text x="131" y="198" font-family="Young Serif,Georgia,serif" font-size="11" text-anchor="middle" fill="#F15946">DESDE 1994</text>'}},
+ mercado:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<g stroke="#001011" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="131" cy="152" rx="62" ry="30" stroke-width="3"/><path d="M110 194c7-6 14-6 21 0 7-6 14-6 21 0"/><path d="M56 262c18-14 46-14 60 0-14 12-42 12-60 0zM116 262l12-9v18z"/><circle cx="74" cy="259" r="2.5" fill="#001011"/><path d="M168 240c12-14 34-10 36 6 0 16-22 22-34 12-6-5-6-12-2-18z"/><path d="M196 234c6-10 16-12 20-8-6 2-12 6-14 12"/><path d="M78 312c10-22 30-30 44-30-4 18-20 30-44 30zM78 312l30-22"/><path d="M150 334l40-38M182 296l12-4-4 12M162 326l-6-6M170 318l-6-6M178 310l-6-6"/></g><g fill="#001011" text-anchor="middle" font-family="Young Serif,Georgia,serif"><text x="131" y="150" font-size="16">MERCADO</text><text x="131" y="171" font-size="16" letter-spacing="3">SUR</text><text x="131" y="222" font-size="15" font-style="italic">Cocina de barrio</text></g>'},
+ eco:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<g transform="translate(131 208)" fill="none" stroke-width="9" stroke-linecap="round">'+[0,120,240].map(function(a,i){var c=['#3f8a46','#2f6e38','#4c9a52'][i];return '<g transform="rotate('+a+')"><path d="M-14-30A33 33 0 0 1 26-20" stroke="'+c+'"/><path d="M22-32L36-14L14-10Z" fill="'+c+'" stroke="none"/></g>'}).join('')+'</g><g stroke="#556F44" stroke-width="2" fill="#659B5E"><path d="M60 334c10-50 6-90-6-130" fill="none"/><path d="M58 304c-14-6-20-18-18-30 12 4 18 16 18 30z"/><path d="M60 274c12-8 24-6 30 2-10 8-22 8-30-2z"/><path d="M57 244c-14-4-22-16-22-28 14 2 22 14 22 28z"/><path d="M202 334c-10-50-6-90 6-130" fill="none"/><path d="M204 304c14-6 20-18 18-30-12 4-18 16-18 30z"/><path d="M202 274c-12-8-24-6-30 2 10 8 22 8 30-2z"/><path d="M205 244c14-4 22-16 22-28-14 2-22 14-22 28z"/></g><text x="131" y="306" text-anchor="middle" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="24" fill="#556F44">ECO MARKET</text>'},
+ kraftpack:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<circle cx="131" cy="206" r="56" fill="none" stroke="#F15946" stroke-width="6"/><circle cx="131" cy="206" r="46" fill="#F15946"/><path d="M111 194h40l-4 32h-32z" fill="#efd9b0"/><path d="M121 194v-6a10 10 0 0 1 20 0v6" fill="none" stroke="#efd9b0" stroke-width="4" stroke-linecap="round"/><text x="131" y="302" text-anchor="middle" fill="#001011" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="34">KRAFTPACK</text><text x="131" y="324" text-anchor="middle" font-family="Young Serif,Georgia,serif" font-size="12" fill="#001011">bolsas de papel · Buenos Aires</text>'},
+ spec:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<circle cx="131" cy="216" r="44" fill="none" stroke="#F15946" stroke-width="5"/><text x="131" y="228" text-anchor="middle" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="34" fill="#001011">KP</text>'}
+};
+function bag(name,sos){
+  var P=PRINTS[name],id='bg'+(uid++),tone=P.tone;
+  var art=typeof P.art==='function'?P.art(id):P.art;
+  var toneFill=tone==='black'?'<rect width="300" height="390" fill="#121110" opacity=".9"/>':tone==='orange'?'<rect width="300" height="390" fill="#F15946" opacity=".8"/>':'<rect width="300" height="390" fill="#c99a62" opacity=".12"/>';
+  var inside=tone==='black'?'#050505':tone==='orange'?'#7a2a1f':'#4a3420';
+  var h=P.handle,hd=tone==='black'?'#3a3734':'#7c5630';
+  var top=sos?'M40 92l9-8 9 8 9-8 9 8 9-8 9 8 9-8 9 8 9-8 9 8 9-8 9 8 9-8 9 8 9-8 9 8 9-8 9 8 9-8 2 2V352H40Z':'M40 92H222V352H40Z';
+  var s='<svg class="rbag" viewBox="0 0 300 390" aria-hidden="true"><defs>'+
+   '<pattern id="'+id+'p" patternUnits="userSpaceOnUse" width="300" height="390"><image href="'+IMG+'" x="-180" y="-5" width="766" height="400" preserveAspectRatio="none"/>'+toneFill+'</pattern>'+
+   '<linearGradient id="'+id+'f" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></linearGradient>'+
+   '<linearGradient id="'+id+'v" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".18"/><stop offset=".12" stop-color="#000" stop-opacity="0"/><stop offset=".86" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>'+
+   '<radialGradient id="'+id+'sh"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>'+
+   '<clipPath id="'+id+'c"><path d="'+top+'"/></clipPath></defs>'+
+   '<ellipse cx="160" cy="358" rx="140" ry="13" fill="url(#'+id+'sh)"/>';
+  if(!sos){
+    s+='<path d="M84 76H268L222 92H40Z" fill="'+inside+'"/>'+
+       '<g class="hd"><path d="M132 82C128 14 226 14 222 82" fill="none" stroke="'+hd+'" stroke-width="9" stroke-linecap="round"/>'+
+       '<path d="M80 98C75 8 186 8 181 98" fill="none" stroke="'+h+'" stroke-width="10" stroke-linecap="round"/>'+
+       '<path d="M80 98C75 8 186 8 181 98" fill="none" stroke="#000" stroke-opacity=".28" stroke-width="10" stroke-dasharray="2.5 4.5"/>'+
+       '<path d="M78 92C74 14 182 14 178 92" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="2"/></g>';
   }
+  s+='<path d="M222 92L268 76V338L222 352Z" fill="url(#'+id+'p)"/><path d="M222 92L268 76V338L222 352Z" fill="#000" opacity=".3"/>'+
+     '<path d="M222 92L268 76L246 214Z" fill="#fff" opacity=".07"/><path d="M222 352L268 338L246 214Z" fill="#000" opacity=".12"/>'+
+     '<path d="M222 92L246 214L222 352" fill="none" stroke="#000" stroke-opacity=".28" stroke-width="1.2"/>'+
+     '<path d="'+top+'" fill="url(#'+id+'p)"/>'+
+     '<g clip-path="url(#'+id+'c)"><g style="mix-blend-mode:'+P.ink+'">'+art+'</g>'+
+     '<rect x="40" y="76" width="182" height="276" fill="url(#'+id+'f)"/><rect x="40" y="76" width="182" height="276" fill="url(#'+id+'v)"/>'+
+     (sos?'':'<rect x="40" y="92" width="182" height="9" fill="#000" opacity=".14"/><path d="M40 101H222" stroke="#fff" stroke-opacity=".22"/>')+
+     '<path d="M40 326H222" stroke="#000" stroke-opacity=".12" stroke-width="1.5"/><path d="M40 352L62 326M222 352L200 326" stroke="#000" stroke-opacity=".1"/></g>'+
+     '<path d="'+top+'" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1"/></svg>';
+  return s;
+}
+function mount(el){el.innerHTML=bag(el.dataset.bag,el.dataset.sos==='1')}
+document.querySelectorAll('[data-bag]').forEach(mount);
 
-  /* Revelado */
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(!e.isIntersecting)return;var el=e.target;el.classList.add('in');
-    el.querySelectorAll('[data-count]').forEach(count);
-    if(el.matches('[data-count]'))count(el);
-    el.querySelectorAll('.gauge .fg').forEach(function(g){g.style.strokeDashoffset=226*(1-parseFloat(g.dataset.v))});
-    io.unobserve(el);
-  })},{threshold:.18,rootMargin:'0px 0px -6% 0px'});
-  document.querySelectorAll('.rv,.lead,.spec-art,.metrics,.season .month,.hbars').forEach(function(el){io.observe(el)});
-  setTimeout(function(){document.querySelectorAll('.rv:not(.in)').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in')})},2500);
+/* ---------- Ramas ---------- */
+function branches(svg,list){var out='',k=0;
+  list.forEach(function(b){out+='<path d="'+b.d+'" stroke="#556F44" stroke-width="3" stroke-linecap="round" style="--len:600"/>';
+    b.l.forEach(function(L){out+='<g transform="translate('+L[0]+' '+L[1]+') rotate('+L[2]+') scale('+(L[3]||1)+')"><g class="lf" style="--i:'+(k++)+'"><path d="M0 0C14-14 44-16 62 0C44 16 14 14 0 0Z" fill="#659B5E"/><path d="M0 0H56" stroke="#556F44" stroke-width="1.6"/></g></g>'})});
+  svg.innerHTML=out}
+branches(document.getElementById('hero-leaves'),[
+ {d:'M150 470C120 380 110 280 140 170',l:[[132,400,200],[124,340,195],[122,280,205],[128,220,200],[140,172,235],[128,380,-20,.9],[122,310,-25,.9],[126,250,-30,.9]]},
+ {d:'M350 470C380 380 390 280 360 170',l:[[368,400,-20],[376,340,-15],[378,280,-25],[372,220,-20],[360,172,-55],[372,380,200,.9],[378,310,205,.9],[374,250,210,.9]]}]);
+branches(document.getElementById('eco-branch'),[
+ {d:'M160 470C110 360 100 240 150 110',l:[[140,420,200],[126,360,195],[118,300,200],[120,240,205],[134,180,210],[150,112,240],[134,390,-25,.9],[122,320,-25,.9],[122,260,-30,.9],[130,200,-35,.9]]},
+ {d:'M340 470C390 360 400 240 350 110',l:[[360,420,-20],[374,360,-15],[382,300,-20],[380,240,-25],[366,180,-30],[350,112,-60],[366,390,205,.9],[378,320,205,.9],[378,260,210,.9],[370,200,215,.9]]}]);
 
-  /* Parallax del hero con el puntero */
-  var art=document.querySelector('.hero-art'),scraps=document.querySelectorAll('.scrap');
-  if(!reduce&&matchMedia('(pointer:fine)').matches){
-    var tx=0,ty=0,cx=0,cy=0;
-    document.querySelector('.hero').addEventListener('pointermove',function(e){tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5});
-    (function loop(){cx+=(tx-cx)*.07;cy+=(ty-cy)*.07;
-      scraps.forEach(function(s){var d=+s.dataset.depth;s.style.transform='translate('+(cx*d)+'px,'+(cy*d)+'px) rotate('+(cx*d*.4)+'deg)'});
-      art.querySelector('.bag').style.transform='rotateY('+(cx*8)+'deg) rotateX('+(-cy*5)+'deg)';
-      requestAnimationFrame(loop)})();
-    art.style.perspective='900px';
-  }
+requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.add('loaded')})});
 
-  /* Riel del proceso: la bobina avanza con el scroll de la sección */
-  var rail=document.getElementById('rail');
-  function railUpd(){var r=rail.getBoundingClientRect(),vh=innerHeight;
-    var p=Math.min(1,Math.max(0,(vh*.85-r.top)/(r.height+vh*.35)));
-    rail.style.setProperty('--p',p.toFixed(3));rail.style.setProperty('--rail-h',(r.height-50)+'px');}
-  addEventListener('scroll',railUpd,{passive:true});addEventListener('resize',railUpd);railUpd();
+/* ---------- Bordes rasgados ---------- */
+function rnd(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}}
+document.querySelectorAll('.sheet').forEach(function(s,idx){
+  var c=s.classList.contains('ink')?'#001011':s.classList.contains('orange')?'#F15946':s.classList.contains('photo')?'#d2a874':'#F3DDB5';
+  var r=rnd(idx*97+29),d='M0 30 L0 '+(12+r()*10);
+  for(var x=0;x<=1200;x+=12+r()*24){d+=' L'+x.toFixed(0)+' '+(3+r()*20).toFixed(1)}
+  d+=' L1200 '+(8+r()*12)+' L1200 30 Z';
+  s.insertAdjacentHTML('afterbegin','<svg class="tear" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'" fill="'+c+'"/></svg>');
+});
 
-  /* Tabs del producto */
-  var bag2=document.getElementById('bag2'),tm=document.getElementById('tab-manija'),ts=document.getElementById('tab-sos');
-  function setTab(sos){tm.setAttribute('aria-selected',!sos);ts.setAttribute('aria-selected',sos);bag2.classList.toggle('sos',sos);
-    document.getElementById('sp-handle').textContent=sos?'Sin manija':'Papel torcido';
-    document.getElementById('sp-handle-l').textContent=sos?'boca dentada, se abre parada':'manija';
-    document.getElementById('sp-use').textContent=sos?'Panaderías':'Comercios';
-    document.getElementById('sp-use-l').textContent=sos?'y comida al paso':'retail y gastronomía';}
-  tm.addEventListener('click',function(){setTab(false)});ts.addEventListener('click',function(){setTab(true)});
-  [tm,ts].forEach(function(b){b.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var o=b===tm?ts:tm;o.focus();o.click()}})});
+/* ---------- Menú ---------- */
+var mb=document.querySelector('.menu-btn'),menu=document.getElementById('menu');
+function setMenu(o){menu.classList.toggle('open',o);mb.setAttribute('aria-expanded',o);mb.textContent=o?'Cerrar':'Menú'}
+mb.addEventListener('click',function(){setMenu(!menu.classList.contains('open'))});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')setMenu(false)});
+addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
 
-  /* Plano: bobinas y pallets dibujados */
-  var NS='http://www.w3.org/2000/svg',coils=document.getElementById('coils'),pals=document.getElementById('pallets');
-  for(var i=0;i<4;i++)for(var j=0;j<16;j++){var c=document.createElementNS(NS,'circle');c.setAttribute('cx',190+j*24);c.setAttribute('cy',56+i*22);c.setAttribute('r',8);c.setAttribute('fill','#b5864f');c.setAttribute('stroke','#001011');c.setAttribute('stroke-width','1');coils.appendChild(c)}
-  for(i=0;i<3;i++)for(j=0;j<15;j++){var q=document.createElementNS(NS,'rect');q.setAttribute('x',378+j*26);q.setAttribute('y',524+i*22);q.setAttribute('width',20);q.setAttribute('height',16);q.setAttribute('fill','#C9995F');q.setAttribute('stroke','#001011');q.setAttribute('stroke-width','1');pals.appendChild(q)}
-  var zd=document.getElementById('zone-detail');
-  document.querySelectorAll('.plant .zone').forEach(function(z){
-    function show(){var d=z.dataset.z.split('|');zd.innerHTML='<h3></h3><p></p>';zd.querySelector('h3').textContent=d[0];zd.querySelector('p').innerHTML='';zd.querySelector('p').append(d[2]+' ');var b=document.createElement('b');b.textContent=d[1];zd.querySelector('p').append(b);
-      zd.animate&&!reduce&&zd.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:400,easing:'cubic-bezier(.22,1,.36,1)'})}
-    z.addEventListener('click',show);z.addEventListener('mouseenter',show);z.addEventListener('focus',show);
-    z.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show()}});
-  });
+/* ---------- Contadores y revelado ---------- */
+function fmt(v,dec,sep){var s=dec?v.toFixed(dec).replace('.',','):Math.round(v).toString();if(sep)s=s.replace(/\B(?=(\d{3})+(?!\d))/g,'.');return s}
+function count(el){if(reduce||el.dataset.done)return;el.dataset.done=1;var to=parseFloat(el.dataset.count),dec=+el.dataset.dec||0,sep=el.dataset.sep,t0=null;
+  function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1700);k=1-Math.pow(1-k,4);el.textContent=fmt(to*k,dec,sep);if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+setTimeout(function(){document.querySelectorAll('.hero [data-count]').forEach(count)},900);
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;el.classList.add('in');el.querySelectorAll('[data-count]').forEach(count);io.unobserve(el)})},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+setTimeout(function(){document.querySelectorAll('.rv:not(.in)').forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in')})},2600);
 
-  /* Tablero kanban */
-  var shelf=document.getElementById('shelf'),msg=document.getElementById('board-msg'),zg=document.getElementById('zg'),zy=document.getElementById('zy'),zr=document.getElementById('zr'),n=3;
-  var texts={3:'3 pallets en el supermercado. Zona verde: no se produce.',2:'Salió un pallet y su tarjeta pasó al tablero. Zona amarilla: planificación lo programa.',1:'Queda 1 pallet. Zona roja: se produce en el turno siguiente.',0:'Sin stock: se usan horas extra del sábado antes de dejar al cliente sin bolsas.'};
-  function paint(){zg.classList.toggle('on',n===3);zy.classList.toggle('on',n===2);zr.classList.toggle('on',n<=1);msg.textContent=texts[n]}
-  document.getElementById('dispatch').addEventListener('click',function(){if(n===0)return;var ps=shelf.querySelectorAll('.pallet:not(.gone)');ps[ps.length-1].classList.add('gone');n--;paint()});
-  document.getElementById('refill').addEventListener('click',function(){var g=shelf.querySelector('.pallet.gone');if(!g){msg.textContent='El supermercado ya está completo: 3 tarjetas, 3 pallets como máximo.';return}g.classList.remove('gone');n++;paint();if(n<3)msg.textContent='La tarjeta volvió con un pallet de 18.000 bolsas. '+texts[n]});
+/* ---------- Hero: bolsas siguen el puntero ---------- */
+var stage=document.querySelector('.stage');
+if(!reduce&&matchMedia('(pointer:fine)').matches){var tx=0,ty=0,cx=0,cy=0,bs=stage.querySelectorAll('.b'),dep=[-18,-24,14];
+  document.querySelector('.hero').addEventListener('pointermove',function(e){tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5});
+  (function loop(){cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;
+    bs.forEach(function(b,i){b.style.transform='translate('+(cx*dep[i]).toFixed(2)+'px,'+(cy*dep[i]).toFixed(2)+'px) rotateY('+(cx*10).toFixed(2)+'deg)'});
+    requestAnimationFrame(loop)})();}
 
-  /* Calculadora de lote */
-  var qty=document.getElementById('qty'),out=document.getElementById('qty-out'),rolls=document.getElementById('rolls');
-  function best(q){var bestC=null;
-    for(var a=0;a<=10;a++)for(var b=0;b<=8;b++)for(var c=0;c<=6;c++){var t=a*12000+b*18000+c*24000;if(t<q||t>q*1.05||t===0)continue;var cnt=a+b+c;
-      var sc=(t-q)*10+cnt;if(!bestC||sc<bestC.sc)bestC={a:a,b:b,c:c,t:t,cnt:cnt,sc:sc}}
-    if(!bestC){for(a=0;a<=10;a++)for(b=0;b<=8;b++)for(c=0;c<=6;c++){t=a*12000+b*18000+c*24000;if(t<q)continue;cnt=a+b+c;sc=(t-q)*10+cnt;if(!bestC||sc<bestC.sc)bestC={a:a,b:b,c:c,t:t,cnt:cnt,sc:sc}}}
-    return bestC}
-  function calc(){var q=+qty.value,r=best(q);out.textContent=fmt(q,0,1);
-    rolls.innerHTML='';var mix=[];
-    [['c','l','1.000 kg'],['b','m','750 kg'],['a','s','500 kg']].forEach(function(k){for(var i=0;i<r[k[0]];i++){var d=document.createElement('div');d.className='r '+k[1];d.style.animationDelay=(rolls.children.length*60)+'ms';d.innerHTML='<i></i>'+k[2];rolls.appendChild(d)}if(r[k[0]])mix.push(r[k[0]]+' × '+k[2])});
-    document.getElementById('c-rolls').textContent=r.cnt+(r.cnt===1?' bobina':' bobinas');
-    document.getElementById('c-mix').textContent=mix.join(' + ');
-    document.getElementById('c-bags').textContent=fmt(r.t,0,1);
-    var diff=(r.t-q)/q*100;document.getElementById('c-diff').textContent=(diff===0?'0':'+'+fmt(diff,diff<1&&diff>0?1:0))+'%';}
-  qty.addEventListener('input',calc);calc();
+/* ---------- Proceso: la bobina avanza con el scroll ---------- */
+var rail=document.getElementById('rail');
+function railUpd(){var r=rail.getBoundingClientRect(),vh=innerHeight,p=Math.min(1,Math.max(0,(vh*.8-r.top)/(r.height+vh*.3)));
+  rail.style.setProperty('--p',p.toFixed(3));rail.style.setProperty('--rail-w',(r.width-64)+'px');rail.style.setProperty('--rail-h',(r.height-64)+'px')}
+addEventListener('scroll',railUpd,{passive:true});addEventListener('resize',railUpd);railUpd();
 
-  /* Copiar correo */
-  document.getElementById('copy').addEventListener('click',function(){var m=document.getElementById('mail').textContent,cm=document.getElementById('copy-msg');
-    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);cm.textContent='Seleccioné el correo: copialo con Ctrl+C.'}
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(m).then(function(){cm.textContent='Correo copiado.'},sel)}else sel()});
+/* ---------- Producto: con / sin manija ---------- */
+var sb=document.getElementById('spec-bag'),tm=document.getElementById('tab-manija'),ts=document.getElementById('tab-sos');
+function setTab(sos){tm.setAttribute('aria-selected',!sos);ts.setAttribute('aria-selected',sos);
+  sb.classList.add('swap');setTimeout(function(){sb.dataset.sos=sos?'1':'0';mount(sb);sb.classList.remove('swap')},reduce?0:300);
+  document.getElementById('sp-a').textContent=sos?'Boca dentada':'Papel torcido';
+  document.getElementById('sp-a2').textContent=sos?'Se abre y queda parada':'Manija resistente';
+  document.getElementById('sp-b').textContent=sos?'Panaderías':'Comercios';
+  document.getElementById('sp-b2').textContent=sos?'Y comida al paso':'Retail y gastronomía';}
+tm.addEventListener('click',function(){setTab(false)});ts.addEventListener('click',function(){setTab(true)});
+[tm,ts].forEach(function(b){b.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var o=b===tm?ts:tm;o.focus();o.click()}})});
 
-  /* Nav activa */
-  var links=[].slice.call(document.querySelectorAll('.nav ul a'));
-  var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
-  links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)so.observe(s)});
+/* ---------- Calculadora de lote ---------- */
+var qty=document.getElementById('qty'),out=document.getElementById('qty-out'),rolls=document.getElementById('rolls');
+function best(q,lim){var b=null;for(var a=0;a<=10;a++)for(var m=0;m<=8;m++)for(var l=0;l<=6;l++){var t=a*12000+m*18000+l*24000;if(t<q||(lim&&t>q*1.05))continue;var sc=(t-q)*10+a+m+l;if(!b||sc<b.sc)b={a:a,m:m,l:l,t:t,n:a+m+l,sc:sc}}return b}
+function calc(){var q=+qty.value,r=best(q,1)||best(q,0);out.textContent=fmt(q,0,1);rolls.innerHTML='';var mix=[];
+  [['l','l','1.000 kg'],['m','m','750 kg'],['a','s','500 kg']].forEach(function(k){for(var i=0;i<r[k[0]];i++){var d=document.createElement('div');d.className='r '+k[1];d.style.animationDelay=(rolls.children.length*70)+'ms';d.innerHTML='<i></i>'+k[2];rolls.appendChild(d)}if(r[k[0]])mix.push(r[k[0]]+' × '+k[2])});
+  document.getElementById('c-rolls').textContent=r.n+(r.n===1?' bobina':' bobinas');
+  document.getElementById('c-mix').textContent=mix.join(' + ');
+  document.getElementById('c-bags').textContent=fmt(r.t,0,1);
+  var diff=(r.t-q)/q*100;document.getElementById('c-diff').textContent=diff===0?'0%':'+'+fmt(diff,diff<1?1:0)+'%';}
+qty.addEventListener('input',calc);calc();
+
+/* ---------- Nav activa ---------- */
+var links=[].slice.call(document.querySelectorAll('.nav ul a'));
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)links.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-45% 0px -50% 0px'});
+links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)so.observe(s)});
 })();
 </script>
 <!--ART-END-->
