@@ -59,6 +59,7 @@ h3{font-family:var(--f-sub);font-weight:400;font-size:var(--t-h3);line-height:1.
 p{margin:0;max-width:60ch;text-wrap:pretty}
 .lede{font-family:var(--f-sub);font-size:var(--t-lede);line-height:1.35}
 .tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-sub);font-size:1rem;letter-spacing:.14em;text-transform:uppercase}
+.tag .year{font-family:var(--f-title);font-weight:900;font-size:1.9em;letter-spacing:.02em;line-height:1}
 .tag::before{content:"";width:10px;height:10px;background:currentColor;transform:rotate(45deg)}
 
 /* Superficies */
@@ -92,7 +93,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(0,16,17,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--kraft);border-bottom:1px solid rgba(243,221,181,.12)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px}
 .logo{display:inline-flex;align-items:center;gap:.5em;font-family:var(--f-title);font-size:1.75rem;font-weight:900;text-decoration:none}
-.logo svg{width:30px;height:34px}
+.logo svg{width:42px;height:42px;transition:transform .6s var(--ease)}
+.logo:hover svg{transform:rotate(-12deg) scale(1.06)}
 .nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
 .nav ul a{display:block;padding:12px 14px;font-family:var(--f-sub);font-size:1.05rem;text-decoration:none;position:relative}
 .nav ul a::after{content:"";position:absolute;left:14px;right:14px;bottom:7px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
@@ -213,14 +215,14 @@ section{scroll-margin-top:76px}
 .specs span{font-size:1.1rem}
 
 /* Proceso */
-.rail{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(16px,2vw,28px);padding-top:92px}
+.rail{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(16px,2vw,28px);padding-top:92px}
 .rail-line{position:absolute;left:0;right:0;top:38px;height:8px;border-radius:4px;background:rgba(0,16,17,.18);overflow:hidden}
 .rail-line i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(var(--p,0))}
 .roll{position:absolute;top:10px;left:0;width:64px;height:64px;transform:translateX(calc(var(--p,0) * var(--rail-w,800px)))}
 .roll-inner{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,var(--ink) 0 15%,var(--kraft) 16% 19%,transparent 20%),repeating-radial-gradient(circle,#c99a62 0 3px,#b8864f 3px 5px);border:3px solid var(--ink);transform:rotate(calc(var(--p,0) * 1080deg));box-shadow:0 8px 16px -6px rgba(0,16,17,.6)}
 .step{display:grid;gap:10px;align-content:start;min-width:0}
-.step .n{font-family:var(--f-title);font-weight:900;font-size:3.4rem;line-height:.9;color:var(--kraft);-webkit-text-stroke:2px var(--ink)}
-.step h3{font-size:1.5rem}
+.step .n{font-family:var(--f-title);font-weight:900;font-size:3rem;line-height:.9;color:var(--kraft);-webkit-text-stroke:2px var(--ink)}
+.step h3{font-size:1.35rem}
 .step p{font-size:1.12rem}
 @media (max-width:1000px){
   .rail{grid-template-columns:1fr;padding-top:0;padding-left:92px;gap:36px}
@@ -327,6 +329,160 @@ footer nav a:hover{color:var(--orange)}
   .hero-actions .btn{width:100%}
   .calc-out{grid-template-columns:1fr 1fr}
 }
+
+/* Capítulos */
+.chapter{padding-block:clamp(90px,10vw,140px)}
+.chapter .wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,60px);align-items:center}
+.ch-num{font-family:var(--f-title);font-weight:900;font-size:clamp(7rem,4rem + 12vw,16rem);line-height:.8;color:var(--ink);-webkit-text-stroke:0}
+.chapter h2{font-size:clamp(3rem,2rem + 4.4vw,6.4rem);margin:14px 0 18px}
+.chapter .lede{max-width:40ch}
+/* Mercado */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.fact{border-top:3px solid var(--ink);padding-top:20px;display:grid;gap:10px}
+.fact b{font-family:var(--f-title);font-weight:900;font-size:clamp(3rem,2rem + 3.4vw,5.4rem);line-height:.85;color:var(--orange)}
+.fact p{font-size:1.15rem}
+.explain{margin-top:clamp(40px,5vw,64px);padding:28px 30px;border-radius:22px;background:var(--ink);color:var(--kraft);display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:start}
+.explain h3{font-family:var(--f-title);font-weight:900;font-size:2.2rem;color:var(--orange)}
+.explain p{font-size:1.2rem;max-width:none}
+.explain.dark{background:rgba(243,221,181,.08);border:1px solid rgba(243,221,181,.18)}
+.compete{margin-top:clamp(56px,7vw,96px);display:grid;gap:28px}
+.compete h3{font-family:var(--f-title);font-weight:900;font-size:clamp(2rem,1.6rem + 1.6vw,3rem)}
+.comp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
+.comp{padding:24px;border-radius:20px;border:2px solid var(--ink);display:grid;gap:10px;align-content:start;transition:transform .45s var(--ease)}
+.comp:hover{transform:translateY(-5px)}
+.comp h4{margin:0;font-family:var(--f-sub);font-weight:400;font-size:1.4rem;line-height:1.2}
+.comp p{font-size:1.08rem}
+.comp.us{background:var(--orange);border-color:var(--orange)}
+/* Producto: escala por tamaño */
+.spec-stage .bagwrap{transform:scale(var(--sc,.9));transform-origin:50% 92%;transition:transform .7s var(--ease)}
+.product .tabs{border-color:var(--kraft)}
+.product .tabs button{color:var(--kraft)}
+.product .tabs button[aria-selected="true"]{background:var(--kraft);color:var(--ink)}
+.product .specs li{border-top-color:var(--kraft)}
+.product .dims path{stroke:var(--kraft)}
+.product .dims text{fill:var(--kraft)}
+.product .lede{color:var(--kraft)}
+/* Propuesta */
+.values3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin-bottom:clamp(36px,5vw,56px)}
+.v3{padding:26px;border-radius:20px;background:var(--ink);color:var(--kraft);display:grid;gap:10px;align-content:start}
+.v3 b{font-family:var(--f-title);font-weight:900;font-size:2.6rem;line-height:1;color:var(--orange)}
+.v3 h3{font-size:1.5rem}
+.v3 p{font-size:1.1rem;color:rgba(243,221,181,.9)}
+/* Números */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.num{border-top:3px solid var(--orange);padding-top:20px;display:grid;gap:8px}
+.num b{font-family:var(--f-title);font-weight:900;font-size:clamp(2.8rem,2rem + 2.6vw,4.6rem);line-height:.9}
+.num p{font-size:1.12rem}
+/* Problema */
+.timeline{display:grid;gap:18px;padding:30px;border-radius:24px;background:#fff7e6;border:2px solid var(--ink)}
+.tl-row{display:grid;grid-template-columns:110px 1fr 120px;gap:16px;align-items:center}
+.tl-label{font-family:var(--f-sub);font-size:1.15rem}
+.tl-row b{font-family:var(--f-title);font-weight:900;font-size:1.9rem;text-align:right}
+.tl-bar{position:relative;height:38px;border-radius:8px;background:rgba(0,16,17,.06);overflow:hidden}
+.tl-wait{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:repeating-linear-gradient(135deg,rgba(0,16,17,.55) 0 8px,rgba(0,16,17,.4) 8px 16px);border-radius:8px;transform-origin:left;transform:scaleX(0);transition:transform 1.6s var(--ease)}
+.tl-wait.good{background:repeating-linear-gradient(135deg,var(--leaf) 0 8px,var(--moss) 8px 16px)}
+.tl-work{position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--orange)}
+.in .tl-wait{transform:scaleX(1)}
+.tl-legend{display:flex;gap:24px;font-family:var(--f-sub);font-size:1rem;flex-wrap:wrap}
+.tl-legend i{display:inline-block;width:16px;height:16px;border-radius:4px;margin-right:8px;vertical-align:-3px}
+.lg-wait{background:rgba(0,16,17,.5)}.lg-work{background:var(--orange)}
+.eff{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin-top:28px}
+.effc{padding:24px;border-radius:20px;border:2px solid var(--ink);display:grid;gap:8px;align-content:start}
+.effc>b{font-family:var(--f-title);font-weight:900;font-size:clamp(2.4rem,1.8rem + 2vw,3.6rem);line-height:1;color:var(--moss)}
+.effc h3{font-size:1.4rem;color:var(--orange)}
+.effc p{font-size:1.12rem}
+/* Decisiones Lean */
+.decisions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.dec{padding:28px 26px;border-radius:22px;background:rgba(243,221,181,.06);border:1px solid rgba(243,221,181,.16);display:grid;gap:14px;align-content:start;transition:transform .45s var(--ease),border-color .45s,background .45s;min-width:0}
+.js .dec.rv.in:hover,.dec:hover{transform:translateY(-6px);border-color:var(--orange);background:rgba(241,89,70,.1)}
+.dec-tag{justify-self:start;font-family:var(--f-sub);font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--orange);color:var(--ink)}
+.dec h3{font-family:var(--f-title);font-weight:900;font-size:clamp(1.7rem,1.4rem + .9vw,2.2rem);line-height:1;color:var(--kraft)}
+.dec dl{margin:0;display:grid;gap:6px}
+.dec dt{font-family:var(--f-sub);font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-top:6px}
+.dec dd{margin:0;font-size:1.1rem;color:rgba(243,221,181,.92);line-height:1.5}
+.light-dec{background:#fff7e6;border:2px solid var(--ink)}
+.js .light-dec.rv.in:hover,.light-dec:hover{background:#fff1d6;border-color:var(--ink)}
+.light-dec h3{color:var(--ink)}.light-dec dd{color:var(--ink)}.light-dec dt{color:var(--moss)}
+.route{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.route span{font-family:var(--f-title);font-weight:900;font-size:1.2rem;padding:6px 12px;border-radius:8px;background:var(--kraft);color:var(--ink);position:relative}
+.route span:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:1rem}
+.route{gap:18px}
+.compare{display:flex;align-items:baseline;gap:12px;font-family:var(--f-title);font-weight:900}
+.compare s{font-size:1.6rem;opacity:.5}
+.compare b{font-size:2.6rem;color:var(--orange);line-height:1}
+.small{font-size:1rem}
+.order2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,24px)}
+.fives{display:flex;gap:8px;flex-wrap:wrap}
+.fives span{font-family:var(--f-sub);font-size:.98rem;padding:5px 12px;border:1.5px solid var(--ink);border-radius:999px}
+/* Demanda */
+.price{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:center;margin-bottom:28px}
+.price-bar{display:flex;height:84px;border-radius:14px;overflow:hidden;border:2px solid var(--kraft)}
+.price-bar i{display:flex;align-items:center;padding:0 16px;font-style:normal;font-family:var(--f-sub);font-size:1.05rem}
+.price-bar .paper{width:var(--w);background:var(--kraft-photo) center/cover,#c99a62;color:var(--ink);font-weight:600;transform-origin:left;transform:scaleX(0);transition:transform 1.3s var(--ease)}
+.in .price-bar .paper{transform:scaleX(1)}
+.price-bar .rest{flex:1;background:var(--orange);color:var(--ink)}
+.price-text h3{font-family:var(--f-title);font-weight:900;font-size:clamp(1.8rem,1.4rem + 1.2vw,2.6rem);line-height:1;color:var(--kraft)}
+.price-text p{margin-top:12px;font-size:1.12rem;color:rgba(243,221,181,.9)}
+.sim{margin-top:clamp(40px,5vw,64px);padding:clamp(22px,3vw,38px);border-radius:26px;background:var(--kraft);color:var(--ink);display:grid;gap:24px}
+.sim-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+.sim-head h3{font-family:var(--f-title);font-weight:900;font-size:clamp(1.8rem,1.4rem + 1.2vw,2.6rem)}
+.sim .tabs{margin-top:0}
+.sim-body{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:start}
+.gauge-wrap{display:grid;gap:16px}
+.ubar{position:relative;height:46px;border-radius:12px;background:rgba(0,16,17,.1);overflow:hidden}
+.ubar i{position:absolute;left:0;top:0;bottom:0;width:70%;background:var(--leaf);border-radius:12px;transition:width .9s var(--ease),background .5s}
+.ubar i.over{background:var(--orange)}
+.u100{position:absolute;left:83.33%;top:0;bottom:0;border-left:3px dashed var(--ink);padding-left:6px;font-family:var(--f-sub);font-size:.9rem;display:flex;align-items:center}
+.sim-big b{font-family:var(--f-title);font-weight:900;font-size:clamp(4rem,3rem + 3vw,6rem);line-height:.9;display:block}
+.sim-big span{font-family:var(--f-sub);font-size:1.15rem}
+.sim-data{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sim-data div{padding:14px 16px;border-radius:14px;background:#fff7e6}
+.sim-data dt{font-family:var(--f-sub);font-size:.95rem;color:var(--moss)}
+.sim-data dd{margin:2px 0 0;font-family:var(--f-title);font-weight:900;font-size:1.5rem;line-height:1.1}
+.sim-action{grid-column:1/-1;font-size:1.18rem;padding:18px 20px;border-left:5px solid var(--orange);background:#fff7e6;border-radius:0 14px 14px 0;max-width:none}
+.react{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin-top:28px}
+.rc{padding:24px;border-radius:20px;border:1px solid rgba(243,221,181,.2);display:grid;gap:10px;align-content:start}
+.rc h3{font-family:var(--f-title);font-weight:900;font-size:1.8rem;color:var(--orange)}
+.rc p{font-size:1.08rem;color:rgba(243,221,181,.92)}
+.rc b{color:var(--kraft)}
+/* Plan */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.month{border:2px solid var(--ink);border-radius:22px;padding:26px;background:#fff7e6;display:grid;gap:16px;align-content:start;transition:transform .45s var(--ease)}
+.js .month.rv.in:hover,.month:hover{transform:translateY(-6px)}
+.month h3{font-family:var(--f-title);font-weight:900;font-size:2.4rem}
+.util{height:150px;display:flex;align-items:flex-end;border-bottom:2px solid var(--ink);position:relative}
+.util .cap{position:absolute;left:0;right:0;border-top:2px dashed var(--orange);bottom:calc(var(--c) * 1%)}
+.util .cap span{position:absolute;right:0;top:-24px;font-family:var(--f-sub);font-size:.9rem;color:var(--orange)}
+.util i{flex:0 0 46%;background:var(--leaf);height:calc(var(--h) * 1%);transform-origin:bottom;transform:scaleY(0);transition:transform 1.2s var(--ease);border-radius:6px 6px 0 0}
+.util i.over{background:var(--orange)}
+.in .util i{transform:scaleY(1)}
+.month dl{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin:0;font-size:1.08rem}
+.month dt{font-family:var(--f-sub)}
+.month dd{margin:0;font-family:var(--f-title);font-weight:900;font-size:1.35rem;text-align:right}
+.month p{font-size:1.08rem}
+.ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin-top:28px}
+.idea{border-top:3px solid var(--moss);padding-top:18px;display:grid;gap:8px}
+.idea h3{font-size:1.5rem}
+.idea p{font-size:1.1rem}
+/* Cierre */
+.reasons5{margin:28px 0 0;padding:0;list-style:none;counter-reset:r;display:grid;gap:14px;max-width:46ch}
+.reasons5 li{counter-increment:r;position:relative;padding-left:64px;font-size:1.2rem;line-height:1.45;min-height:44px}
+.reasons5 li::before{position:absolute;left:0;top:-2px;content:counter(r);font-family:var(--f-title);font-weight:900;font-size:2.2rem;line-height:1;color:var(--kraft);-webkit-text-stroke:2px var(--ink)}
+.close .tag{margin-bottom:14px}
+.close h2{font-size:clamp(2.8rem,1.8rem + 4.4vw,6.2rem)}
+@media (max-width:1080px){.decisions,.comp-grid,.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){
+  .facts,.values3,.eff,.react,.grid3,.ideas,.order2,.price,.sim-body{grid-template-columns:1fr}
+  .explain{grid-template-columns:1fr;gap:10px}
+  .chapter .wrap{grid-template-columns:1fr;gap:0}
+}
+@media (max-width:600px){
+  .decisions,.comp-grid,.nums,.sim-data{grid-template-columns:1fr}
+  .tl-row{grid-template-columns:1fr;gap:8px}
+  .tl-row b{text-align:left}
+  .rail .step{grid-template-columns:1fr}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.001ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
   .js .rv,.js .enter{opacity:1;transform:none}
@@ -340,19 +496,19 @@ footer nav a:hover{color:var(--orange)}
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#inicio" aria-label="KraftPack, inicio">
-      <svg viewBox="0 0 30 34" aria-hidden="true"><path d="M3 10h24l-2 22H5z" fill="#C9995F" stroke="#F3DDB5" stroke-width="2"/><path d="M10 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="#F15946" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F15946"/><circle cx="22" cy="22" r="17.5" fill="none" stroke="#F3DDB5" stroke-width="1.2" stroke-dasharray="2 2.4"/><path d="M14.5 18h15l-1.4 13.5h-12.2z" fill="#F3DDB5"/><path d="M14.5 18l2-2.2h11l2 2.2" fill="#C9995F"/><path d="M18.5 18v-2.4a3.5 3.5 0 0 1 7 0V18" fill="none" stroke="#001011" stroke-width="1.8" stroke-linecap="round"/><path d="M19 25.5c1.8 1.4 4.2 1.4 6 0" fill="none" stroke="#F15946" stroke-width="1.6" stroke-linecap="round"/></svg>
       KraftPack
     </a>
     <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
     <ul id="menu">
-      <li><a href="#estilos">Diseños</a></li>
-      <li><a href="#producto">Producto</a></li>
-      <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#sustentable">Sustentable</a></li>
-      <li><a href="#lote">Tu lote</a></li>
+      <li><a href="#mercado">Empresa</a></li>
+      <li><a href="#proceso">Producción</a></li>
+      <li><a href="#lean">Lean</a></li>
       <li><a href="#calidad">Calidad</a></li>
+      <li><a href="#demanda">Demanda</a></li>
+      <li><a href="#plan">Plan</a></li>
     </ul>
-    <a class="btn btn-main cta-nav" href="#lote">Calcular mi lote</a>
+    <a class="btn btn-main cta-nav" href="#cierre">Por qué elegirnos</a>
   </div>
 </header>
 
@@ -361,20 +517,20 @@ footer nav a:hover{color:var(--orange)}
 <section class="hero ink" id="inicio">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="tag enter" style="--d:0;color:var(--orange)">Fábrica de bolsas · desde 2012</span>
+      <span class="tag enter" style="--d:0;color:var(--orange)">Fábrica de bolsas · desde <b class="year">2012</b></span>
       <h1 class="brand">
         <span class="ln"><span class="paper-text" style="--d:80">KraftPack</span></span>
       </h1>
       <p class="claim enter" style="--d:380">Bolsas kraft con tu marca, <em>en 5 días hábiles.</em></p>
-      <p class="lede enter" style="--d:560">Bolsas con manija para comercios y gastronomía. Papel con certificación FSC, tintas al agua y tu diseño impreso en hasta 4 colores.</p>
+      <p class="lede enter" style="--d:560">Una fábrica de bolsas de papel rentable, flexible y ordenada: produce solo lo que se vende y está lista para ocupar el lugar que deja el plástico.</p>
       <div class="hero-actions enter" style="--d:700">
-        <a class="btn btn-main" href="#lote">Calcular mi lote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-line" href="#estilos">Ver diseños</a>
+        <a class="btn btn-main" href="#mercado">Conocer la empresa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-line" href="#lean">Ver mejoras Lean</a>
       </div>
       <ul class="hero-nums enter" style="--d:840">
-        <li><b><span data-count="3.1" data-dec="1">3,1</span> M</b><span>bolsas por mes</span></li>
-        <li><b><span data-count="12000" data-sep="1">12.000</span></b><span>unidades mínimas</span></li>
-        <li><b>100%</b><span>reciclable</span></li>
+        <li><b><span data-count="19.3" data-dec="1">19,3</span> → 10,3</b><span>días de plazo</span></li>
+        <li><b>US$ 0,10</b><span>precio por bolsa</span></li>
+        <li><b>5 días</b><span>hábiles de entrega</span></li>
       </ul>
     </div>
     <div class="stage" aria-hidden="true">
@@ -388,45 +544,52 @@ footer nav a:hover{color:var(--orange)}
 
 <div class="ticker orange" aria-hidden="true">
   <div class="ticker-track">
-    <span>Papel 100 g/m²</span><span>Tintas al agua</span><span>Certificación FSC</span><span>Hasta 4 colores</span><span>Manija de papel torcido</span><span>Entrega en 5 días hábiles</span>
-    <span>Papel 100 g/m²</span><span>Tintas al agua</span><span>Certificación FSC</span><span>Hasta 4 colores</span><span>Manija de papel torcido</span><span>Entrega en 5 días hábiles</span>
+    <span>Sistema pull con kanban</span><span>Bobinas completas</span><span>Cambio de medida en 39 min</span><span>Papel FSC</span><span>Tintas al agua</span><span>Entrega en 5 días hábiles</span>
+    <span>Sistema pull con kanban</span><span>Bobinas completas</span><span>Cambio de medida en 39 min</span><span>Papel FSC</span><span>Tintas al agua</span><span>Entrega en 5 días hábiles</span>
   </div>
 </div>
 
-<section class="block photo sheet" id="estilos">
+<!-- ================= PARTE 1 ================= -->
+<section class="chapter photo sheet" id="parte-1">
   <div class="wrap">
-    <div class="head rv">
-      <span class="tag">Diseños</span>
-      <h2>Tu marca, impresa en papel.</h2>
-      <p class="lede">Papel natural, negro o de color. Logo, patrón o ilustración: armás el diseño con nuestro equipo y lo imprimimos en tu lote.</p>
-    </div>
-    <div class="styles-grid">
-      <article class="style rv"><div class="bagbox" data-bag="rivera"></div><h3>Logo clásico</h3><p>Papel negro con tu marca en un color claro.</p><div class="chips"><span>Papel negro</span><span>1 color</span></div></article>
-      <article class="style rv" style="--i:1"><div class="bagbox" data-bag="bestia"></div><h3>Patrón ilustrado</h3><p>Fondo de color con dibujos en toda la bolsa.</p><div class="chips"><span>Fondo pleno</span><span>2 colores</span></div></article>
-      <article class="style rv" style="--i:2"><div class="bagbox" data-bag="tostado"></div><h3>Tipográfico</h3><p>Tus productos escritos en grande sobre kraft natural.</p><div class="chips"><span>Kraft natural</span><span>1 color</span></div></article>
-      <article class="style rv"><div class="bagbox" data-bag="pancho"></div><h3>Sello redondo</h3><p>Un logo circular que se lee de lejos.</p><div class="chips"><span>Kraft natural</span><span>1 color</span></div></article>
-      <article class="style rv" style="--i:1"><div class="bagbox" data-bag="mercado"></div><h3>Dibujo a mano</h3><p>Ilustraciones de línea que cuentan qué cocinás.</p><div class="chips"><span>Kraft natural</span><span>1 color</span></div></article>
-      <article class="style rv" style="--i:2"><div class="bagbox" data-bag="eco"></div><h3>Mensaje verde</h3><p>Dos verdes que dicen que tu bolsa vuelve a ser papel.</p><div class="chips"><span>Kraft natural</span><span>2 colores</span></div></article>
+    <span class="ch-num rv">01</span>
+    <div class="rv" style="--i:1">
+      <span class="tag">Parte 1</span>
+      <h2>La empresa y el negocio.</h2>
+      <p class="lede">Hay una oportunidad real de mercado, y KraftPack está diseñada para aprovecharla.</p>
     </div>
   </div>
 </section>
 
-<section class="block ink sheet" id="por-que">
+<section class="block light sheet" id="mercado">
   <div class="wrap">
     <div class="head rv">
-      <span class="tag" style="color:var(--orange)">Por qué KraftPack</span>
-      <h2 class="paper-text">Cuatro razones para cambiar de proveedor.</h2>
+      <span class="tag" style="color:var(--moss)">Por qué hay mercado</span>
+      <h2>El mercado se está moviendo hacia el papel.</h2>
+      <p class="lede">Cada comercio que deja el plástico necesita una alternativa. Esa alternativa puede ser el papel.</p>
     </div>
-    <div class="reasons">
-      <article class="reason rv"><b>FSC</b><h3>Papel certificado</h3><p>Revisamos el certificado de cada bobina antes de usarla.</p></article>
-      <article class="reason rv" style="--i:1"><b>0</b><h3>Solventes</h3><p>Tintas y adhesivo al agua, también para bolsas de comida.</p></article>
-      <article class="reason rv" style="--i:2"><b>12.000</b><h3>Bolsas mínimas</h3><p>Lotes chicos con tu propio diseño, sin pagar de más.</p></article>
-      <article class="reason rv" style="--i:3"><b>5 días</b><h3>Hábiles de entrega</h3><p>Tu pedido entra a producción apenas lo confirmás.</p></article>
+    <div class="facts">
+      <div class="fact rv"><b>2017</b><p>Los supermercados de la Ciudad de Buenos Aires dejan de entregar bolsas plásticas.</p></div>
+      <div class="fact rv" style="--i:1"><b>Ley 13.868</b><p>La Provincia prohíbe las bolsas de polietileno convencionales en sus comercios.</p></div>
+      <div class="fact rv" style="--i:2"><b>−24%</b><p>Cayó el empleo en fabricantes de bolsas plásticas en todo el país.</p></div>
+    </div>
+    <div class="explain rv">
+      <h3>Sustitución</h3>
+      <p>Cuando una norma prohíbe un producto, la gente no deja de necesitar bolsas: las reemplaza por otras. La demanda que pierde el plástico es la que el papel puede capturar.</p>
+    </div>
+    <div class="compete">
+      <div class="rv"><h3>Contra quién competimos</h3><p class="lede">KraftPack no compite con escala: compite con flexibilidad y servicio.</p></div>
+      <div class="comp-grid">
+        <div class="comp rv"><h4>Líder nacional</h4><p><b>Fuerte en</b> escala, precio y presencia regional.</p><p><b>Débil en</b> lotes muy chicos.</p></div>
+        <div class="comp rv" style="--i:1"><h4>Unos 6 fabricantes chicos</h4><p><b>Fuertes en</b> precio y cercanía.</p><p><b>Débiles en</b> capacidad y certificación.</p></div>
+        <div class="comp rv" style="--i:2"><h4>Importados de Brasil, España y China</h4><p><b>Fuertes en</b> precio unitario.</p><p><b>Débiles en</b> plazos largos y pedidos mínimos grandes.</p></div>
+        <div class="comp us rv" style="--i:3"><h4>KraftPack</h4><p>Ocupa el lugar que los demás dejan libre: <b>lotes chicos, con la marca del cliente y entrega en 5 días.</b></p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="block light sheet product" id="producto">
+<section class="block ink sheet product" id="producto">
   <div class="wrap">
     <div class="spec-stage rv">
       <div class="inner">
@@ -435,28 +598,75 @@ footer nav a:hover{color:var(--orange)}
           <path class="dl" d="M40 378 H222"/><path d="M40 370 v16 M222 370 v16"/>
           <path class="dl" d="M18 92 V352"/><path d="M10 92 h16 M10 352 h16"/>
           <path class="dl" d="M232 368 L272 352"/>
-          <text x="131" y="406" text-anchor="middle">32 cm</text>
-          <text x="-4" y="230" text-anchor="middle" transform="rotate(-90 -4 230)">28 cm</text>
-          <text x="262" y="384">12 cm</text>
+          <text x="131" y="406" text-anchor="middle" id="dim-w">32 cm</text>
+          <text x="-4" y="230" text-anchor="middle" transform="rotate(-90 -4 230)" id="dim-h">28 cm</text>
+          <text x="262" y="384" id="dim-d">12 cm</text>
         </svg>
       </div>
     </div>
     <div class="rv" style="--i:1">
       <div class="head" style="margin-bottom:0">
-        <span class="tag" style="color:var(--moss)">El producto</span>
-        <h2>La bolsa que aguanta el pedido entero.</h2>
-        <p class="lede">Probamos cada lote con 5 kg de carga durante 30 segundos.</p>
+        <span class="tag" style="color:var(--orange)">Qué vendemos</span>
+        <h2 class="paper-text">Una bolsa, tres tamaños.</h2>
+        <p class="lede">Papel kraft de 100 g/m², manija de papel torcido y fondo plano. Hasta 4 colores con tintas al agua, reciclable y con papel FSC, de bosques con manejo responsable.</p>
       </div>
-      <div class="tabs" role="tablist" aria-label="Modelo de bolsa">
-        <button role="tab" id="tab-manija" aria-selected="true" aria-controls="specs">Con manija</button>
-        <button role="tab" id="tab-sos" aria-selected="false" aria-controls="specs">Sin manija</button>
+      <div class="tabs" role="tablist" aria-label="Tamaño de bolsa">
+        <button role="tab" data-size="chica" aria-selected="false" aria-controls="specs">Chica</button>
+        <button role="tab" data-size="mediana" aria-selected="true" aria-controls="specs">Mediana</button>
+        <button role="tab" data-size="grande" aria-selected="false" aria-controls="specs">Grande</button>
       </div>
       <ul class="specs" id="specs" role="tabpanel" aria-live="polite">
-        <li><b>100 g/m²</b><span>Papel kraft FSC</span></li>
-        <li><b id="sp-a">Papel torcido</b><span id="sp-a2">Manija resistente</span></li>
-        <li><b>4 colores</b><span>Impresión con tintas al agua</span></li>
-        <li><b id="sp-b">Comercios</b><span id="sp-b2">Retail y gastronomía</span></li>
+        <li><b id="sp-size">32 x 28 x 12</b><span id="sp-size-l">Centímetros · nuestra medida base</span></li>
+        <li><b>US$ 0,10</b><span>Precio de referencia por bolsa</span></li>
+        <li><b>4 colores</b><span>Tintas al agua</span></li>
+        <li><b>FSC</b><span>Papel certificado y reciclable</span></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block photo sheet" id="estilos">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag">Propuesta de valor</span>
+      <h2>Nos diferenciamos con tres cosas.</h2>
+    </div>
+    <div class="values3">
+      <div class="v3 rv"><b>01</b><h3>Lotes chicos personalizados</h3><p>Desde una bobina de 500 kg, unas 12.000 bolsas.</p></div>
+      <div class="v3 rv" style="--i:1"><b>02</b><h3>Sector de diseño</h3><p>El cliente arma su propia bolsa con nuestro equipo.</p></div>
+      <div class="v3 rv" style="--i:2"><b>03</b><h3>Entrega en 5 días hábiles</h3><p>Los pedidos lejanos salen con caja y film; los cercanos, sin film, porque tienen menos riesgo de dañarse.</p></div>
+    </div>
+    <div class="styles-grid">
+      <article class="style rv"><div class="bagbox" data-bag="rivera"></div><h3>Logo clásico</h3><p>Papel negro con la marca en un color claro.</p></article>
+      <article class="style rv" style="--i:1"><div class="bagbox" data-bag="bestia"></div><h3>Patrón ilustrado</h3><p>Fondo de color con dibujos en toda la bolsa.</p></article>
+      <article class="style rv" style="--i:2"><div class="bagbox" data-bag="tostado"></div><h3>Tipográfico</h3><p>Los productos escritos en grande sobre kraft natural.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block light sheet" id="tamano">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" style="color:var(--moss)">Con qué lo hacemos</span>
+      <h2>Una fábrica chica, organizada de punta a punta.</h2>
+    </div>
+    <div class="nums">
+      <div class="num rv"><b><span data-count="37">37</span> M</b><p>bolsas por año de capacidad</p></div>
+      <div class="num rv" style="--i:1"><b><span data-count="2.4" data-dec="1">2,4</span> M</b><p>bolsas por mes de demanda normal</p></div>
+      <div class="num rv" style="--i:2"><b>1 + 3</b><p>impresora flexográfica de 4 colores y formadoras de 75 bolsas por minuto</p></div>
+      <div class="num rv" style="--i:3"><b>2 turnos</b><p>con <span data-count="72">72</span> personas, de lunes a viernes</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARTE 2 ================= -->
+<section class="chapter photo sheet" id="parte-2">
+  <div class="wrap">
+    <span class="ch-num rv">02</span>
+    <div class="rv" style="--i:1">
+      <span class="tag">Parte 2</span>
+      <h2>Cómo producimos.</h2>
+      <p class="lede">Producimos solo lo que se vende, sin acumular stock, y sabemos dónde perdemos tiempo y cómo recuperarlo.</p>
     </div>
   </div>
 </section>
@@ -464,40 +674,90 @@ footer nav a:hover{color:var(--orange)}
 <section class="block orange sheet" id="proceso">
   <div class="wrap">
     <div class="head rv">
-      <span class="tag">Cómo la fabricamos</span>
-      <h2>De la bobina a tu mostrador.</h2>
-      <p class="lede">Una bobina de papel rinde hasta 24.000 bolsas. Siempre la usamos completa, así no quedan restos.</p>
+      <span class="tag">El proceso</span>
+      <h2>Siete pasos, de la bobina al pallet.</h2>
     </div>
     <div class="rail" id="rail">
       <div class="rail-line"><i></i></div>
       <div class="roll" aria-hidden="true"><div class="roll-inner"></div></div>
-      <div class="step"><span class="n">01</span><h3>Control del papel</h3><p>Medimos gramaje y humedad de cada bobina.</p></div>
-      <div class="step"><span class="n">02</span><h3>Impresión</h3><p>Tu diseño en hasta 4 colores con tintas al agua.</p></div>
-      <div class="step"><span class="n">03</span><h3>Formado</h3><p>Tubo, fondo plano y manija, a 75 bolsas por minuto.</p></div>
-      <div class="step"><span class="n">04</span><h3>Revisión</h3><p>Miramos y contamos cada bolsa a mano.</p></div>
-      <div class="step"><span class="n">05</span><h3>Entrega</h3><p>Cajas de 500 bolsas, listas para tu local.</p></div>
+      <div class="step"><span class="n">01</span><h3>Recepción</h3><p>Control de la bobina de papel.</p></div>
+      <div class="step"><span class="n">02</span><h3>Depósito</h3><p>Guardado de bobinas.</p></div>
+      <div class="step"><span class="n">03</span><h3>Impresión</h3><p>Flexográfica, hasta 4 colores.</p></div>
+      <div class="step"><span class="n">04</span><h3>Formado</h3><p>Tubo, fondo y manija.</p></div>
+      <div class="step"><span class="n">05</span><h3>Revisión</h3><p>Cada bolsa, a mano.</p></div>
+      <div class="step"><span class="n">06</span><h3>Embalaje</h3><p>Según la distancia.</p></div>
+      <div class="step"><span class="n">07</span><h3>Despacho</h3><p>Por pedido.</p></div>
     </div>
   </div>
 </section>
 
-<section class="block light sheet eco" id="sustentable">
+<section class="block light sheet" id="problema">
   <div class="wrap">
-    <div class="eco-art rv" aria-hidden="true">
-      <svg class="blob" viewBox="0 0 500 500"><path d="M248 40 C340 30 430 80 455 170 C480 260 450 350 380 410 C310 470 200 480 125 430 C50 380 25 290 45 205 C65 120 156 50 248 40Z" fill="#659B5E" opacity=".22"/></svg>
-      <svg class="branch" viewBox="0 0 500 500" fill="none" id="eco-branch"></svg>
-      <div class="ebag" data-bag="eco"></div>
+    <div class="head rv">
+      <span class="tag" style="color:var(--moss)">El problema que encontramos</span>
+      <h2>7 horas de trabajo. 19 días de espera.</h2>
+      <p class="lede">Una bobina necesita unas 7,3 horas de trabajo real, pero tarda 19,3 días en pasar de la recepción al despacho. Casi todo el tiempo es espera, y la espera es capital parado: papel, bolsas a medio hacer y pallets sin vender.</p>
     </div>
-    <div class="rv" style="--i:1">
-      <div class="head" style="margin-bottom:0">
-        <span class="tag" style="color:var(--moss)">Sustentable</span>
-        <h2>Vuelve a ser papel.</h2>
-        <p class="lede">Una bolsa 100% reciclable y biodegradable, en lugar de una de plástico.</p>
-      </div>
-      <ul class="eco-list">
-        <li><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25" fill="#659B5E"/><path d="M26 12c8 6 10 15 0 28-10-13-8-22 0-28z" fill="#F3DDB5"/><path d="M26 18v22" stroke="#556F44" stroke-width="2"/></svg><div><b>Papel de bosques certificados</b>Cada bobina llega con certificación FSC.</div></li>
-        <li><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25" fill="#F15946"/><path d="M26 13s-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17z" fill="#F3DDB5"/></svg><div><b>Tintas y adhesivo al agua</b>Sin solventes en la impresión ni en el pegado.</div></li>
-        <li><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25" fill="#556F44"/><path d="M17 30a10 10 0 0 1 16-11M35 22a10 10 0 0 1-16 11" stroke="#F3DDB5" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M32 14l2 6-6 1M20 38l-2-6 6-1" stroke="#F3DDB5" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>El descarte vuelve al papelero</b>Las bolsas fallidas se reciclan en bobinas nuevas.</div></li>
-      </ul>
+    <div class="timeline rv" id="timeline">
+      <div class="tl-row"><span class="tl-label">Antes</span><div class="tl-bar"><i class="tl-wait" style="--w:100%"></i><i class="tl-work"></i></div><b>19,3 días</b></div>
+      <div class="tl-row"><span class="tl-label">Con Lean</span><div class="tl-bar"><i class="tl-wait good" style="--w:53.4%"></i><i class="tl-work"></i></div><b>10,3 días</b></div>
+      <div class="tl-legend"><span><i class="lg-wait"></i>Espera</span><span><i class="lg-work"></i>Trabajo real (7,3 h)</span></div>
+    </div>
+    <div class="eff">
+      <div class="effc rv"><b>1,6% → 3%</b><p>Eficiencia de flujo: la parte del plazo en la que de verdad se trabaja.</p></div>
+      <div class="effc rv" style="--i:1"><h3>Cuello de botella 1</h3><p>La <b>impresora flexográfica</b>, por los cambios de diseño de 45 minutos.</p></div>
+      <div class="effc rv" style="--i:2"><h3>Cuello de botella 2</h3><p>Las <b>formadoras</b> en diciembre, que trabajan al límite de su capacidad.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block ink sheet" id="lean">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" style="color:var(--orange)">Mejoras Lean Manufacturing</span>
+      <h2 class="paper-text">Cada decisión, con su porqué.</h2>
+      <p class="lede">Así bajamos el plazo de 19,3 a 10,3 días sin comprar ninguna máquina.</p>
+    </div>
+    <div class="decisions">
+      <article class="dec rv">
+        <span class="dec-tag">Sistema pull</span>
+        <h3>Sin tarjeta kanban, no se produce.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Fabricar solo cuando una tarjeta lo pide, no por pronóstico. La tarjeta es una orden de trabajo que viaja con el lote.</dd>
+        <dt>Por qué</dt><dd>Así no hay plata dormida en bolsas que quizás no se vendan, ni hace falta bajar precios para liquidar stock.</dd></dl>
+      </article>
+      <article class="dec rv" style="--i:1">
+        <span class="dec-tag">Clasificación A, B y C</span>
+        <h3>En stock, solo lo que se vende todos los días.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Los 5 productos A, el 62% del volumen, se guardan con 3 tarjetas cada uno. Los B y C se fabrican por lote contra pedido, en 5 días hábiles.</dd>
+        <dt>Por qué</dt><dd>Una bolsa impresa con el logo de un cliente no se le puede vender a otro. Es el mayor riesgo del negocio.</dd></dl>
+      </article>
+      <article class="dec rv" style="--i:2">
+        <span class="dec-tag">Ruta en la tarjeta</span>
+        <h3>Siempre sabemos dónde está cada pedido.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Cada tarjeta lleva la ruta del lote, y cada estación marca su casilla y la pasa a la siguiente.</dd>
+        <dt>Por qué</dt><dd>Las máquinas no deciden solas qué producir: arrancan cuando llega la tarjeta.</dd></dl>
+        <div class="route" aria-label="Ruta del lote"><span>IMP</span><span>FOR</span><span>REV</span><span>EMB</span><span>DEP</span></div>
+      </article>
+      <article class="dec rv">
+        <span class="dec-tag">Bobinas completas</span>
+        <h3>Tres tamaños de bobina, cero sobrantes.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Comprar bobinas de 500, 750 y 1.000 kg y elegir para cada lote la que mejor se ajusta, siempre completa.</dd>
+        <dt>Por qué</dt><dd>El papel es el costo principal. Una bobina de 750 kg rinde justo un pallet de 18.000 bolsas: una tarjeta.</dd></dl>
+      </article>
+      <article class="dec rv" style="--i:1">
+        <span class="dec-tag">Punto de pedido</span>
+        <h3>La mitad de papel guardado.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Pedir un camión de 20 bobinas cuando el stock llega a 70: 5 por día × 10 días de plazo del proveedor + 20 de seguridad.</dd>
+        <dt>Por qué</dt><dd>El papel guardado baja de 12 a 6 días de consumo. Son unas 30 bobinas menos paradas.</dd></dl>
+        <div class="compare"><s>12 días</s><b>6 días</b></div>
+      </article>
+      <article class="dec rv" style="--i:2">
+        <span class="dec-tag">Trabajo estandarizado · SMED</span>
+        <h3>Capacidad recuperada sin comprar máquinas.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Un procedimiento de 10 pasos para el cambio de bobina y medida, preparando 7 minutos de tareas mientras la máquina todavía trabaja.</dd>
+        <dt>Por qué</dt><dd>Ese cambio es la preparación que más capacidad resta en los picos.</dd></dl>
+        <div class="compare"><s>60 min</s><b>39 min</b></div>
+      </article>
     </div>
   </div>
 </section>
@@ -506,18 +766,18 @@ footer nav a:hover{color:var(--orange)}
   <div class="wrap calc">
     <div class="rv">
       <div class="head" style="margin-bottom:0">
-        <span class="tag">Armá tu lote</span>
-        <h2>¿Cuántas bolsas necesitás?</h2>
-        <p class="lede">Elegimos las bobinas que más se acercan a tu pedido. Nunca te entregamos más de un 5% extra.</p>
+        <span class="tag">Probalo: bobinas completas</span>
+        <h2>¿Cómo se arma un lote?</h2>
+        <p class="lede">Elegimos la combinación de bobinas con la menor diferencia, y nunca más de un 5% por encima del pedido.</p>
       </div>
       <ul class="roll-sizes">
-        <li><b>500 kg</b><span>12.000 bolsas</span></li>
-        <li><b>750 kg</b><span>18.000 bolsas</span></li>
-        <li><b>1.000 kg</b><span>24.000 bolsas</span></li>
+        <li><b>500 kg</b><span>12.000 bolsas · pedidos personalizados</span></li>
+        <li><b>750 kg</b><span>18.000 bolsas · productos A</span></li>
+        <li><b>1.000 kg</b><span>24.000 bolsas · lotes grandes</span></li>
       </ul>
     </div>
     <div class="calc-box rv" style="--i:1">
-      <label for="qty">Mové la barra hasta tu cantidad</label>
+      <label for="qty">Mové la barra hasta la cantidad del pedido</label>
       <div class="calc-input">
         <input type="range" id="qty" min="12000" max="120000" step="1000" value="40000">
         <output id="qty-out" for="qty">40.000</output>
@@ -525,9 +785,47 @@ footer nav a:hover{color:var(--orange)}
       <div class="rolls" id="rolls" aria-hidden="true"></div>
       <div class="calc-out" aria-live="polite">
         <div><b id="c-rolls">2 bobinas</b><span id="c-mix">1.000 + 750 kg</span></div>
-        <div><b id="c-bags">42.000</b><span>bolsas que recibís</span></div>
-        <div><b id="c-diff">+5%</b><span>sobre tu pedido</span></div>
+        <div><b id="c-bags">42.000</b><span>bolsas producidas</span></div>
+        <div><b id="c-diff">+5%</b><span>sobre el pedido</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARTE 3 ================= -->
+<section class="chapter photo sheet" id="parte-3">
+  <div class="wrap">
+    <span class="ch-num rv">03</span>
+    <div class="rv" style="--i:1">
+      <span class="tag">Parte 3</span>
+      <h2>Calidad, demanda y plan.</h2>
+      <p class="lede">Una fábrica eficiente no sirve si las bolsas salen mal o si no puede responder cuando cambia la demanda.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block light sheet" id="orden">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" style="color:var(--moss)">Primero, el orden</span>
+      <h2>5S y mantenimiento a cargo de los operarios.</h2>
+    </div>
+    <div class="order2">
+      <article class="dec light-dec rv">
+        <span class="dec-tag">5S</span>
+        <h3>Cada herramienta, en su lugar.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Empezar por el sector de formado y el taller de mantenimiento, con tableros de sombras, limpieza de 10 minutos al final de cada turno y auditoría cruzada cada 15 días.</dd>
+        <dt>Por qué</dt><dd>Son los lugares donde más tiempo se pierde buscando herramientas y limpiando derrames de adhesivo. Meta: 80 puntos sobre 100 a los 3 meses.</dd></dl>
+        <div class="fives"><span>Clasificar</span><span>Ordenar</span><span>Limpiar</span><span>Estandarizar</span><span>Disciplina</span></div>
+      </article>
+      <article class="dec light-dec rv" style="--i:1">
+        <span class="dec-tag">TPM</span>
+        <h3>Más eficiencia de las mismas máquinas.</h3>
+        <dl><dt>Qué decidimos</dt><dd>Los operarios limpian, revisan y lubrican su máquina al inicio del turno; el equipo técnico se ocupa de lo más complejo.</dd>
+        <dt>Por qué</dt><dd>Una parada en la impresora o en una formadora frena todo el flujo.</dd></dl>
+        <div class="compare"><s>65%</s><b>75% OEE</b></div>
+        <p class="small">en 6 meses</p>
+      </article>
     </div>
   </div>
 </section>
@@ -604,15 +902,106 @@ footer nav a:hover{color:var(--orange)}
   </div>
 </section>
 
-<section class="close orange sheet" id="cotizar">
+<section class="block ink sheet" id="demanda">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" style="color:var(--orange)">Oferta y demanda</span>
+      <h2 class="paper-text">Cuidamos el precio y movemos la cantidad.</h2>
+      <p class="lede">Ajustamos cantidades primero y precios después: la capacidad flexible absorbe los cambios de demanda.</p>
+    </div>
+
+    <div class="price rv">
+      <div class="price-bar"><i class="paper" style="--w:32%"><span>Papel US$ 0,032</span></i><i class="rest"><span>Resto del precio</span></i></div>
+      <div class="price-text">
+        <h3>Precio de referencia: US$ 0,10 por bolsa</h3>
+        <p>El papel es un commodity de unos US$ 700 por tonelada: cerca de un tercio del precio. No bajamos el precio para mover stock, porque el sistema pull no nos deja acumularlo.</p>
+      </div>
+    </div>
+
+    <div class="explain dark rv">
+      <h3>Techo de precio</h3>
+      <p>Los importados fijan hasta cuánto puede cobrar cualquiera. Por eso no competimos en la bolsa estándar, donde gana el más barato, sino en la personalizada, donde el cliente paga por el diseño, la tirada chica y el plazo.</p>
+    </div>
+
+    <div class="sim rv" id="sim">
+      <div class="sim-head">
+        <h3>Simulá un cambio de demanda</h3>
+        <div class="tabs dark-tabs" role="tablist" aria-label="Escenario de demanda">
+          <button role="tab" data-sc="normal" aria-selected="true" aria-controls="sim-out">Normal</button>
+          <button role="tab" data-sc="sube" aria-selected="false" aria-controls="sim-out">Sube 25%</button>
+          <button role="tab" data-sc="cae" aria-selected="false" aria-controls="sim-out">Cae al 20%</button>
+        </div>
+      </div>
+      <div class="sim-body" id="sim-out" role="tabpanel" aria-live="polite">
+        <div class="gauge-wrap">
+          <div class="ubar"><i id="sim-fill"></i><span class="u100">100%</span></div>
+          <div class="sim-big"><b id="sim-u">85%</b><span>uso de las formadoras</span></div>
+        </div>
+        <dl class="sim-data">
+          <div><dt>Demanda mensual</dt><dd id="sim-d">2,4 millones</dd></div>
+          <div><dt>Configuración</dt><dd id="sim-c">3 formadoras, 2 turnos</dd></div>
+          <div><dt>Consumo de bobinas</dt><dd id="sim-b">5 por día</dd></div>
+          <div><dt>Punto de pedido</dt><dd id="sim-p">70 bobinas</dd></div>
+        </dl>
+        <p class="sim-action" id="sim-a">La planta trabaja en horario normal, con margen para crecer.</p>
+      </div>
+    </div>
+
+    <div class="react">
+      <div class="rc rv"><h3>Si la demanda sube</h3><p><b>Producción:</b> sábados con un turno; tercer turno solo si dura más de 2 meses.</p><p><b>Precio:</b> hasta +4% en pedidos urgentes o muy personalizados; los 5 productos A mantienen precio.</p></div>
+      <div class="rc rv" style="--i:1"><h3>Si la demanda baja</h3><p><b>Producción:</b> menos horas extra y un turno, sin despidos.</p><p><b>Precio:</b> descuentos por volumen en productos A, sin bajar la lista.</p></div>
+      <div class="rc rv" style="--i:2"><h3>Si sube el papel</h3><p><b>Costo:</b> si el papel sube 10%, la bolsa sube cerca de 3,2%.</p><p><b>Precio:</b> se traslada en la lista siguiente.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block light sheet" id="plan">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" style="color:var(--moss)">Plan de producción</span>
+      <h2>Los próximos tres meses.</h2>
+      <p class="lede">Unos 7,6 millones de bolsas. Sábados extra solo en el pico, y enero para mantenimiento.</p>
+    </div>
+    <div class="season grid3">
+      <article class="month rv">
+        <h3>Dic 2026</h3>
+        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i class="over" style="--h:80"></i></div>
+        <dl><dt>Producción</dt><dd>3.100.000</dd><dt>Uso de capacidad</dt><dd>109%</dd><dt>Sábados extra</dt><dd>4</dd></dl>
+        <p>El mes más fuerte, por las fiestas. Incluye 40.000 bolsas de colchón, menos de medio día de venta.</p>
+      </article>
+      <article class="month rv" style="--i:1">
+        <h3>Ene 2027</h3>
+        <div class="util" aria-hidden="true"><span class="cap" style="--c:73"><span>capacidad normal</span></span><i style="--h:55"></i></div>
+        <dl><dt>Producción</dt><dd>2.120.000</dd><dt>Uso de capacidad</dt><dd>75%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
+        <p>Con un cuarto de capacidad libre: mantenimiento preventivo, capacitación TPM y auditorías 5S.</p>
+      </article>
+      <article class="month rv" style="--i:2">
+        <h3>Feb 2027</h3>
+        <div class="util" aria-hidden="true"><span class="cap" style="--c:66"><span>capacidad normal</span></span><i style="--h:63"></i></div>
+        <dl><dt>Producción</dt><dd>2.420.000</dd><dt>Uso de capacidad</dt><dd>95%</dd><dt>Sábados extra</dt><dd>0</dd></dl>
+        <p>Con 18 días hábiles por Carnaval.</p>
+      </article>
+    </div>
+    <div class="ideas">
+      <div class="idea rv"><h3>Crecimiento estructural</h3><p>El que queda: estimamos 2% por mes por el reemplazo del plástico y los clientes nuevos.</p></div>
+      <div class="idea rv" style="--i:1"><h3>Estacionalidad</h3><p>Lo que se repite cada año: diciembre vende 25% más que el promedio, enero 15% menos y febrero 5% menos.</p></div>
+      <div class="idea rv" style="--i:2"><h3>Riesgos conocidos</h3><p>Si el proveedor de papel se atrasa, el stock de seguridad de 20 a 25 bobinas cubre de 3 a 4 días.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="close orange sheet" id="cierre">
   <div class="wrap">
     <div class="rv">
-      <h2>Tu marca, en papel, en 5 días.</h2>
-      <p class="lede">Elegí un diseño, calculá tu lote y dejá la bolsa plástica atrás.</p>
-      <div class="hero-actions">
-        <a class="btn btn-dark" href="#lote">Calcular mi lote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-line" href="#estilos">Ver diseños</a>
-      </div>
+      <span class="tag">Por qué elegir KraftPack</span>
+      <h2>Lista para ocupar el lugar que deja el plástico.</h2>
+      <ol class="reasons5">
+        <li><b>Tiene mercado.</b> El reemplazo del plástico lo empujan normas que ya están vigentes.</li>
+        <li><b>Ocupa un lugar propio.</b> Lotes chicos, con la marca del cliente y entrega en 5 días.</li>
+        <li><b>Cuida el capital.</b> Produce lo que se vende, guarda la mitad de papel y baja el plazo de 19 a 10 días.</li>
+        <li><b>Crece sin apuro.</b> Suma sábados antes que máquinas y tiene un plan para cuando la demanda sube o baja.</li>
+        <li><b>Conoce sus riesgos.</b> Y sabe qué hacer con cada uno.</li>
+      </ol>
     </div>
     <div class="cbag" data-bag="kraftpack" aria-hidden="true"></div>
   </div>
@@ -620,10 +1009,11 @@ footer nav a:hover{color:var(--orange)}
 
 </main>
 
+
 <footer class="ink">
   <div class="wrap">
     <span class="logo" style="font-size:1.4rem">KraftPack</span>
-    <nav aria-label="Pie de página"><a href="#estilos">Diseños</a><a href="#producto">Producto</a><a href="#proceso">Proceso</a><a href="#lote">Tu lote</a><a href="#calidad">Calidad</a></nav>
+    <nav aria-label="Pie de página"><a href="#mercado">Empresa</a><a href="#lean">Lean</a><a href="#calidad">Calidad</a><a href="#demanda">Demanda</a><a href="#plan">Plan</a></nav>
     <span>Bolsas de papel kraft desde 2012</span>
   </div>
 </footer>
@@ -640,9 +1030,6 @@ var PRINTS={
  rivera:{tone:'black',handle:'#24211e',ink:'normal',art:'<g fill="#F3DDB5" text-anchor="middle" font-family="Young Serif,Georgia,serif"><text x="131" y="196" font-size="13" letter-spacing="4">ALMACÉN · BAR</text><path d="M82 206H180" stroke="#F3DDB5" stroke-width="1.4"/><text x="131" y="240" font-size="34" letter-spacing="1">RIVERA</text><path d="M96 252c14 8 26 8 35 0 9 8 21 8 35 0" stroke="#F3DDB5" stroke-width="1.6" fill="none"/><text x="131" y="280" font-size="10" letter-spacing="3">DESDE 1987</text></g>'},
  bestia:{tone:'orange',handle:'#b98a55',ink:'normal',art:'<g fill="none" stroke="#F3DDB5" stroke-width="2.2" opacity=".55" stroke-linecap="round">'+burger(70,130,.8,-12)+burger(190,120,.7,10)+burger(110,318,.75,8)+burger(205,306,.8,-8)+burger(55,235,.6,15)+burger(212,215,.55,-15)+'</g><g fill="#001011" font-family="Young Serif,Georgia,serif" text-anchor="middle"><text x="131" y="214" font-size="38">Bestia</text><text x="131" y="252" font-size="38">Burger</text><text x="131" y="280" font-size="12" letter-spacing="1">a la parrilla, para llevar</text></g>'},
  tostado:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<g fill="#001011" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" opacity=".9"><text x="44" y="124" font-size="24">TOSTADOS</text><text x="166" y="124" font-size="24">PAPAS</text><text x="44" y="150" font-size="16" font-weight="400">CHEESE · BURGER</text><text x="170" y="152" font-size="20">FRITAS</text><text x="44" y="304" font-size="28">CLASSIC</text><text x="152" y="304" font-size="28">BEER</text><text x="44" y="338" font-size="22" font-weight="400">PAPAS FRITAS</text><text x="172" y="338" font-size="22">BEST</text><text transform="translate(216 272) rotate(-90)" font-size="22">BURGER</text><text transform="translate(62 266) rotate(-90)" font-size="17" font-weight="400">CHEESE</text></g><circle cx="131" cy="222" r="50" fill="#001011" opacity=".92"/><circle cx="131" cy="222" r="43" fill="none" stroke="#c99a62" stroke-width="1.5"/><g text-anchor="middle"><text x="131" y="226" font-family="Young Serif,Georgia,serif" font-size="22" fill="#d9b57f">Tostado</text><text x="131" y="246" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="13" letter-spacing="2" fill="#d9b57f">STORE</text></g>'},
- pancho:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:function(id){return '<defs><path id="'+id+'ring" d="M131 222m-56 0a56 56 0 1 1 112 0a56 56 0 1 1 -112 0"/></defs><circle cx="131" cy="222" r="62" fill="none" stroke="#F15946" stroke-width="22"/><text font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="15" letter-spacing="1.5" fill="#efd9b0" dy="5"><textPath href="#'+id+'ring">PANADERÍA · DON PANCHO · HORNO DE BARRIO ·</textPath></text><circle cx="131" cy="222" r="45" fill="none" stroke="#F15946" stroke-width="2"/><ellipse cx="131" cy="226" rx="30" ry="17" fill="#F15946"/><path d="M116 220l6 10M128 216l6 12M140 216l6 12" stroke="#efd9b0" stroke-width="3" stroke-linecap="round"/><text x="131" y="198" font-family="Young Serif,Georgia,serif" font-size="11" text-anchor="middle" fill="#F15946">DESDE 1994</text>'}},
- mercado:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<g stroke="#001011" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="131" cy="152" rx="62" ry="30" stroke-width="3"/><path d="M110 194c7-6 14-6 21 0 7-6 14-6 21 0"/><path d="M56 262c18-14 46-14 60 0-14 12-42 12-60 0zM116 262l12-9v18z"/><circle cx="74" cy="259" r="2.5" fill="#001011"/><path d="M168 240c12-14 34-10 36 6 0 16-22 22-34 12-6-5-6-12-2-18z"/><path d="M196 234c6-10 16-12 20-8-6 2-12 6-14 12"/><path d="M78 312c10-22 30-30 44-30-4 18-20 30-44 30zM78 312l30-22"/><path d="M150 334l40-38M182 296l12-4-4 12M162 326l-6-6M170 318l-6-6M178 310l-6-6"/></g><g fill="#001011" text-anchor="middle" font-family="Young Serif,Georgia,serif"><text x="131" y="150" font-size="16">MERCADO</text><text x="131" y="171" font-size="16" letter-spacing="3">SUR</text><text x="131" y="222" font-size="15" font-style="italic">Cocina de barrio</text></g>'},
- eco:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<g transform="translate(131 208)" fill="none" stroke-width="9" stroke-linecap="round">'+[0,120,240].map(function(a,i){var c=['#3f8a46','#2f6e38','#4c9a52'][i];return '<g transform="rotate('+a+')"><path d="M-14-30A33 33 0 0 1 26-20" stroke="'+c+'"/><path d="M22-32L36-14L14-10Z" fill="'+c+'" stroke="none"/></g>'}).join('')+'</g><g stroke="#556F44" stroke-width="2" fill="#659B5E"><path d="M60 334c10-50 6-90-6-130" fill="none"/><path d="M58 304c-14-6-20-18-18-30 12 4 18 16 18 30z"/><path d="M60 274c12-8 24-6 30 2-10 8-22 8-30-2z"/><path d="M57 244c-14-4-22-16-22-28 14 2 22 14 22 28z"/><path d="M202 334c-10-50-6-90 6-130" fill="none"/><path d="M204 304c14-6 20-18 18-30-12 4-18 16-18 30z"/><path d="M202 274c-12-8-24-6-30 2 10 8 22 8 30-2z"/><path d="M205 244c14-4 22-16 22-28-14 2-22 14-22 28z"/></g><text x="131" y="306" text-anchor="middle" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="24" fill="#556F44">ECO MARKET</text>'},
  kraftpack:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<circle cx="131" cy="206" r="56" fill="none" stroke="#F15946" stroke-width="6"/><circle cx="131" cy="206" r="46" fill="#F15946"/><path d="M111 194h40l-4 32h-32z" fill="#efd9b0"/><path d="M121 194v-6a10 10 0 0 1 20 0v6" fill="none" stroke="#efd9b0" stroke-width="4" stroke-linecap="round"/><text x="131" y="302" text-anchor="middle" fill="#001011" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="34">KRAFTPACK</text><text x="131" y="324" text-anchor="middle" font-family="Young Serif,Georgia,serif" font-size="12" fill="#001011">bolsas de papel · Buenos Aires</text>'},
  spec:{tone:'kraft',handle:'#a77a48',ink:'multiply',art:'<circle cx="131" cy="216" r="44" fill="none" stroke="#F15946" stroke-width="5"/><text x="131" y="228" text-anchor="middle" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="34" fill="#001011">KP</text>'}
 };
@@ -689,9 +1076,6 @@ function branches(svg,list){var out='',k=0;
 branches(document.getElementById('hero-leaves'),[
  {d:'M150 470C120 380 110 280 140 170',l:[[132,400,200],[124,340,195],[122,280,205],[128,220,200],[140,172,235],[128,380,-20,.9],[122,310,-25,.9],[126,250,-30,.9]]},
  {d:'M350 470C380 380 390 280 360 170',l:[[368,400,-20],[376,340,-15],[378,280,-25],[372,220,-20],[360,172,-55],[372,380,200,.9],[378,310,205,.9],[374,250,210,.9]]}]);
-branches(document.getElementById('eco-branch'),[
- {d:'M160 470C110 360 100 240 150 110',l:[[140,420,200],[126,360,195],[118,300,200],[120,240,205],[134,180,210],[150,112,240],[134,390,-25,.9],[122,320,-25,.9],[122,260,-30,.9],[130,200,-35,.9]]},
- {d:'M340 470C390 360 400 240 350 110',l:[[360,420,-20],[374,360,-15],[382,300,-20],[380,240,-25],[366,180,-30],[350,112,-60],[366,390,205,.9],[378,320,205,.9],[378,260,210,.9],[370,200,215,.9]]}]);
 
 requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.add('loaded')})});
 
@@ -735,16 +1119,27 @@ function railUpd(){var r=rail.getBoundingClientRect(),vh=innerHeight,p=Math.min(
   rail.style.setProperty('--p',p.toFixed(3));rail.style.setProperty('--rail-w',(r.width-64)+'px');rail.style.setProperty('--rail-h',(r.height-64)+'px')}
 addEventListener('scroll',railUpd,{passive:true});addEventListener('resize',railUpd);railUpd();
 
-/* ---------- Producto: con / sin manija ---------- */
-var sb=document.getElementById('spec-bag'),tm=document.getElementById('tab-manija'),ts=document.getElementById('tab-sos');
-function setTab(sos){tm.setAttribute('aria-selected',!sos);ts.setAttribute('aria-selected',sos);
-  sb.classList.add('swap');setTimeout(function(){sb.dataset.sos=sos?'1':'0';mount(sb);sb.classList.remove('swap')},reduce?0:300);
-  document.getElementById('sp-a').textContent=sos?'Boca dentada':'Papel torcido';
-  document.getElementById('sp-a2').textContent=sos?'Se abre y queda parada':'Manija resistente';
-  document.getElementById('sp-b').textContent=sos?'Panaderías':'Comercios';
-  document.getElementById('sp-b2').textContent=sos?'Y comida al paso':'Retail y gastronomía';}
-tm.addEventListener('click',function(){setTab(false)});ts.addEventListener('click',function(){setTab(true)});
-[tm,ts].forEach(function(b){b.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var o=b===tm?ts:tm;o.focus();o.click()}})});
+/* ---------- Producto: tres tamaños ---------- */
+var sb=document.getElementById('spec-bag'),SZ={chica:[24,21,9,.78,'Para compras chicas y comida al paso'],mediana:[32,28,12,.9,'Centímetros · nuestra medida base'],grande:[40,34,14,1,'Para compras grandes']};
+var sizeTabs=[].slice.call(document.querySelectorAll('[data-size]'));
+function setSize(k){var z=SZ[k];sizeTabs.forEach(function(b){b.setAttribute('aria-selected',b.dataset.size===k)});
+  document.querySelector('.spec-stage .inner').style.setProperty('--sc',z[3]);
+  document.getElementById('dim-w').textContent=z[0]+' cm';document.getElementById('dim-h').textContent=z[1]+' cm';document.getElementById('dim-d').textContent=z[2]+' cm';
+  document.getElementById('sp-size').textContent=z[0]+' x '+z[1]+' x '+z[2];document.getElementById('sp-size-l').textContent=z[4];}
+sizeTabs.forEach(function(b,i){b.addEventListener('click',function(){setSize(b.dataset.size)});b.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){var o=sizeTabs[(i+d+3)%3];o.focus();o.click()}})});
+setSize('mediana');
+
+/* ---------- Simulador de demanda ---------- */
+var SC={normal:{u:85,d:'2,4 millones',c:'3 formadoras, 2 turnos',b:'5 por día',p:'70 bobinas',a:'La planta trabaja en horario normal, con margen para crecer.'},
+ sube:{u:106,d:'3,0 millones',c:'3 formadoras, 2 turnos + 3 sábados',b:'6,25 por día',p:'88 bobinas',a:'Una cadena de cafeterías suma 600.000 bolsas por mes. Faltan 165.000: se cubren con 3 sábados de un turno (unas 212.000), sin comprar máquinas. Si el aumento es permanente, una cuarta formadora suma cerca de 1 millón por mes.'},
+ cae:{u:66,d:'620.000',c:'2 formadoras, 1 turno',b:'1,3 por día',p:'23 bobinas',a:'Pasamos a un turno sin despidos: el otro equipo hace capacitación TPM, 5S y mantenimiento. Se mantiene el precio de lista y salimos a buscar clientes con el servicio de diseño.'}};
+var scTabs=[].slice.call(document.querySelectorAll('[data-sc]'));
+function setSc(k){var o=SC[k];scTabs.forEach(function(b){b.setAttribute('aria-selected',b.dataset.sc===k)});
+  document.getElementById('sim-fill').style.width=(o.u/120*100)+'%';document.getElementById('sim-fill').classList.toggle('over',o.u>100);
+  document.getElementById('sim-u').textContent=o.u+'%';['d','c','b','p','a'].forEach(function(x){document.getElementById('sim-'+x).textContent=o[x]});
+  var body=document.getElementById('sim-out');if(body.animate&&!reduce)body.animate([{opacity:.3,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:450,easing:'cubic-bezier(.22,1,.36,1)'});}
+scTabs.forEach(function(b,i){b.addEventListener('click',function(){setSc(b.dataset.sc)});b.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){var o=scTabs[(i+d+3)%3];o.focus();o.click()}})});
+setSc('normal');
 
 /* ---------- Calculadora de lote ---------- */
 var qty=document.getElementById('qty'),out=document.getElementById('qty-out'),rolls=document.getElementById('rolls');
