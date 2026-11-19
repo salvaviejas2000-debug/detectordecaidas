@@ -127,7 +127,9 @@ section{scroll-margin-top:76px}
 .hero h1{font-size:var(--t-h1)}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
 .hero h1 .ln>span{display:inline-block}
-.hero h1 .accent{color:var(--orange)}
+.hero h1.brand{font-size:clamp(4.2rem,1.4rem + 9.4vw,11.5rem);line-height:.86;letter-spacing:-.005em}
+.claim{font-family:var(--f-title);font-weight:900;font-size:clamp(1.9rem,1.3rem + 2.2vw,3.3rem);line-height:1;color:var(--kraft);max-width:18ch;text-wrap:balance}
+.claim em{font-style:normal;color:var(--orange)}
 .hero .lede{color:var(--kraft);max-width:30ch}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
 .hero-nums{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,48px);margin:8px 0 0;padding:22px 0 0;list-style:none;border-top:1px solid rgba(243,221,181,.2)}
@@ -263,10 +265,36 @@ section{scroll-margin-top:76px}
 .roll-sizes b{font-family:var(--f-title);font-weight:900;font-size:1.6rem}
 
 /* Calidad */
-.quality-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2vw,28px)}
-.qn{border-top:3px solid var(--orange);padding-top:22px;display:grid;gap:10px}
-.qn b{font-family:var(--f-title);font-weight:900;font-size:clamp(3.6rem,2.4rem + 4vw,6.4rem);line-height:.85}
-.qn p{font-size:1.18rem;color:rgba(243,221,181,.92)}
+.checks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.check{display:grid;gap:12px;align-content:start;padding:28px 24px;border-radius:22px;background:rgba(243,221,181,.06);border:1px solid rgba(243,221,181,.16);transition:transform .45s var(--ease),border-color .45s,background .45s;min-width:0}
+.js .check.rv.in:hover,.check:hover{transform:translateY(-6px);border-color:var(--orange);background:rgba(241,89,70,.1)}
+.check .n{font-family:var(--f-title);font-weight:900;font-size:3rem;line-height:.9;color:var(--orange)}
+.check h3{font-size:1.6rem;color:var(--kraft)}
+.check .when{font-family:var(--f-sub);font-size:1rem;color:var(--ink);background:var(--kraft);border-radius:999px;padding:4px 12px;justify-self:start}
+.check ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.check ul li{padding-left:22px;position:relative;font-size:1.1rem;color:var(--kraft);line-height:1.4}
+.check ul li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:50%;background:var(--leaf)}
+.check .fail{font-size:1rem;color:rgba(243,221,181,.8);border-top:1px solid rgba(243,221,181,.18);padding-top:12px;margin-top:4px}
+.qmetrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin-top:clamp(48px,6vw,80px)}
+.qm{border-top:3px solid var(--orange);padding-top:20px;display:grid;gap:8px}
+.qm b{font-family:var(--f-title);font-weight:900;font-size:clamp(3.4rem,2.4rem + 3.4vw,5.8rem);line-height:.85;color:var(--kraft)}
+.qm h3{font-size:1.45rem;color:var(--orange)}
+.qm p{font-size:1.1rem;color:rgba(243,221,181,.9)}
+.qnotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin-top:clamp(48px,6vw,72px)}
+.qnote{padding:24px 26px;border-radius:18px;background:var(--kraft);color:var(--ink);display:grid;gap:8px}
+.qnote h3{font-size:1.4rem}
+.qnote p{font-size:1.1rem}
+/* Certificaciones */
+.certs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.cert{display:grid;gap:12px;align-content:start;padding:30px 24px;border-radius:22px;background:#fff7e6;border:2px solid var(--ink);transition:transform .45s var(--ease),box-shadow .45s var(--ease);min-width:0}
+.js .cert.rv.in:hover,.cert:hover{transform:translateY(-6px);box-shadow:0 26px 40px -26px rgba(0,16,17,.6)}
+.cert svg{width:80px;height:80px;transition:transform .6s var(--ease)}
+.cert:hover svg{transform:rotate(-10deg) scale(1.06)}
+.cert h3{font-size:1.6rem}
+.cert p{font-size:1.1rem}
+@media (max-width:1080px){.checks,.certs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.qmetrics{grid-template-columns:1fr}}
+@media (max-width:600px){.checks,.certs,.qnotes{grid-template-columns:1fr}}
 
 /* Cierre */
 .close{padding-block:clamp(100px,12vw,180px);position:relative;overflow-x:clip}
@@ -322,6 +350,7 @@ footer nav a:hover{color:var(--orange)}
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#sustentable">Sustentable</a></li>
       <li><a href="#lote">Tu lote</a></li>
+      <li><a href="#calidad">Calidad</a></li>
     </ul>
     <a class="btn btn-main cta-nav" href="#lote">Calcular mi lote</a>
   </div>
@@ -332,13 +361,12 @@ footer nav a:hover{color:var(--orange)}
 <section class="hero ink" id="inicio">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="tag enter" style="--d:0;color:var(--orange)">Fábrica de bolsas de papel</span>
-      <h1>
-        <span class="ln"><span class="paper-text" style="--d:80">Bolsas kraft</span></span>
-        <span class="ln"><span class="paper-text" style="--d:200">con tu marca,</span></span>
-        <span class="ln"><span class="accent" style="--d:320">en 5 días.</span></span>
+      <span class="tag enter" style="--d:0;color:var(--orange)">Fábrica de bolsas · desde 2012</span>
+      <h1 class="brand">
+        <span class="ln"><span class="paper-text" style="--d:80">KraftPack</span></span>
       </h1>
-      <p class="lede enter" style="--d:560">Bolsas con manija para comercios y gastronomía. Papel FSC, tintas al agua y tu diseño impreso en hasta 4 colores.</p>
+      <p class="claim enter" style="--d:380">Bolsas kraft con tu marca, <em>en 5 días hábiles.</em></p>
+      <p class="lede enter" style="--d:560">Bolsas con manija para comercios y gastronomía. Papel con certificación FSC, tintas al agua y tu diseño impreso en hasta 4 colores.</p>
       <div class="hero-actions enter" style="--d:700">
         <a class="btn btn-main" href="#lote">Calcular mi lote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-line" href="#estilos">Ver diseños</a>
@@ -507,13 +535,71 @@ footer nav a:hover{color:var(--orange)}
 <section class="block ink sheet" id="calidad">
   <div class="wrap">
     <div class="head rv">
-      <span class="tag" style="color:var(--orange)">Calidad</span>
+      <span class="tag" style="color:var(--orange)">Control de calidad</span>
       <h2 class="paper-text">Probada antes de salir.</h2>
+      <p class="lede">Controlamos la calidad dentro del proceso, en cuatro puntos, para frenar el defecto donde se produce y no en el despacho.</p>
     </div>
-    <div class="quality-nums">
-      <div class="qn rv"><b><span data-count="5">5</span> kg</b><p>de carga durante 30 segundos, en cada lote.</p></div>
-      <div class="qn rv" style="--i:1"><b><span data-count="4">4</span></b><p>controles durante la fabricación, del papel al embalaje.</p></div>
-      <div class="qn rv" style="--i:2"><b>1,5%</b><p>de defectos como máximo. Las que fallan, no salen.</p></div>
+    <ol class="checks">
+      <li class="check rv">
+        <span class="n">01</span><h3>Recepción</h3><span class="when">Cada bobina</span>
+        <ul><li>Gramaje de 100 g/m² ± 5%</li><li>Humedad entre 6 y 9%</li><li>Ancho y certificado FSC</li></ul>
+        <p class="fail">Si falla, la bobina se rechaza o se separa.</p>
+      </li>
+      <li class="check rv" style="--i:1">
+        <span class="n">02</span><h3>Impresión</h3><span class="when">Primera pieza y cada 30 min</span>
+        <ul><li>Registro de colores</li><li>Tono y manchas</li><li>Comparación con la muestra patrón firmada</li></ul>
+        <p class="fail">Si falla, se detiene, se ajusta y se separa lo impreso desde el último control.</p>
+      </li>
+      <li class="check rv" style="--i:2">
+        <span class="n">03</span><h3>Formado</h3><span class="when">Primera bolsa y cada 30 min</span>
+        <ul><li>Medidas ± 2 mm</li><li>Pegado de fondo y manija, y corte</li><li>Ensayo de carga: 5 kg durante 30 s</li></ul>
+        <p class="fail">Si falla, se detiene la línea y se separa el lote desde el último control correcto.</p>
+      </li>
+      <li class="check rv" style="--i:3">
+        <span class="n">04</span><h3>Embalaje</h3><span class="when">Cada pallet</span>
+        <ul><li>Cantidad por caja, con conteo por balanza</li><li>Lectura de la etiqueta</li></ul>
+        <p class="fail">Si falla, se corrige antes de cerrar el pallet.</p>
+      </li>
+    </ol>
+
+    <div class="qmetrics">
+      <div class="qm rv"><b>≤ 1,5%</b><h3>Defectos en proceso</h3><p>Bolsas rechazadas sobre inspeccionadas, por línea y turno.</p></div>
+      <div class="qm rv" style="--i:1"><b>≤ 4%</b><h3>Desperdicio de papel</h3><p>Se pesa cada día el contenedor rojo de cada línea.</p></div>
+      <div class="qm rv" style="--i:2"><b>≤ 2.000</b><h3>ppm de devoluciones</h3><p>Reclamos analizados cada mes con Pareto y causa raíz.</p></div>
+    </div>
+
+    <div class="qnotes">
+      <div class="qnote rv"><h3>Muestreo de liberación</h3><p>Cada lote se libera con un plan por atributos ISO 2859-1, nivel II: AQL 1,0 para defectos mayores y 2,5 para menores.</p></div>
+      <div class="qnote rv" style="--i:1"><h3>Cualquiera puede frenar la línea</h3><p>Cada operario tiene la autoridad de detener la máquina si ve un problema (principio jidoka).</p></div>
+      <div class="qnote rv" style="--i:2"><h3>Revisión bolsa por bolsa</h3><p>Al final del formado se revisa y cuenta cada bolsa. Las mal pegadas se reparan; las irrecuperables vuelven al proveedor para reciclarse.</p></div>
+      <div class="qnote rv" style="--i:3"><h3>Laboratorio propio</h3><p>Balanza, medidor de humedad, calibre y equipo de ensayo de carga, con inspectores en los dos turnos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block light sheet" id="certificaciones">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" style="color:var(--moss)">Certificaciones y normas</span>
+      <h2>Lo que respalda cada bolsa.</h2>
+    </div>
+    <div class="certs">
+      <article class="cert rv">
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#659B5E"/><path d="M40 14c14 10 18 26 0 50-18-24-14-40 0-50z" fill="#F3DDB5"/><path d="M40 24v40M40 38l8-6M40 48l-9-7" stroke="#556F44" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        <h3>Papel FSC</h3><p>Todo el papel tiene certificación FSC y se verifica bobina por bobina en la recepción.</p>
+      </article>
+      <article class="cert rv" style="--i:1">
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#001011"/><text x="40" y="38" text-anchor="middle" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="17" fill="#F3DDB5">ISO</text><text x="40" y="56" text-anchor="middle" font-family="Londrina Solid,Impact,sans-serif" font-weight="900" font-size="15" fill="#F15946">2859-1</text></svg>
+        <h3>ISO 2859-1</h3><p>Muestreo por atributos, nivel II, con AQL 1,0 y 2,5 para liberar cada lote.</p>
+      </article>
+      <article class="cert rv" style="--i:2">
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#F15946"/><path d="M40 16s-14 17-14 27a14 14 0 0 0 28 0c0-10-14-27-14-27z" fill="#F3DDB5"/><path d="M33 44a7 7 0 0 0 7 7" stroke="#F15946" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        <h3>Base agua</h3><p>Tintas al agua en la impresión y adhesivo base agua en el formado.</p>
+      </article>
+      <article class="cert rv" style="--i:3">
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#556F44"/><g transform="translate(40 41)" fill="none" stroke="#F3DDB5" stroke-width="5" stroke-linecap="round"><g><path d="M-9-19A21 21 0 0 1 17-12"/><path d="M14-20L23-8L9-6Z" fill="#F3DDB5" stroke="none"/></g><g transform="rotate(120)"><path d="M-9-19A21 21 0 0 1 17-12"/><path d="M14-20L23-8L9-6Z" fill="#F3DDB5" stroke="none"/></g><g transform="rotate(240)"><path d="M-9-19A21 21 0 0 1 17-12"/><path d="M14-20L23-8L9-6Z" fill="#F3DDB5" stroke="none"/></g></g></svg>
+        <h3>100% reciclable</h3><p>Bolsa reciclable y biodegradable. El desecho de planta vuelve al proveedor para hacer bobinas nuevas.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -537,7 +623,7 @@ footer nav a:hover{color:var(--orange)}
 <footer class="ink">
   <div class="wrap">
     <span class="logo" style="font-size:1.4rem">KraftPack</span>
-    <nav aria-label="Pie de página"><a href="#estilos">Diseños</a><a href="#producto">Producto</a><a href="#proceso">Proceso</a><a href="#lote">Tu lote</a></nav>
+    <nav aria-label="Pie de página"><a href="#estilos">Diseños</a><a href="#producto">Producto</a><a href="#proceso">Proceso</a><a href="#lote">Tu lote</a><a href="#calidad">Calidad</a></nav>
     <span>Bolsas de papel kraft desde 2012</span>
   </div>
 </footer>
