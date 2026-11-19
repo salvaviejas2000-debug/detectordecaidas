@@ -510,6 +510,15 @@ footer nav a:hover{color:var(--orange)}
 .ms-bar i.over{background:var(--orange)}
 .mslide.on .ms-bar i{transform:scaleX(1)}
 .ms-bar em{position:absolute;left:83.33%;top:-8px;bottom:-8px;border-left:2px dashed var(--kraft)}
+.ms-do{grid-column:1/-1;border-top:1px solid rgba(243,221,181,.16);padding-top:22px;display:grid;gap:14px}
+.ms-do-t{font-family:var(--f-sub);font-size:1rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.ms-do ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,20px)}
+.ms-do li{padding:20px;border-radius:18px;background:rgba(243,221,181,.07);display:grid;gap:6px;align-content:start;transform:translateY(14px);opacity:0;transition:transform .7s var(--ease),opacity .7s var(--ease)}
+.mslide.on .ms-do li{transform:none;opacity:1}
+.mslide.on .ms-do li:nth-child(2){transition-delay:.12s}.mslide.on .ms-do li:nth-child(3){transition-delay:.24s}
+.ms-do b{font-family:var(--f-title);font-weight:900;font-size:1.5rem;line-height:1.05;color:var(--kraft)}
+.ms-do span{font-size:1.08rem;color:rgba(243,221,181,.85)}
+@media (max-width:760px){.ms-do ul{grid-template-columns:1fr}}
 .mtimeline{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,22px);align-items:end;height:120px;border-top:1px solid rgba(243,221,181,.16);padding-top:16px}
 .mtimeline button{height:100%;display:grid;grid-template-rows:1fr auto;gap:8px;background:none;border:0;cursor:pointer;color:rgba(243,221,181,.6);font-family:var(--f-sub);font-size:1rem;padding:0}
 .mtimeline i{align-self:end;height:calc(var(--h) * 1%);border-radius:10px 10px 4px 4px;background:rgba(243,221,181,.16);transition:background .5s,transform .5s var(--ease)}
@@ -1041,6 +1050,14 @@ footer nav a:hover{color:var(--orange)}
               <div class="ms-big"><b>3,1</b><span>millones de bolsas</span></div>
               <div class="ms-use"><div class="ms-use-head"><span>Uso de capacidad</span><b>109%</b></div><div class="ms-bar"><i class="over" style="--u:109"></i><em aria-hidden="true"></em></div></div>
             </div>
+          <div class="ms-do">
+              <span class="ms-do-t">En la fábrica</span>
+              <ul>
+                <li><b>Sábados con un turno</b><span>4 sábados para cubrir el pico de las fiestas.</span></li>
+                <li><b>Colchón de 40.000 bolsas</b><span>Menos de medio día de venta, por si falla un sábado.</span></li>
+                <li><b>4 tarjetas por producto A</b><span>El margen de seguridad sube de 25% a 60%.</span></li>
+              </ul>
+            </div>
           </article>
           <article class="mslide" aria-label="Enero 2027">
             <div class="ms-left">
@@ -1052,6 +1069,14 @@ footer nav a:hover{color:var(--orange)}
             <div class="ms-right">
               <div class="ms-big"><b>2,1</b><span>millones de bolsas</span></div>
               <div class="ms-use"><div class="ms-use-head"><span>Uso de capacidad</span><b>75%</b></div><div class="ms-bar"><i style="--u:75"></i><em aria-hidden="true"></em></div></div>
+            </div>
+          <div class="ms-do">
+              <span class="ms-do-t">En la fábrica</span>
+              <ul>
+                <li><b>Mantenimiento preventivo</b><span>Con un cuarto de la capacidad libre.</span></li>
+                <li><b>Capacitación TPM y auditorías 5S</b><span>El equipo aprende a cuidar su máquina.</span></li>
+                <li><b>Menos papel en depósito</b><span>El punto de pedido baja a 64 bobinas.</span></li>
+              </ul>
             </div>
           </article>
           <article class="mslide" aria-label="Febrero 2027">
@@ -1065,14 +1090,18 @@ footer nav a:hover{color:var(--orange)}
               <div class="ms-big"><b>2,4</b><span>millones de bolsas</span></div>
               <div class="ms-use"><div class="ms-use-head"><span>Uso de capacidad</span><b>95%</b></div><div class="ms-bar"><i style="--u:95"></i><em aria-hidden="true"></em></div></div>
             </div>
+          <div class="ms-do">
+              <span class="ms-do-t">En la fábrica</span>
+              <ul>
+                <li><b>Horario normal</b><span>Al 95% de la capacidad, sin sábados.</span></li>
+                <li><b>18 días hábiles</b><span>Por los feriados de Carnaval.</span></li>
+                <li><b>3 tarjetas por producto A</b><span>El stock vuelve a su nivel habitual.</span></li>
+              </ul>
+            </div>
           </article>
         </div>
       </div>
-      <div class="mtimeline" aria-hidden="true">
-        <button tabindex="-1" data-m="0"><i style="--h:100"></i><span>Dic</span></button>
-        <button tabindex="-1" data-m="1"><i style="--h:68"></i><span>Ene</span></button>
-        <button tabindex="-1" data-m="2"><i style="--h:78"></i><span>Feb</span></button>
-      </div>
+      
     </div>
     <div class="explain rv">
       <h3>Estacionalidad</h3>
@@ -1244,7 +1273,7 @@ function calc(){var q=+qty.value,r=best(q,1)||best(q,0);out.textContent=fmt(q,0,
 qty.addEventListener('input',calc);calc();
 
 /* ---------- Plan: deslizador ---------- */
-(function(){var box=document.getElementById('mslider');if(!box)return;var track=document.getElementById('mtrack'),slides=track.children,tabs=[].slice.call(box.querySelectorAll('.mtabs [data-m]')),bars=[].slice.call(box.querySelectorAll('.mtimeline [data-m]')),arrows=box.querySelectorAll('.marrow'),cur=0;
+(function(){var box=document.getElementById('mslider');if(!box)return;var track=document.getElementById('mtrack'),slides=track.children,tabs=[].slice.call(box.querySelectorAll('.mtabs [data-m]')),bars=[],arrows=box.querySelectorAll('.marrow'),cur=0;
   function go(i){cur=Math.max(0,Math.min(2,i));box.style.setProperty('--m',cur);track.style.setProperty('--m',cur);box.querySelector('.mtabs').style.setProperty('--m',cur);
     [].forEach.call(slides,function(s,k){s.classList.toggle('on',k===cur);s.setAttribute('aria-hidden',k!==cur)});
     tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===cur);t.tabIndex=k===cur?0:-1});bars.forEach(function(b,k){b.classList.toggle('on',k===cur)});
