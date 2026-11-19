@@ -546,19 +546,22 @@ footer nav a:hover{color:var(--orange)}
 .idea h3{font-size:1.5rem}
 .idea p{font-size:1.1rem}
 /* Cierre */
-.rslider{grid-column:1/-1;display:grid;gap:18px;min-width:0}
-.rs-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.rs-hint{font-family:var(--f-sub);font-size:1.05rem}
-.close .marrow{border-color:var(--ink);color:var(--ink)}
-.close .marrow:hover{background:var(--ink);color:var(--kraft)}
-.rtrack{list-style:none;margin:0;padding:6px 2px 24px;display:flex;gap:clamp(14px,2vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;cursor:grab}
-.rtrack::-webkit-scrollbar{display:none}
-.rtrack.drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
-.rcard{flex:0 0 clamp(260px,30vw,360px);scroll-snap-align:start;background:#fff7e6;color:var(--ink);border:2px solid var(--ink);border-radius:24px;padding:28px 26px;display:grid;gap:12px;align-content:start;box-shadow:6px 6px 0 var(--ink);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
-.rcard:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
-.rc-n{font-family:var(--f-title);font-weight:900;font-size:3.4rem;line-height:.9;color:var(--orange)}
-.rcard h3{font-family:var(--f-title);font-weight:900;font-size:1.9rem;line-height:1}
-.rcard p{font-size:1.12rem}
+.vcard{grid-column:1/-1;position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:clamp(16px,3vw,40px);background:#fff7e6;color:var(--ink);border-radius:30px;padding:clamp(22px,3.4vw,44px) clamp(22px,4vw,56px);box-shadow:0 40px 80px -30px rgba(0,16,17,.55),0 12px 30px -12px rgba(0,16,17,.3);min-width:0}
+.vview{height:clamp(170px,16vw,190px);overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(180deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(180deg,transparent,#000 14%,#000 86%,transparent)}
+.vtrack{list-style:none;margin:0;padding:0;transform:translateY(calc(var(--v,0) * -100%));transition:transform .85s cubic-bezier(.7,0,.2,1);height:100%}
+.vslide{height:100%;display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,40px);align-items:center;opacity:.15;transition:opacity .6s var(--ease)}
+.vslide.on{opacity:1}
+.vs-n{font-family:var(--f-title);font-weight:900;font-size:clamp(5rem,3rem + 6vw,9rem);line-height:.8;color:var(--orange)}
+.vslide h3{font-family:var(--f-title);font-weight:900;font-size:clamp(2rem,1.4rem + 2.4vw,3.6rem);line-height:.95}
+.vslide p{margin-top:10px;font-size:clamp(1.1rem,1rem + .4vw,1.35rem);max-width:46ch}
+.vctrl{display:grid;justify-items:center;gap:12px}
+.vctrl .marrow{border-color:var(--ink);color:var(--ink)}
+.vctrl .marrow:hover{background:var(--ink);color:var(--kraft)}
+.vdots{display:grid;gap:8px}
+.vdots button{width:12px;height:12px;border-radius:999px;border:0;padding:0;background:rgba(0,16,17,.2);cursor:pointer;transition:height .5s var(--ease),background .4s;position:relative}
+.vdots button::before{content:"";position:absolute;inset:-10px}
+.vdots button[aria-selected="true"]{height:34px;background:var(--orange)}
+@media (max-width:600px){.vcard{grid-template-columns:1fr}.vctrl{grid-auto-flow:column;align-items:center}.vdots{grid-auto-flow:column}.vdots button[aria-selected="true"]{height:12px;width:34px}.vview{height:250px}.vslide{grid-template-columns:1fr;gap:6px;align-content:center}}
 .reasons5{margin:28px 0 0;padding:0;list-style:none;counter-reset:r;display:grid;gap:14px;max-width:46ch}
 .reasons5 li{counter-increment:r;position:relative;padding-left:64px;font-size:1.2rem;line-height:1.45;min-height:44px}
 .reasons5 li::before{position:absolute;left:0;top:-2px;content:counter(r);font-family:var(--f-title);font-weight:900;font-size:2.2rem;line-height:1;color:var(--kraft);-webkit-text-stroke:2px var(--ink)}
@@ -1131,18 +1134,21 @@ footer nav a:hover{color:var(--orange)}
       
     </div>
     <div class="cbag" data-bag="kraftpack" aria-hidden="true"></div>
-    <div class="rslider">
-      <div class="rs-head">
-        <span class="rs-hint">Deslizá para ver las 5 razones</span>
-        <div class="marrows"><button class="marrow" data-rs="-1" aria-label="Razón anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><button class="marrow" data-rs="1" aria-label="Razón siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
+    <div class="vcard" id="vcard">
+      <div class="vview" aria-live="polite">
+        <ol class="vtrack" id="vtrack" aria-label="Razones para elegir KraftPack">
+          <li class="vslide on" aria-hidden="false"><span class="vs-n">01</span><div><h3>Tiene mercado</h3><p>El reemplazo del plástico lo empujan normas que ya están vigentes.</p></div></li>
+          <li class="vslide" aria-hidden="true"><span class="vs-n">02</span><div><h3>Ocupa un lugar propio</h3><p>Lotes chicos, con la marca del cliente y entrega en 5 días.</p></div></li>
+          <li class="vslide" aria-hidden="true"><span class="vs-n">03</span><div><h3>Cuida el capital</h3><p>Produce lo que se vende, guarda la mitad de papel y baja el plazo de 19 a 10 días.</p></div></li>
+          <li class="vslide" aria-hidden="true"><span class="vs-n">04</span><div><h3>Crece sin apuro</h3><p>Suma sábados antes que máquinas y tiene un plan para cuando la demanda sube o baja.</p></div></li>
+          <li class="vslide" aria-hidden="true"><span class="vs-n">05</span><div><h3>Conoce sus riesgos</h3><p>Y sabe qué hacer con cada uno.</p></div></li>
+        </ol>
       </div>
-      <ol class="rtrack" id="rtrack" tabindex="0" aria-label="Razones para elegir KraftPack">
-        <li class="rcard"><span class="rc-n">01</span><h3>Tiene mercado</h3><p>El reemplazo del plástico lo empujan normas que ya están vigentes.</p></li>
-        <li class="rcard"><span class="rc-n">02</span><h3>Ocupa un lugar propio</h3><p>Lotes chicos, con la marca del cliente y entrega en 5 días.</p></li>
-        <li class="rcard"><span class="rc-n">03</span><h3>Cuida el capital</h3><p>Produce lo que se vende, guarda la mitad de papel y baja el plazo de 19 a 10 días.</p></li>
-        <li class="rcard"><span class="rc-n">04</span><h3>Crece sin apuro</h3><p>Suma sábados antes que máquinas y tiene un plan para cuando la demanda sube o baja.</p></li>
-        <li class="rcard"><span class="rc-n">05</span><h3>Conoce sus riesgos</h3><p>Y sabe qué hacer con cada uno.</p></li>
-      </ol>
+      <div class="vctrl">
+        <button class="marrow" data-vs="-1" aria-label="Razón anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+        <div class="vdots" role="tablist" aria-label="Elegir razón"><button role="tab" aria-label="Razón 1" aria-selected="true" data-vi="0"></button><button role="tab" aria-label="Razón 2" aria-selected="false" data-vi="1"></button><button role="tab" aria-label="Razón 3" aria-selected="false" data-vi="2"></button><button role="tab" aria-label="Razón 4" aria-selected="false" data-vi="3"></button><button role="tab" aria-label="Razón 5" aria-selected="false" data-vi="4"></button></div>
+        <button class="marrow" data-vs="1" aria-label="Razón siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      </div>
     </div>
 
   </div>
@@ -1309,15 +1315,15 @@ qty.addEventListener('input',calc);calc();
   view.addEventListener('pointerup',end);view.addEventListener('pointerleave',end);view.addEventListener('pointercancel',end);
   go(0);})();
 
-/* ---------- Cierre: razones deslizables ---------- */
-(function(){var t=document.getElementById('rtrack');if(!t)return;
-  [].forEach.call(document.querySelectorAll('[data-rs]'),function(b){b.addEventListener('click',function(){var c=t.querySelector('.rcard');t.scrollBy({left:(+b.dataset.rs)*(c.offsetWidth+20),behavior:reduce?'auto':'smooth'})})});
-  var x0=null,s0=0,moved=false;
-  t.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;x0=e.clientX;s0=t.scrollLeft;moved=false;t.classList.add('drag')});
-  addEventListener('pointermove',function(e){if(x0===null)return;var d=e.clientX-x0;if(Math.abs(d)>4)moved=true;t.scrollLeft=s0-d});
-  addEventListener('pointerup',function(){if(x0===null)return;x0=null;t.classList.remove('drag')});
-  t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();t.scrollBy({left:(e.key==='ArrowRight'?1:-1)*300})}});
-})();
+/* ---------- Cierre: una tarjeta que sube ---------- */
+(function(){var tr=document.getElementById('vtrack');if(!tr)return;var sl=tr.children,n=sl.length,cur=0,dots=[].slice.call(document.querySelectorAll('[data-vi]'));
+  function go(i){cur=(i+n)%n;tr.style.setProperty('--v',cur);[].forEach.call(sl,function(s,k){s.classList.toggle('on',k===cur);s.setAttribute('aria-hidden',k!==cur)});dots.forEach(function(d,k){d.setAttribute('aria-selected',k===cur)})}
+  [].forEach.call(document.querySelectorAll('[data-vs]'),function(b){b.addEventListener('click',function(){go(cur+ +b.dataset.vs)})});
+  dots.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.vi)})});
+  document.querySelector('.vview').addEventListener('click',function(){go(cur+1)});
+  var y0=null;var v=document.querySelector('.vview');v.addEventListener('touchstart',function(e){y0=e.touches[0].clientY},{passive:true});
+  v.addEventListener('touchend',function(e){if(y0===null)return;var d=e.changedTouches[0].clientY-y0;if(Math.abs(d)>40)go(cur+(d<0?1:-1));y0=null});
+  go(0);})();
 
 /* ---------- Nav activa ---------- */
 var links=[].slice.call(document.querySelectorAll('.nav ul a'));
